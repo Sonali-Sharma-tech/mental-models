@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Super Thinking — Mental Models for Kids</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0e0e1a;
+    --bg-2: #1a1a2e;
+    --card: #16162a;
+    --card-hover: #1e1e3a;
+    --text: #f5f5ff;
+    --muted: #9090b8;
+    --accent: #ffd166;
+    --accent-2: #ef476f;
+    --accent-3: #06d6a0;
+    --accent-4: #4cc9f0;
+    --accent-5: #c77dff;
+    --border: #2a2a44;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Animated gradient blobs in background */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #c77dff, transparent 70%);
+    top: -100px; left: -100px;
+    animation: drift1 18s ease-in-out infinite;
+  }
+  body::after {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #4cc9f0, transparent 70%);
+    bottom: -150px; right: -150px;
+    animation: drift2 22s ease-in-out infinite;
+  }
+  @keyframes drift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(80px, 60px) scale(1.2); }
+  }
+  @keyframes drift2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-60px, -40px) scale(1.15); }
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 30px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2), var(--accent-5), var(--accent-4), var(--accent));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    animation: gradientShift 8s ease-in-out infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .controls {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search {
+    flex: 1;
+    min-width: 240px;
+    max-width: 400px;
+    padding: 12px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search:focus { border-color: var(--accent-4); }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .filter {
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .filter:hover { color: var(--text); border-color: var(--accent-4); }
+  .filter.active {
+    background: var(--accent-4);
+    color: var(--bg);
+    border-color: var(--accent-4);
+    font-weight: 600;
+  }
+
+  .grid {
+    max-width: 1200px;
+    margin: 30px auto 80px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1.4), background 0.25s, border-color 0.25s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardIn 0.6s cubic-bezier(.2,.9,.3,1) forwards;
+  }
+  @keyframes cardIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--bar, var(--accent));
+    opacity: 0.6;
+    transition: height 0.25s, opacity 0.25s;
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx,50%) var(--my,50%), var(--bar, var(--accent)), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) scale(1.02);
+    background: var(--card-hover);
+    border-color: var(--bar, var(--accent));
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--bar, var(--accent))33;
+  }
+  .card:hover::before { height: 5px; opacity: 1; }
+  .card:hover::after { opacity: 0.12; }
+  .card:hover .visual { transform: scale(1.05); }
+  .card:hover .visual svg { filter: drop-shadow(0 0 10px var(--bar, var(--accent))); }
+
+  .visual {
+    height: 120px;
+    border-radius: 12px;
+    background: var(--bg-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(.2,.9,.3,1.4);
+  }
+  .visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, var(--bar, var(--accent)) 50%, transparent 70%);
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 0.6s, opacity 0.3s;
+  }
+  .card:hover .visual::before {
+    opacity: 0.15;
+    transform: translateX(100%);
+  }
+  .visual svg { transition: filter 0.3s; }
+
+  .visual svg { max-width: 100%; max-height: 100%; }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bar, var(--accent));
+    font-weight: 600;
+  }
+
+  .card-line {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  /* Modal */
+  .modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 15, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal-bg.open { display: flex; animation: fadeIn 0.2s ease; }
+
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px;
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: var(--bg-2);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--accent-2); }
+
+  .modal-visual {
+    height: 200px;
+    background: var(--bg-2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .modal h2 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .modal-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg-2);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--bar, var(--accent));
+    margin-bottom: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .section {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+  .section h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--bar, var(--accent));
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .section p { color: var(--text); font-size: 1rem; line-height: 1.6; }
+  .section .quote { font-style: italic; color: var(--muted); border-left: 3px solid var(--bar, var(--accent)); padding-left: 14px; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Animations for SVG illustrations */
+  .float { animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+  .spin { animation: spin 8s linear infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+  .pulse { animation: pulse 2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+  .bounce { animation: bounce 1.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Super Thinking</h1>
+  <p class="subtitle">Mental models from the book — animated, visual, click-to-explore. No jargon.</p>
+</header>
+
+<div class="controls">
+  <input type="text" class="search" id="search" placeholder="🔎 Search a model..." />
+  <div class="filters" id="filters">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="thinking">🧠 Thinking Better</button>
+    <button class="filter" data-filter="traps">🪤 Mind Traps</button>
+    <button class="filter" data-filter="time">⏰ Time &amp; Effort</button>
+    <button class="filter" data-filter="chaos">💥 Chaos &amp; Risk</button>
+    <button class="filter" data-filter="people">👥 People &amp; Systems</button>
+  </div>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<footer>
+  Built for Sonali · Inspired by <em>Super Thinking</em> by Gabriel Weinberg &amp; Lauren McCann
+</footer>
+
+<script>
+const COLORS = {
+  thinking: '#4cc9f0',
+  traps:    '#ef476f',
+  time:     '#ffd166',
+  chaos:    '#c77dff',
+  people:   '#06d6a0'
+};
+
+const CATEGORY_LABELS = {
+  thinking: '🧠 Thinking Better',
+  traps:    '🪤 Mind Trap',
+  time:     '⏰ Time & Effort',
+  chaos:    '💥 Chaos & Risk',
+  people:   '👥 People & Systems'
+};
+
+// Each model has a unique inline SVG visualization
+const MODELS = [
+  {
+    id: 'inversion', name: 'Inversion', cat: 'thinking',
+    line: "Flip the problem upside down. Ask the opposite.",
+    kid: "Don't ask 'how do I be happy?' Ask 'what makes me sad?' — then stop doing those things.",
+    story: "A clever guy named Carl Jacobi said: 'Invert, always invert.' Want to win? First, list every way to lose. Avoid those, and you're already winning.",
+    when: "When you're stuck. When the obvious path isn't working. Flip it.",
+    svg: `<svg viewBox="0 0 200 120">
+      <defs><marker id="arrI" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#4cc9f0"/></marker></defs>
+      <text x="40" y="40" font-size="38" fill="#4cc9f0" class="float">😀</text>
+      <path d="M85,55 Q100,30 115,55" stroke="#4cc9f0" stroke-width="2" fill="none" marker-end="url(#arrI)"/>
+      <text x="135" y="80" font-size="38" fill="#ef476f" class="float" style="animation-delay: 1s;">🙃</text>
+    </svg>`
+  },
+  {
+    id: 'occam', name: "Occam's Razor", cat: 'thinking',
+    line: "The simplest answer is usually right.",
+    kid: "Cookies are missing. Ghost, thief, or someone in the house? Pick the simplest one.",
+    story: "A monk named William of Ockham said: don't pile on extra explanations. If you hear hooves, think horses, not zebras.",
+    when: "When someone gives you a fancy, complicated reason. The plain one is probably true.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="60" x2="180" y2="60" stroke="#4cc9f0" stroke-width="2"/>
+      <circle cx="60" cy="60" r="8" fill="#9090b8"/>
+      <circle cx="100" cy="60" r="14" fill="#4cc9f0" class="pulse"/>
+      <circle cx="140" cy="60" r="8" fill="#9090b8"/>
+      <text x="50" y="95" font-size="10" fill="#9090b8">complex</text>
+      <text x="83" y="35" font-size="10" fill="#4cc9f0" font-weight="bold">simplest ✓</text>
+      <text x="128" y="95" font-size="10" fill="#9090b8">complex</text>
+    </svg>`
+  },
+  {
+    id: 'hanlon', name: "Hanlon's Razor", cat: 'thinking',
+    line: "Never assume bad intent when a mistake explains it.",
+    kid: "Friend didn't reply to your text? Probably forgot — not hating you.",
+    story: "Most 'mean' things people do aren't mean — they're just clumsy. Mistakes are way more common than evil plans.",
+    when: "When you're about to get angry at someone. Pause. Was it just a goof-up?",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="40" y="50" font-size="32">😠</text>
+      <text x="80" y="80" font-size="20" fill="#ef476f">VS</text>
+      <text x="125" y="50" font-size="32" class="bounce">🤷</text>
+      <text x="20" y="105" font-size="11" fill="#9090b8">"They hate me"</text>
+      <text x="115" y="105" font-size="11" fill="#06d6a0">"They forgot"</text>
+    </svg>`
+  },
+  {
+    id: 'fence', name: "Chesterton's Fence", cat: 'thinking',
+    line: "Don't remove a fence till you know why it's there.",
+    kid: "See a weird rule at school? Find out WHY before you break it. It might be hiding a reason.",
+    story: "A guy walks in the woods, sees a fence in the middle of nowhere. He says 'useless, tear it down.' Wise friend says: figure out who put it there first. (There's a bull on the other side.)",
+    when: "Before deleting old code, removing a habit, or changing a tradition. Ask: why does this exist?",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="40" y1="40" x2="40" y2="100" stroke="#4cc9f0" stroke-width="3"/>
+      <line x1="80" y1="40" x2="80" y2="100" stroke="#4cc9f0" stroke-width="3"/>
+      <line x1="120" y1="40" x2="120" y2="100" stroke="#4cc9f0" stroke-width="3"/>
+      <line x1="160" y1="40" x2="160" y2="100" stroke="#4cc9f0" stroke-width="3"/>
+      <line x1="30" y1="55" x2="170" y2="55" stroke="#4cc9f0" stroke-width="3"/>
+      <line x1="30" y1="80" x2="170" y2="80" stroke="#4cc9f0" stroke-width="3"/>
+      <text x="92" y="30" font-size="22" fill="#ffd166" class="pulse">?</text>
+    </svg>`
+  },
+  {
+    id: 'first-principles', name: 'First Principles', cat: 'thinking',
+    line: "Break it into the smallest building blocks.",
+    kid: "Want to build a rocket? Don't copy NASA. Ask: what's a rocket made of? Metal, fuel, fire. Start there.",
+    story: "Elon Musk dropped rocket costs by 90% by ignoring 'how it's always done' and asking 'what's the cheapest way to do this from scratch?'",
+    when: "When everyone says 'that's just how it is.' Strip it back to atoms. Rebuild.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="80" y="20" width="40" height="20" fill="#4cc9f0" rx="3"/>
+      <rect x="50" y="55" width="20" height="20" fill="#06d6a0" rx="3" class="float"/>
+      <rect x="90" y="55" width="20" height="20" fill="#ffd166" rx="3" class="float" style="animation-delay:.3s"/>
+      <rect x="130" y="55" width="20" height="20" fill="#ef476f" rx="3" class="float" style="animation-delay:.6s"/>
+      <rect x="40" y="90" width="14" height="14" fill="#9090b8" rx="2"/>
+      <rect x="60" y="90" width="14" height="14" fill="#9090b8" rx="2"/>
+      <rect x="100" y="90" width="14" height="14" fill="#9090b8" rx="2"/>
+      <rect x="140" y="90" width="14" height="14" fill="#9090b8" rx="2"/>
+    </svg>`
+  },
+  {
+    id: 'confirmation', name: 'Confirmation Bias', cat: 'traps',
+    line: "You only see what already agrees with you.",
+    kid: "Think your team is best? You'll cheer their good moves and ignore the bad. Brain only counts the wins.",
+    story: "Give people the rule '2, 4, 6.' They guess '8, 10, 12' — never '1, 2, 3.' They only test what fits. The real rule was 'any rising numbers.'",
+    when: "Before you 'know' you're right. Search for what could prove you WRONG.",
+    svg: `<svg viewBox="0 0 200 120">
+      <ellipse cx="100" cy="60" rx="40" ry="22" fill="none" stroke="#ef476f" stroke-width="3"/>
+      <circle cx="100" cy="60" r="14" fill="#ef476f"/>
+      <text x="40" y="35" font-size="14">✓</text><text x="150" y="35" font-size="14">✓</text>
+      <text x="35" y="100" font-size="14" opacity=".25">✗</text>
+      <text x="155" y="100" font-size="14" opacity=".25">✗</text>
+      <text x="80" y="20" font-size="14" opacity=".25">✗</text>
+    </svg>`
+  },
+  {
+    id: 'survivorship', name: 'Survivorship Bias', cat: 'traps',
+    line: "You only hear from the winners. Losers are invisible.",
+    kid: "Famous YouTubers say 'just be yourself!' But MILLIONS of YouTubers were themselves and got 0 views. You only hear from the ones who made it.",
+    story: "WWII: planes returning had bullet holes on wings. Engineers said 'armor the wings.' One smart guy said NO — armor where the holes AREN'T. The planes hit there never came back.",
+    when: "Anytime someone shares a success story. Ask: how many tried this and failed?",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="50" y="55" font-size="32" class="float">✈️</text>
+      <circle cx="65" cy="40" r="3" fill="#ef476f"/>
+      <circle cx="78" cy="48" r="3" fill="#ef476f"/>
+      <circle cx="55" cy="60" r="3" fill="#ef476f"/>
+      <text x="115" y="55" font-size="32" opacity="0.2">✈️</text>
+      <text x="155" y="55" font-size="32" opacity="0.15">✈️</text>
+      <text x="105" y="100" font-size="10" fill="#9090b8" opacity=".5">(invisible — never returned)</text>
+    </svg>`
+  },
+  {
+    id: 'opportunity', name: 'Opportunity Cost', cat: 'time',
+    line: "Saying YES to one thing = saying NO to another.",
+    kid: "You spent your money on candy. Now you can't buy a toy. The toy was the COST.",
+    story: "Every choice has a hidden price tag — the thing you DIDN'T pick. Time, money, energy. You only get one.",
+    when: "Before any 'yes.' Whisper to yourself: what am I saying NO to?",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="30" y="30" width="60" height="70" fill="#ffd166" rx="6"/>
+      <rect x="110" y="30" width="60" height="70" fill="#9090b8" rx="6" opacity="0.3"/>
+      <text x="48" y="72" font-size="28">🍭</text>
+      <text x="128" y="72" font-size="28" opacity="0.4">🧸</text>
+      <text x="40" y="115" font-size="11" fill="#ffd166">CHOSEN</text>
+      <text x="115" y="115" font-size="11" fill="#9090b8">GIVEN UP</text>
+    </svg>`
+  },
+  {
+    id: 'pareto', name: 'Pareto Principle (80/20)', cat: 'time',
+    line: "20% of stuff causes 80% of results.",
+    kid: "Look at your toys. 20% you play with all the time. The other 80% just sit there.",
+    story: "Italian guy Pareto saw 80% of land owned by 20% of people. Then this rule started showing up EVERYWHERE — 80% of bugs from 20% of code, 80% of hits from 20% of songs.",
+    when: "Want to be efficient? Find the 20% that matters. Ignore the rest.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="100" cy="60" r="45" fill="#1a1a2e"/>
+      <path d="M100,60 L100,15 A45,45 0 1,1 64.6,89.5 Z" fill="#ffd166"/>
+      <path d="M100,60 L64.6,89.5 A45,45 0 0,1 100,15 Z" fill="#ef476f"/>
+      <text x="60" y="55" font-size="14" font-weight="bold" fill="#0e0e1a">80%</text>
+      <text x="105" y="105" font-size="11" fill="#ef476f">20% (matters)</text>
+    </svg>`
+  },
+  {
+    id: 'sunk-cost', name: 'Sunk Cost Fallacy', cat: 'traps',
+    line: "Don't keep going just because you already started.",
+    kid: "Bad movie? You paid for the ticket but you're bored. People stay anyway. Stupid! Money is gone either way. Leave!",
+    story: "Spent 2 hours on homework that's all wrong? Some kids keep fixing it. Smart kids restart. Wasted time is GONE — don't waste more.",
+    when: "When you say 'but I've already invested so much.' That's a trap. Decide based on the future, not the past.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="100" cy="80" r="22" fill="#9090b8" opacity="0.3"/>
+      <text x="80" y="48" font-size="22" fill="#ef476f">💸💸💸</text>
+      <path d="M85,65 Q100,80 115,65" stroke="#ef476f" stroke-width="2" fill="none"/>
+      <text x="60" y="115" font-size="11" fill="#9090b8">already gone — let it go</text>
+    </svg>`
+  },
+  {
+    id: 'parkinson', name: "Parkinson's Law", cat: 'time',
+    line: "Work expands to fill the time you give it.",
+    kid: "Got a week to do homework? It takes a week. Got an hour? Somehow you finish in an hour.",
+    story: "Brains are sneaky. Give them lots of time, they'll waste lots. Give them tight deadlines, they'll find a way.",
+    when: "Set a timer. Half the time you 'think' you need. Watch what happens.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="20" y="60" width="50" height="20" fill="#ffd166" rx="3"/>
+      <rect x="80" y="60" width="100" height="20" fill="#ef476f" rx="3" class="pulse"/>
+      <text x="30" y="40" font-size="10" fill="#ffd166">small task</text>
+      <text x="100" y="40" font-size="10" fill="#ef476f">…with big deadline</text>
+    </svg>`
+  },
+  {
+    id: 'compounding', name: 'Compounding', cat: 'time',
+    line: "Tiny + tiny + time = HUGE.",
+    kid: "Read 1 page a day. After a year? 365 pages — that's a whole book! Small things stack.",
+    story: "Einstein supposedly said compound interest is the 8th wonder of the world. Money, skills, friendships — all compound. Be patient.",
+    when: "When something feels too small to matter. It does. Keep going.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="20" y="100" width="14" height="8" fill="#06d6a0"/>
+      <rect x="40" y="95" width="14" height="13" fill="#06d6a0"/>
+      <rect x="60" y="85" width="14" height="23" fill="#06d6a0"/>
+      <rect x="80" y="70" width="14" height="38" fill="#06d6a0"/>
+      <rect x="100" y="50" width="14" height="58" fill="#06d6a0"/>
+      <rect x="120" y="25" width="14" height="83" fill="#06d6a0"/>
+      <rect x="140" y="-5" width="14" height="113" fill="#06d6a0" class="pulse"/>
+      <text x="160" y="60" font-size="20" fill="#ffd166">📈</text>
+    </svg>`
+  },
+  {
+    id: 'black-swan', name: 'Black Swan', cat: 'chaos',
+    line: "Rare events that change everything.",
+    kid: "Everyone thought all swans were white. Then someone found a BLACK one in Australia. Suddenly: rule broken!",
+    story: "Pandemics. Stock crashes. Going viral. Things 'experts' said were impossible — until they happened. They're rare but HUGE.",
+    when: "Don't bet your life on 'this never happens.' Build for surprises.",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="20" y="60" font-size="26">🦢</text>
+      <text x="55" y="60" font-size="26">🦢</text>
+      <text x="90" y="60" font-size="26">🦢</text>
+      <text x="125" y="60" font-size="38" filter="brightness(0)" class="pulse">🦢</text>
+      <text x="55" y="105" font-size="11" fill="#9090b8">all white… until ONE wasn't</text>
+    </svg>`
+  },
+  {
+    id: 'antifragile', name: 'Antifragility', cat: 'chaos',
+    line: "Some things get STRONGER from chaos.",
+    kid: "Glass = fragile (breaks). Steel = strong (survives). Muscles = ANTIfragile (get bigger from being torn).",
+    story: "Nassim Taleb invented the word. Your immune system, hard exercise, even painful failures — they make you tougher. Comfort makes you weak.",
+    when: "Don't dodge ALL stress. Choose hard things on purpose. They build you.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="50" cy="80" r="14" fill="#06d6a0"/>
+      <path d="M50,80 Q70,30 90,80" stroke="#06d6a0" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      <circle cx="90" cy="60" r="18" fill="#06d6a0"/>
+      <path d="M90,60 Q120,10 150,60" stroke="#06d6a0" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      <circle cx="150" cy="40" r="22" fill="#06d6a0" class="pulse"/>
+    </svg>`
+  },
+  {
+    id: 'murphy', name: "Murphy's Law", cat: 'chaos',
+    line: "If it CAN go wrong, it WILL.",
+    kid: "Your toast lands butter-side down. Your charger dies right when you need it. Your bus is late on rainy days.",
+    story: "Plan for problems before they happen. Pessimists make better engineers — because they imagine the disasters first.",
+    when: "Building anything important. Ask: 'what's the worst that could happen?' Then prevent it.",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="80" y="50" font-size="30" class="bounce">🍞</text>
+      <line x1="60" y1="80" x2="140" y2="80" stroke="#9090b8" stroke-width="2" stroke-dasharray="4"/>
+      <text x="80" y="105" font-size="11" fill="#ef476f">butter-side down</text>
+    </svg>`
+  },
+  {
+    id: 'goodhart', name: "Goodhart's Law", cat: 'chaos',
+    line: "When a measure becomes the target, it stops measuring.",
+    kid: "School grades you on neatness. Suddenly kids care about handwriting more than learning. Now neatness ≠ learning.",
+    story: "Soviet factories rewarded for nail count → made millions of tiny nails. Rewarded for nail weight → made giant useless ones.",
+    when: "Picking a metric to track? Beware. People game it. The number stops meaning what you wanted.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="100" cy="60" r="45" fill="none" stroke="#c77dff" stroke-width="2"/>
+      <circle cx="100" cy="60" r="30" fill="none" stroke="#c77dff" stroke-width="2"/>
+      <circle cx="100" cy="60" r="15" fill="#c77dff" class="pulse"/>
+      <line x1="40" y1="60" x2="85" y2="60" stroke="#ffd166" stroke-width="2"/>
+      <polygon points="85,55 95,60 85,65" fill="#ffd166"/>
+    </svg>`
+  },
+  {
+    id: 'streisand', name: 'Streisand Effect', cat: 'chaos',
+    line: "Hiding something makes everyone want to see it.",
+    kid: "Tell someone 'don't open this drawer.' Now it's the ONLY drawer they want to open.",
+    story: "Singer Barbra Streisand sued to hide a photo of her house. Result: 420,000 people downloaded it. Before lawsuit? 6 people.",
+    when: "Trying to bury something? Sometimes silence works better than fighting it.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="60" y="40" width="80" height="50" fill="#1a1a2e" stroke="#c77dff" stroke-width="2" rx="6"/>
+      <text x="83" y="72" font-size="22">🤐</text>
+      <text x="20" y="35" font-size="16" class="pulse">👀</text>
+      <text x="170" y="35" font-size="16" class="pulse">👀</text>
+      <text x="20" y="100" font-size="16" class="pulse">👀</text>
+      <text x="170" y="100" font-size="16" class="pulse">👀</text>
+    </svg>`
+  },
+  {
+    id: 'dunning-kruger', name: 'Dunning-Kruger', cat: 'people',
+    line: "The less you know, the more you THINK you know.",
+    kid: "Day 1 of a video game: 'I'm a PRO!' Week 2: 'I'm trash, this is hard.' Year 1: 'Now I'm okay.'",
+    story: "Beginners are confident because they don't know what they don't know. Real experts are humble — they see how deep the rabbit hole goes.",
+    when: "Feeling super confident on Day 1? Slow down. The hard parts are still hidden.",
+    svg: `<svg viewBox="0 0 200 120">
+      <path d="M20,90 Q40,20 70,80 Q100,100 130,60 Q160,40 180,30" stroke="#06d6a0" stroke-width="3" fill="none"/>
+      <circle cx="40" cy="40" r="4" fill="#ef476f" class="pulse"/>
+      <text x="48" y="35" font-size="9" fill="#ef476f">"I'm a pro!"</text>
+      <circle cx="80" cy="92" r="4" fill="#ffd166"/>
+      <text x="58" y="110" font-size="9" fill="#ffd166">"I'm trash"</text>
+      <circle cx="170" cy="32" r="4" fill="#06d6a0"/>
+      <text x="135" y="22" font-size="9" fill="#06d6a0">actually pro</text>
+    </svg>`
+  },
+  {
+    id: 'maslow', name: "Maslow's Hierarchy", cat: 'people',
+    line: "You need basics before fancy stuff.",
+    kid: "Hungry person can't focus. Unsafe person can't bond. Bottom of pyramid first, then climb.",
+    story: "Maslow stacked human needs: food/sleep → safety → love → respect → 'be your best self.' Skip a layer? You fall.",
+    when: "Helping someone? Find what level they're stuck at. No point teaching art if they're starving.",
+    svg: `<svg viewBox="0 0 200 120">
+      <polygon points="100,15 115,35 85,35" fill="#c77dff"/>
+      <polygon points="85,35 115,35 125,55 75,55" fill="#4cc9f0"/>
+      <polygon points="75,55 125,55 135,75 65,75" fill="#06d6a0"/>
+      <polygon points="65,75 135,75 145,95 55,95" fill="#ffd166"/>
+      <polygon points="55,95 145,95 155,115 45,115" fill="#ef476f"/>
+    </svg>`
+  },
+  {
+    id: 'network', name: 'Network Effects', cat: 'people',
+    line: "More users = more valuable for everyone.",
+    kid: "One phone? Useless. Two phones? You can call ONE person. A million phones? You can call anyone.",
+    story: "WhatsApp was nothing without friends on it. Now leaving feels impossible. The network IS the product.",
+    when: "Building a product? Look for this magic. The more people use it, the better it gets — for free.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="100" y1="60" x2="40" y2="30" stroke="#06d6a0" stroke-width="1"/>
+      <line x1="100" y1="60" x2="160" y2="30" stroke="#06d6a0" stroke-width="1"/>
+      <line x1="100" y1="60" x2="40" y2="90" stroke="#06d6a0" stroke-width="1"/>
+      <line x1="100" y1="60" x2="160" y2="90" stroke="#06d6a0" stroke-width="1"/>
+      <line x1="40" y1="30" x2="160" y2="30" stroke="#06d6a0" stroke-width="1" opacity=".5"/>
+      <line x1="40" y1="90" x2="160" y2="90" stroke="#06d6a0" stroke-width="1" opacity=".5"/>
+      <line x1="40" y1="30" x2="40" y2="90" stroke="#06d6a0" stroke-width="1" opacity=".5"/>
+      <line x1="160" y1="30" x2="160" y2="90" stroke="#06d6a0" stroke-width="1" opacity=".5"/>
+      <circle cx="100" cy="60" r="10" fill="#06d6a0" class="pulse"/>
+      <circle cx="40" cy="30" r="6" fill="#06d6a0"/>
+      <circle cx="160" cy="30" r="6" fill="#06d6a0"/>
+      <circle cx="40" cy="90" r="6" fill="#06d6a0"/>
+      <circle cx="160" cy="90" r="6" fill="#06d6a0"/>
+    </svg>`
+  },
+  {
+    id: 'tragedy', name: 'Tragedy of the Commons', cat: 'people',
+    line: "Shared stuff gets destroyed because no one owns it.",
+    kid: "Class candy jar — 'one each.' Some kids take 5. Soon: empty. Nobody owned it, so nobody protected it.",
+    story: "Fishermen overfish, farmers overgraze, drivers polluting air. Each thinks 'just me, won't matter.' Multiply by millions = disaster.",
+    when: "Designing rules for shared things — water, parks, server space. Without owners or limits, it dies.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="60" y="50" width="80" height="50" fill="#1a1a2e" stroke="#06d6a0" stroke-width="2" rx="6"/>
+      <text x="80" y="85" font-size="20">🍬</text>
+      <text x="20" y="40" font-size="20" class="bounce">🤲</text>
+      <text x="170" y="40" font-size="20" class="bounce" style="animation-delay:.3s">🤲</text>
+      <text x="20" y="115" font-size="20" class="bounce" style="animation-delay:.6s">🤲</text>
+      <text x="170" y="115" font-size="20" class="bounce" style="animation-delay:.9s">🤲</text>
+    </svg>`
+  },
+  {
+    id: 'prisoner', name: "Prisoner's Dilemma", cat: 'people',
+    line: "Trust together = win. Betray = both lose.",
+    kid: "Two suspects, separate rooms. Both silent → both fine. One snitches → snitch walks, other punished. Both snitch → both punished.",
+    story: "Most famous puzzle in game theory. Cooperation beats betrayal — but only if you trust the other person to cooperate too.",
+    when: "Anytime trust is on the table. Long relationships? Cooperate. One-shot deals? Beware.",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="40" y="50" font-size="28">🤝</text>
+      <text x="120" y="50" font-size="28">⚔️</text>
+      <text x="20" y="90" font-size="11" fill="#06d6a0">cooperate: BOTH win</text>
+      <text x="105" y="90" font-size="11" fill="#ef476f">betray: BOTH lose</text>
+    </svg>`
+  },
+  {
+    id: 'anchoring', name: 'Anchoring', cat: 'traps',
+    line: "First number you hear glues to your brain.",
+    kid: "Shop says 'WAS ₹1000, NOW ₹600!' Sounds like a deal. But maybe the real value was ₹400. The first price ANCHORED you.",
+    story: "Studies: even random numbers (a dice roll) change what people guess as 'fair price.' Brain is sneaky — it grabs the first reference and won't let go.",
+    when: "Negotiating? Hearing prices? Polls? Pause. Ignore the first number. Start fresh.",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="80" y="40" font-size="26">⚓</text>
+      <line x1="100" y1="60" x2="100" y2="100" stroke="#ef476f" stroke-width="2"/>
+      <text x="50" y="78" font-size="14" fill="#9090b8" text-decoration="line-through">₹1000</text>
+      <text x="115" y="78" font-size="16" fill="#ef476f" font-weight="bold">₹600</text>
+    </svg>`
+  },
+  {
+    id: 'availability', name: 'Availability Heuristic', cat: 'traps',
+    line: "What's easy to remember FEELS more common.",
+    kid: "Saw a shark movie last week? You'll think shark attacks are way more common than they are.",
+    story: "Plane crashes are rare but they're on the news. So people fear flying more than driving — even though driving kills WAY more.",
+    when: "Judging risk? Don't trust gut. Look up actual numbers. Vivid ≠ frequent.",
+    svg: `<svg viewBox="0 0 200 120">
+      <text x="30" y="50" font-size="32">🦈</text>
+      <text x="100" y="50" font-size="20">🚗</text>
+      <text x="20" y="100" font-size="11" fill="#ef476f">FEELS scary</text>
+      <text x="95" y="100" font-size="11" fill="#06d6a0">actually riskier</text>
+    </svg>`
+  },
+  {
+    id: 'second-order', name: 'Second-Order Thinking', cat: 'thinking',
+    line: "Don't just think 'and then?' Think 'AND THEN AFTER THAT?'",
+    kid: "Eat 10 candies = yum (1st order). Tummy ache (2nd order). Mom hides candy forever (3rd order). Always check 2 steps ahead.",
+    story: "Most people stop at step 1. Smart people ask 'and then what?' three more times. That's where real consequences live.",
+    when: "Any decision. Especially policies, big buys, or relationships. Trace the ripples.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="40" cy="60" r="8" fill="#4cc9f0"/>
+      <circle cx="80" cy="60" r="12" fill="#4cc9f0" opacity=".7"/>
+      <circle cx="125" cy="60" r="16" fill="#4cc9f0" opacity=".5"/>
+      <circle cx="170" cy="60" r="20" fill="#4cc9f0" opacity=".3" class="pulse"/>
+      <text x="20" y="100" font-size="9" fill="#4cc9f0">act</text>
+      <text x="65" y="100" font-size="9" fill="#4cc9f0">then</text>
+      <text x="110" y="100" font-size="9" fill="#4cc9f0">then</text>
+      <text x="155" y="100" font-size="9" fill="#4cc9f0">THEN</text>
+    </svg>`
+  },
+  {
+    id: 'critical-mass', name: 'Critical Mass', cat: 'people',
+    line: "Below the tipping point: nothing. Above it: BOOM.",
+    kid: "Trying to start a wave at a stadium. 5 people? Embarrassing. 50 people? It SPREADS to the whole stadium.",
+    story: "Most movements/products/fires need a minimum spark. Below that, they fizzle. Above it, they explode on their own.",
+    when: "Starting something new. Small + early = okay. Push past the threshold or it dies quietly.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="180" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <line x1="100" y1="20" x2="100" y2="100" stroke="#9090b8" stroke-width="1" stroke-dasharray="3,3"/>
+      <path d="M20,98 L60,95 L90,90 L100,80 L110,40 L150,25 L180,20" stroke="#06d6a0" stroke-width="3" fill="none"/>
+      <text x="80" y="15" font-size="10" fill="#06d6a0">tipping point</text>
+    </svg>`
+  },
+  {
+    id: 'reversibility', name: 'Reversibility', cat: 'thinking',
+    line: "Reversible decisions: try fast. One-way doors: think hard.",
+    kid: "Try a new flavor of ice cream? Just do it (reversible). Get a tattoo? STOP and think (one-way).",
+    story: "Jeff Bezos at Amazon: 'Most decisions are doors that swing both ways. Don't agonize. The few that don't — like quitting a job — sleep on those.'",
+    when: "Stuck on a small choice? Just pick. Stuck on a big permanent one? Take time.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="30" y="35" width="50" height="60" fill="#06d6a0" rx="4"/>
+      <circle cx="70" cy="65" r="2" fill="#0e0e1a"/>
+      <text x="35" y="115" font-size="9" fill="#06d6a0">⇄ swings back</text>
+      <rect x="120" y="35" width="50" height="60" fill="#ef476f" rx="4"/>
+      <circle cx="160" cy="65" r="2" fill="#0e0e1a"/>
+      <text x="124" y="115" font-size="9" fill="#ef476f">→ one-way only</text>
+    </svg>`
+  }
+];
+
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const filtersEl = document.getElementById('filters');
+const modalBg = document.getElementById('modal-bg');
+const modalContent = document.getElementById('modal-content');
+const modalCloseBtn = document.getElementById('modal-close');
+
+let currentFilter = 'all';
+let currentQuery = '';
+
+function render() {
+  grid.innerHTML = '';
+  const q = currentQuery.toLowerCase();
+  const filtered = MODELS.filter(m => {
+    if (currentFilter !== 'all' && m.cat !== currentFilter) return false;
+    if (!q) return true;
+    return (m.name + ' ' + m.line + ' ' + m.kid).toLowerCase().includes(q);
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--muted);">No models match. Try another search.</div>';
+    return;
+  }
+
+  filtered.forEach((m, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.setProperty('--bar', COLORS[m.cat]);
+    card.style.animationDelay = `${Math.min(i * 50, 600)}ms`;
+    card.innerHTML = `
+      <div class="visual">${m.svg}</div>
+      <span class="card-tag">${CATEGORY_LABELS[m.cat]}</span>
+      <div class="card-title">${m.name}</div>
+      <div class="card-line">${m.line}</div>
+    `;
+    card.addEventListener('click', () => openModal(m));
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+      card.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
+    });
+    grid.appendChild(card);
+  });
+}
+
+function openModal(m) {
+  modalContent.innerHTML = `
+    <div class="modal-visual" style="--bar: ${COLORS[m.cat]}">${m.svg}</div>
+    <span class="modal-tag" style="--bar: ${COLORS[m.cat]}">${CATEGORY_LABELS[m.cat]}</span>
+    <h2>${m.name}</h2>
+    <p style="color: var(--muted); font-size: 1.1rem;">${m.line}</p>
+
+    <div class="section" style="--bar: ${COLORS[m.cat]}">
+      <h3>✨ In Plain Words</h3>
+      <p>${m.kid}</p>
+    </div>
+
+    <div class="section" style="--bar: ${COLORS[m.cat]}">
+      <h3>📖 The Story</h3>
+      <p class="quote">${m.story}</p>
+    </div>
+
+    <div class="section" style="--bar: ${COLORS[m.cat]}">
+      <h3>⚡ When to Use It</h3>
+      <p>${m.when}</p>
+    </div>
+  `;
+  modalBg.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalBg.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalCloseBtn.addEventListener('click', closeModal);
+modalBg.addEventListener('click', (e) => { if (e.target === modalBg) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+filtersEl.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('filter')) return;
+  document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+  e.target.classList.add('active');
+  currentFilter = e.target.dataset.filter;
+  render();
+});
+
+search.addEventListener('input', (e) => {
+  currentQuery = e.target.value;
+  render();
+});
+
+render();
+</script>
+
+</body>
+</html>

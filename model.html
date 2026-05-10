@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title id="page-title">Mental Model — Mental Models</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+  /* ── Hero ── */
+  .model-hero {
+    padding: 80px 24px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media(max-width:700px) { .model-hero { grid-template-columns: 1fr; gap: 32px; } }
+
+  .hero-visual {
+    background: var(--bg-2);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    min-height: 260px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, var(--cat-color, #4cc9f0), transparent 65%);
+    opacity: 0.06;
+    border-radius: inherit;
+  }
+  .hero-visual svg { width: 100%; max-height: 260px; }
+
+  .hero-content { display: flex; flex-direction: column; gap: 16px; }
+  .hero-number {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .model-name {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .model-tagline {
+    font-size: 1.2rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+  /* ── Core pull quote ── */
+  .model-core {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    text-align: center;
+  }
+  .core-quote {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    padding: 40px;
+    background: var(--bg-2);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .core-quote::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--cat-color, #4cc9f0), transparent 60%);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .quote-mark {
+    font-size: 5rem;
+    line-height: 0;
+    color: var(--cat-color, #4cc9f0);
+    opacity: 0.2;
+    position: absolute;
+    top: 24px;
+    left: 28px;
+    font-family: Georgia, serif;
+  }
+
+  /* ── Section shared ── */
+  .model-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .model-section-sm {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Origin pill ── */
+  .origin-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .origin-pill span { color: var(--text); }
+
+  /* ── Examples ── */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .example-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: 24px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .example-card:hover { border-color: var(--cat-color, #4cc9f0); transform: translateY(-3px); }
+  .example-domain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--cat-color, #4cc9f0);
+    margin-bottom: 12px;
+  }
+  .example-domain span { font-size: 1.3rem; }
+  .example-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ── How to ── */
+  .howto-steps { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--cat-color, #4cc9f0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--bg);
+    margin-top: 2px;
+  }
+  .step p { color: var(--text); font-size: 1rem; line-height: 1.55; padding-top: 6px; }
+
+  /* ── Watch out ── */
+  .watchout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  @media(max-width:600px) { .watchout-grid { grid-template-columns: 1fr; } }
+  .watchout-card {
+    background: rgba(239,71,111,0.06);
+    border: 1px solid rgba(239,71,111,0.25);
+    border-radius: var(--radius-l);
+    padding: 22px;
+  }
+  .watchout-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--red);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .watchout-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+
+  /* ── Interactive ── */
+  .interactive-zone {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .interactive-zone::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--cat-color, #4cc9f0);
+    opacity: 0.7;
+  }
+  .interactive-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cat-color, #4cc9f0);
+    margin-bottom: 10px;
+  }
+  .interactive-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .interactive-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
+
+  /* Inversion tool */
+  .inv-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+    min-height: 80px;
+  }
+  .inv-input:focus { border-color: var(--cat-color, #4cc9f0); }
+  .inv-output {
+    margin-top: 16px;
+    padding: 20px;
+    background: var(--card);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--border);
+    min-height: 80px;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .inv-output.visible {
+    display: block;
+    border-color: var(--cat-color, #4cc9f0);
+    color: var(--text);
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .inv-output .inv-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--cat-color, #4cc9f0);
+    margin-bottom: 8px;
+  }
+
+  /* Compounding calculator */
+  .calc-sliders { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 32px; }
+  @media(max-width:560px) { .calc-sliders { grid-template-columns: 1fr; } }
+  .slider-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .slider-group label strong { color: var(--cat-color, #ffd166); font-size: 1.1rem; }
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 999px;
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--cat-color, #ffd166);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.25); }
+  .calc-result {
+    text-align: center;
+    padding: 20px;
+    background: var(--card);
+    border-radius: var(--radius-m);
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .calc-result .result-val {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--cat-color, #ffd166);
+    letter-spacing: -0.02em;
+  }
+  .calc-result .result-label { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+  #compound-chart { width: 100%; height: 140px; display: block; }
+
+  /* Wason task */
+  .wason-sequence {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .wason-num {
+    width: 60px;
+    height: 60px;
+    background: var(--card);
+    border: 2px solid var(--cat-color, #ef476f);
+    border-radius: var(--radius-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--cat-color, #ef476f);
+  }
+  .wason-input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .wason-num-input {
+    width: 70px;
+    padding: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-s);
+    color: var(--text);
+    font-size: 1.1rem;
+    text-align: center;
+    font-family: var(--font);
+    outline: none;
+  }
+  .wason-num-input:focus { border-color: var(--cat-color, #ef476f); }
+  .wason-feedback {
+    margin-top: 14px;
+    padding: 14px 18px;
+    border-radius: var(--radius-m);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: none;
+  }
+  .wason-feedback.show { display: block; animation: fadeIn 0.3s; }
+  .wason-feedback.yes { background: rgba(6,214,160,0.1); color: var(--green); border: 1px solid rgba(6,214,160,0.3); }
+  .wason-feedback.no  { background: rgba(239,71,111,0.1); color: var(--red);   border: 1px solid rgba(239,71,111,0.3); }
+  .wason-history { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .wason-guess { font-size: 0.85rem; color: var(--muted); }
+
+  /* First principles breakdown */
+  .fp-chain { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .fp-row { display: flex; gap: 10px; align-items: center; }
+  .fp-label {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--cat-color, #4cc9f0);
+  }
+  .fp-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-s);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fp-input:focus { border-color: var(--cat-color, #4cc9f0); }
+  .fp-truth {
+    padding: 16px;
+    background: rgba(6,214,160,0.08);
+    border: 1px solid rgba(6,214,160,0.3);
+    border-radius: var(--radius-m);
+    margin-top: 16px;
+    color: var(--green);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: none;
+    animation: fadeIn 0.4s;
+  }
+  .fp-truth.visible { display: block; }
+
+  /* Pareto visual */
+  .pareto-bars { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .pareto-row { display: flex; align-items: center; gap: 12px; }
+  .pareto-row-label { width: 90px; font-size: 0.8rem; color: var(--muted); text-align: right; flex-shrink: 0; }
+  .pareto-track { flex: 1; height: 28px; background: var(--card); border-radius: 4px; overflow: hidden; }
+  .pareto-fill { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(.2,.9,.3,1); }
+  .pareto-pct { width: 40px; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+
+  /* ── Related models ── */
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 28px; }
+  .related-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .related-card:hover { border-color: var(--cat-color, #4cc9f0); transform: translateY(-3px); background: var(--card); }
+  .related-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .related-name { font-weight: 700; font-size: 0.95rem; }
+  .related-line { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Back link ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 20px 24px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="models.html">Explore All</a>
+    <a href="index.html#deep-dives" class="active">Deep Dives</a>
+    <a href="index.html#newsletter" class="nav-cta">Newsletter</a>
+  </div>
+</nav>
+
+<a href="models.html" class="back-link">← Back to all models</a>
+
+<!-- ── HERO ── -->
+<section class="model-hero" id="hero-section">
+  <div class="hero-visual" id="hero-visual">
+    <svg viewBox="0 0 400 300" id="hero-svg"></svg>
+  </div>
+  <div class="hero-content">
+    <div class="flex">
+      <span class="badge badge-cat" id="hero-cat">Category</span>
+      <span class="badge badge-free">Free</span>
+    </div>
+    <h1 class="model-name" id="model-name">Loading…</h1>
+    <p class="model-tagline" id="model-tagline"></p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="document.getElementById('try-it').scrollIntoView({behavior:'smooth'})">Try It →</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('model-story').scrollIntoView({behavior:'smooth'})">Read the Story</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── CORE QUOTE ── -->
+<div class="model-core">
+  <div class="core-quote" id="core-quote">
+    <span class="quote-mark">"</span>
+    <span id="quote-text"></span>
+  </div>
+</div>
+
+<!-- ── STORY ── -->
+<section class="model-section-sm" id="model-story">
+  <div class="section-label" id="story-label">Origin &amp; Story</div>
+  <div class="origin-pill" id="origin-pill">
+    <span>📍</span> <span id="origin-text"></span>
+  </div>
+  <div class="prose" id="story-text"></div>
+</section>
+
+<!-- ── EXAMPLES ── -->
+<section class="model-section">
+  <div class="section-label">Real-World Examples</div>
+  <h2 class="section-title">Where you'll see this in the wild</h2>
+  <div class="examples-grid" id="examples-grid"></div>
+</section>
+
+<!-- ── HOW TO ── -->
+<section class="model-section-sm">
+  <div class="section-label">How to Use It</div>
+  <h2 class="section-title">A practical step-by-step</h2>
+  <div class="howto-steps" id="howto-steps"></div>
+</section>
+
+<!-- ── WATCH OUT ── -->
+<section class="model-section">
+  <div class="section-label" style="color: var(--red)">Watch Out For</div>
+  <h2 class="section-title">How people misuse this model</h2>
+  <div class="watchout-grid" id="watchout-grid"></div>
+</section>
+
+<!-- ── INTERACTIVE ── -->
+<section class="model-section" id="try-it">
+  <div class="section-label" id="interactive-label">Try It Yourself</div>
+  <h2 class="section-title" id="interactive-title"></h2>
+  <p class="section-sub" id="interactive-sub"></p>
+  <div class="interactive-zone" id="interactive-zone"></div>
+</section>
+
+<!-- ── RELATED ── -->
+<section class="model-section">
+  <div class="section-label">Continue Learning</div>
+  <h2 class="section-title">Related mental models</h2>
+  <div class="related-grid" id="related-grid"></div>
+</section>
+
+<footer class="site-footer">
+  Mental Models · A learning-in-public project ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+<script src="data/models.js"></script>
+<script>
+const CAT_ICONS = {
+  "Thinking Better": "🧠",
+  "Mind Traps": "🪤",
+  "Time & Effort": "⏰",
+  "Chaos & Risk": "💥",
+  "People & Systems": "👥"
+};
+
+const MODEL_LINES = {
+  "inversion": "Flip the problem upside down.",
+  "compounding": "Tiny + consistent + time = enormous.",
+  "confirmation-bias": "You find what you're already looking for.",
+  "first-principles": "Break it to atoms. Rebuild from truth.",
+  "pareto": "20% of causes create 80% of results.",
+  "occam": "The simplest answer is usually right.",
+  "second-order": "Then what? And then what after that?",
+  "opportunity-cost": "Saying yes to one = saying no to another.",
+  "survivorship-bias": "You only hear from the survivors.",
+  "black-swan": "Rare events that change everything."
+};
+
+function getModelId() {
+  return new URLSearchParams(window.location.search).get('id') || 'inversion';
+}
+
+function setCatColor(color) {
+  document.documentElement.style.setProperty('--cat-color', color);
+}
+
+function renderModel(data) {
+  setCatColor(data.catColor);
+  document.title = data.name + ' — Mental Models';
+  document.getElementById('page-title').textContent = data.name + ' — Mental Models';
+  document.getElementById('hero-svg').outerHTML = data.svgHero;
+  document.getElementById('model-name').textContent = data.name;
+  document.getElementById('model-tagline').textContent = data.tagline;
+  document.getElementById('hero-cat').textContent = CAT_ICONS[data.cat] + ' ' + data.cat;
+  document.getElementById('hero-cat').style.setProperty('--cat-color', data.catColor);
+  document.getElementById('quote-text').textContent = data.summary;
+  document.getElementById('origin-text').textContent = data.origin;
+  document.getElementById('story-label').textContent = 'Origin & Story';
+  document.getElementById('story-text').innerHTML = data.story.split('\n\n').map(p => `<p>${p}</p>`).join('');
+  document.getElementById('origin-pill').style.setProperty('--cat-color', data.catColor);
+
+  // Examples
+  const eg = document.getElementById('examples-grid');
+  eg.innerHTML = data.examples.map(e => `
+    <div class="example-card">
+      <div class="example-domain">
+        <span>${e.icon}</span>${e.domain}
+      </div>
+      <p>${e.text}</p>
+    </div>`).join('');
+
+  // How to
+  const ht = document.getElementById('howto-steps');
+  ht.innerHTML = data.howTo.map((s, i) => `
+    <div class="step">
+      <div class="step-num">${i + 1}</div>
+      <p>${s}</p>
+    </div>`).join('');
+
+  // Watch out
+  const wo = document.getElementById('watchout-grid');
+  wo.innerHTML = data.watchOut.map(w => `
+    <div class="watchout-card">
+      <div class="watchout-title">⚠️ ${w.title}</div>
+      <p>${w.text}</p>
+    </div>`).join('');
+
+  // Interactive
+  renderInteractive(data.id, data.catColor, data.interactive);
+
+  // Related
+  const rg = document.getElementById('related-grid');
+  rg.innerHTML = data.related.map(id => {
+    const line = MODEL_LINES[id] || '';
+    return `
+    <div class="related-card" onclick="window.location.href='model.html?id=${id}'">
+      <div class="related-icon">🔗</div>
+      <div>
+        <div class="related-name">${capitalize(id.replace(/-/g, ' '))}</div>
+        <div class="related-line">${line}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function capitalize(str) {
+  return str.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+/* ─── Interactive Renderers ─────────────────────── */
+
+function renderInteractive(id, color, type) {
+  const zone = document.getElementById('interactive-zone');
+  const title = document.getElementById('interactive-title');
+  const sub = document.getElementById('interactive-sub');
+
+  if (type === 'inversion-flip') {
+    title.textContent = 'Flip any problem';
+    sub.textContent = 'Type a goal or challenge below. Hit "Invert" to see its opposite — what you want to avoid.';
+    zone.innerHTML = `
+      <textarea class="inv-input" id="inv-input" placeholder="Example: I want to be a better decision-maker…" rows="3"></textarea>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="doInvert()">Invert it →</button>
+        <button class="btn btn-ghost" onclick="clearInvert()">Clear</button>
+      </div>
+      <div class="inv-output" id="inv-output">
+        <div class="inv-label">Inverted (avoid these):</div>
+        <div id="inv-result"></div>
+      </div>`;
+  } else if (type === 'compounding-calc') {
+    title.textContent = 'See compounding in action';
+    sub.textContent = 'Adjust the rate and years. Watch how dramatically the results change.';
+    zone.innerHTML = `
+      <div class="calc-sliders">
+        <div class="slider-group">
+          <label>Annual growth rate <strong id="rate-val">7%</strong></label>
+          <input type="range" id="rate-slider" min="1" max="25" value="7" oninput="updateCalc()">
+        </div>
+        <div class="slider-group">
+          <label>Years <strong id="years-val">20</strong></label>
+          <input type="range" id="years-slider" min="1" max="40" value="20" oninput="updateCalc()">
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="result-val" id="calc-result-val">₹3.87 for every ₹1</div>
+        <div class="result-label" id="calc-result-label">Starting with ₹1,00,000 → ₹3,86,968</div>
+      </div>
+      <svg id="compound-chart" viewBox="0 0 600 120"></svg>`;
+    setTimeout(updateCalc, 50);
+  } else if (type === 'wason-task') {
+    title.textContent = 'The 2–4–6 Game';
+    sub.textContent = 'I have a rule that the sequence 2, 4, 6 follows. Test sequences to figure out the rule. Type 3 numbers and see if they fit.';
+    zone.innerHTML = `
+      <div class="wason-sequence">
+        <div class="wason-num">2</div>
+        <div class="wason-num">4</div>
+        <div class="wason-num">6</div>
+      </div>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 16px;">This sequence follows a hidden rule. Enter 3 numbers to test your hypothesis:</p>
+      <div class="wason-input-row">
+        <input type="number" class="wason-num-input" id="w1" placeholder="?" />
+        <input type="number" class="wason-num-input" id="w2" placeholder="?" />
+        <input type="number" class="wason-num-input" id="w3" placeholder="?" />
+        <button class="btn btn-primary" onclick="checkWason()" style="padding: 10px 20px;">Test</button>
+        <button class="btn btn-ghost" onclick="revealWason()" style="padding: 10px 20px;">Reveal rule</button>
+      </div>
+      <div class="wason-feedback" id="wason-feedback"></div>
+      <div class="wason-history" id="wason-history"></div>`;
+  } else if (type === 'first-principles-breakdown') {
+    title.textContent = 'Break it down';
+    sub.textContent = 'Start with a belief or assumption. Keep asking "Why?" until you hit something undeniably true.';
+    zone.innerHTML = `
+      <div class="fp-chain" id="fp-chain">
+        <div class="fp-row">
+          <div class="fp-label">💭</div>
+          <input class="fp-input" placeholder="Start with a belief or assumption…" id="fp-0" oninput="fpNext(0)"/>
+        </div>
+      </div>
+      <div class="fp-truth" id="fp-truth">✓ That's a first principle — a fact you can verify independently. Now rebuild upward from here.</div>`;
+  } else if (type === 'pareto-visual') {
+    title.textContent = 'See the 80/20 split';
+    sub.textContent = 'Across very different domains, a small number of inputs drive most of the results.';
+    zone.innerHTML = `
+      <div class="pareto-bars" id="pareto-bars"></div>`;
+    setTimeout(renderParetoChart, 100);
+  } else {
+    title.textContent = 'Reflect';
+    sub.textContent = '';
+    zone.innerHTML = `
+      <p style="color: var(--muted); line-height: 1.7;">Think of a situation in your life right now where this model could apply. What would change if you used it?</p>
+      <textarea class="inv-input" placeholder="Your reflection…" rows="4" style="margin-top: 16px;"></textarea>`;
+  }
+}
+
+/* ── Inversion tool ── */
+const INVERSION_PATTERNS = [
+  [/^i want to (.+)/i, "How could I guarantee I NEVER $1?"],
+  [/^how (do|can) i (.+)/i, "How could I guarantee the opposite of $2?"],
+  [/^(.+) should (.+)/i, "What would guarantee that $1 fails at $2?"],
+  [/^(.+)/i, "How could I guarantee the complete opposite of: '$1'?"]
+];
+
+function doInvert() {
+  const input = document.getElementById('inv-input').value.trim();
+  if (!input) return;
+  let result = '';
+  for (const [pattern, template] of INVERSION_PATTERNS) {
+    const m = input.match(pattern);
+    if (m) {
+      result = template.replace(/\$(\d+)/g, (_, n) => m[+n] || '');
+      break;
+    }
+  }
+  const out = document.getElementById('inv-output');
+  const res = document.getElementById('inv-result');
+  res.textContent = result;
+  out.classList.add('visible');
+}
+
+function clearInvert() {
+  document.getElementById('inv-input').value = '';
+  document.getElementById('inv-output').classList.remove('visible');
+}
+
+/* ── Compounding calculator ── */
+function updateCalc() {
+  const rate = parseFloat(document.getElementById('rate-slider').value) / 100;
+  const years = parseInt(document.getElementById('years-slider').value);
+  const start = 100000;
+  document.getElementById('rate-val').textContent = Math.round(rate * 100) + '%';
+  document.getElementById('years-val').textContent = years;
+  const final = start * Math.pow(1 + rate, years);
+  const mult = final / start;
+  document.getElementById('calc-result-val').textContent = `₹${mult.toFixed(2)} for every ₹1`;
+  document.getElementById('calc-result-label').textContent =
+    `Starting with ₹1,00,000 → ₹${Math.round(final).toLocaleString('en-IN')}`;
+
+  const svg = document.getElementById('compound-chart');
+  if (!svg) return;
+  const W = 600, H = 110, pad = 20;
+  const vals = Array.from({length: years + 1}, (_, i) => start * Math.pow(1 + rate, i));
+  const maxV = vals[vals.length - 1];
+  const pts = vals.map((v, i) => {
+    const x = pad + (i / years) * (W - 2 * pad);
+    const y = H - pad - ((v - start) / (maxV - start + 1)) * (H - 2 * pad);
+    return `${x},${y}`;
+  }).join(' ');
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffd166" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#ffd166" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <polygon points="${pts} ${W - pad},${H - pad} ${pad},${H - pad}" fill="url(#cg)"/>
+    <polyline points="${pts}" fill="none" stroke="#ffd166" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="${pad}" cy="${H - pad}" r="4" fill="#ffd166"/>
+    <circle cx="${W - pad}" cy="${pad + 5}" r="6" fill="#ffd166" class="pulse"/>`;
+}
+
+/* ── Wason task ── */
+let wasonGuesses = [];
+function checkWason() {
+  const a = parseFloat(document.getElementById('w1').value);
+  const b = parseFloat(document.getElementById('w2').value);
+  const c = parseFloat(document.getElementById('w3').value);
+  if (isNaN(a) || isNaN(b) || isNaN(c)) return;
+  const fits = a < b && b < c;
+  const fb = document.getElementById('wason-feedback');
+  fb.className = 'wason-feedback show ' + (fits ? 'yes' : 'no');
+  fb.textContent = fits
+    ? `✓ Yes! ${a}, ${b}, ${c} fits the rule.`
+    : `✗ No. ${a}, ${b}, ${c} does not fit the rule.`;
+  wasonGuesses.push({ nums: [a, b, c], fits });
+  const hist = document.getElementById('wason-history');
+  hist.innerHTML = wasonGuesses.map(g =>
+    `<div class="wason-guess">${g.fits ? '✓' : '✗'} ${g.nums.join(', ')}</div>`).join('');
+  ['w1','w2','w3'].forEach(id => document.getElementById(id).value = '');
+}
+
+function revealWason() {
+  const fb = document.getElementById('wason-feedback');
+  fb.className = 'wason-feedback show yes';
+  fb.innerHTML = `<strong>The rule: any three numbers in ascending order.</strong><br>
+    Not "even numbers", not "multiples of 2" — just increasing. Most people only test confirming sequences. That's confirmation bias in action.`;
+}
+
+/* ── First Principles ── */
+const FP_PROMPTS = ['Why?', 'But why exactly?', 'And why is that true?', "Why can't you change this?", 'Is this actually a fact — or an assumption?'];
+function fpNext(idx) {
+  const val = document.getElementById(`fp-${idx}`)?.value.trim();
+  if (!val) return;
+  const chain = document.getElementById('fp-chain');
+  const next = idx + 1;
+  if (!document.getElementById(`fp-${next}`) && next < 5) {
+    const row = document.createElement('div');
+    row.className = 'fp-row';
+    row.innerHTML = `
+      <div class="fp-label" style="font-size:0.65rem">${FP_PROMPTS[idx] || 'Why?'}</div>
+      <input class="fp-input" id="fp-${next}" placeholder="${FP_PROMPTS[idx] || 'Why?'}" oninput="fpNext(${next})"/>`;
+    chain.appendChild(row);
+  }
+  if (next >= 5) {
+    document.getElementById('fp-truth').classList.add('visible');
+  }
+}
+
+/* ── Pareto Chart ── */
+function renderParetoChart() {
+  const rows = [
+    { label: '20% of bugs',      pct: 80, note: '80% of crashes',    color: '#ef476f' },
+    { label: '20% of features',  pct: 80, note: '80% of usage',      color: '#ffd166' },
+    { label: '20% of customers', pct: 80, note: '80% of revenue',    color: '#06d6a0' },
+    { label: '20% of your code', pct: 80, note: '80% of run time',   color: '#4cc9f0' },
+    { label: '20% of habits',    pct: 80, note: '80% of results',    color: '#c77dff' }
+  ];
+  const container = document.getElementById('pareto-bars');
+  if (!container) return;
+  container.innerHTML = rows.map(r => `
+    <div class="pareto-row">
+      <div class="pareto-row-label">${r.label}</div>
+      <div class="pareto-track">
+        <div class="pareto-fill" style="width: 0%; background: ${r.color}" data-width="${r.pct}"></div>
+      </div>
+      <div class="pareto-pct" style="color:${r.color}">${r.pct}%</div>
+      <div style="font-size:0.8rem; color: var(--muted); margin-left:8px">${r.note}</div>
+    </div>`).join('');
+  setTimeout(() => {
+    document.querySelectorAll('.pareto-fill').forEach(el => {
+      el.style.width = el.dataset.width + '%';
+    });
+  }, 200);
+}
+
+/* ─── Init ─────────────────────────────────────────── */
+const id = getModelId();
+const data = DEEP_MODELS[id];
+
+if (data) {
+  renderModel(data);
+} else {
+  document.getElementById('model-name').textContent = 'Model not found';
+  document.getElementById('model-tagline').textContent = 'Try: model.html?id=inversion';
+}
+</script>
+</body>
+</html>

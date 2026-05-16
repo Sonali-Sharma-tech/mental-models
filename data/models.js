@@ -1236,6 +1236,53 @@ The redemption: when the game is REPEATED — people interact over time — coop
 
   /* ═══════════════ HOW YOU THINK (Cognitive Psychology) ═══════════════ */
 
+  "desirable-difficulties": {
+    id: "desirable-difficulties",
+    name: "Desirable Difficulties",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Easy learning is fake learning.",
+    summary: "When learning feels effortless, it usually isn't working. The brain encodes deeply only when it has to struggle.",
+    origin: "Robert Bjork, UCLA, 1994. Refined over 30+ years of cognitive science research.",
+    story: `Robert Bjork has spent fifty years at UCLA proving the same uncomfortable point: when learning FEELS smooth and easy, it's usually not actually working.
+
+Re-reading a textbook chapter feels productive. The familiarity of the second pass tricks the brain into thinking "I know this now." A week later, you can barely recall the topic. The fluency was an illusion.
+
+Compare that to closing the book and forcing yourself to write down what you remember. It's frustrating. Slow. You realise how much you missed. It feels worse. And it works enormously better. Studies show retention 2-4x higher from this single switch.
+
+Bjork called these counterintuitive techniques "desirable difficulties." Spaced practice (uncomfortable because you've forgotten between sessions). Interleaved practice (uncomfortable because you keep switching topics). Self-testing (uncomfortable because you fail). Each one feels like worse learning while it's happening — and produces dramatically better learning when measured later.
+
+This single insight overturns most study habits, most training programs, most self-help advice. The discomfort isn't a sign you're learning wrong. It's the SIGNAL that you're learning right. Smooth learning is the warning sign, not the goal.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Reading a book on a new framework feels like learning. It isn't. Closing the book and trying to build something with it — getting stuck, looking up only when blocked — that's the desirable difficulty. Hours of fumbling beat days of comfortable reading." },
+      { domain: "Everyday Life", icon: "🌍", text: "Memorising vocabulary by reading the list 10 times: feels productive, almost nothing sticks. Forcing yourself to recall each word with the page covered: feels frustrating, sticks for weeks." },
+      { domain: "Business", icon: "📊", text: "Onboarding a new hire by giving them documents to read: feels thorough, they remember little. Throwing them into a small project where they must figure things out (with safety nets): feels chaotic, they actually learn the system." }
+    ],
+    howTo: [
+      "Replace re-reading with self-testing — close the book, recall, check.",
+      "Replace blocked practice (one topic for hours) with interleaved (mix topics in one session).",
+      "Replace immediate feedback with slightly-delayed feedback (a few minutes, not seconds).",
+      "Embrace forgetting between sessions — it's the friction that makes recall stronger.",
+      "When learning feels too smooth, manufacture friction. That's the signal you need."
+    ],
+    watchOut: [
+      { title: "Difficulty must be desirable, not just hard", text: "Random pointless friction doesn't help. The difficulty has to require deeper processing of the material. Studying in a moving car is hard but useless — your difficulty must engage the content." },
+      { title: "Beginners need scaffolding first", text: "Bjork himself notes: complete beginners benefit from some smoothness before being thrown into difficulty. The principle applies most strongly once you have a basic foundation. Don't make day-1 brutal." }
+    ],
+    related: ["generation-effect", "self-reference", "compounding"],
+    interactive: "desirable-difficulties-demo",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="240" x2="370" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <path d="M40,80 Q120,90 200,170 Q280,240 360,250" stroke="#ef476f" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M40,200 Q120,180 200,140 Q280,80 360,50" stroke="#7c83ff" stroke-width="3" fill="none"/>
+  <text x="48" y="74" font-size="11" fill="#ef476f" font-family="system-ui" font-weight="600">re-reading (feels easy)</text>
+  <text x="220" y="60" font-size="11" fill="#7c83ff" font-family="system-ui" font-weight="600">self-testing (feels hard)</text>
+  <text x="280" y="270" font-size="11" fill="#9090b8" font-family="system-ui">time →</text>
+  <text x="20" y="40" font-size="11" fill="#9090b8" font-family="system-ui" transform="rotate(-90, 20, 40)">retention</text>
+</svg>`
+  },
+
   "curiosity-gap": {
     id: "curiosity-gap",
     name: "Curiosity Gap",

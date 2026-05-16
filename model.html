@@ -740,6 +740,23 @@ function renderInteractive(id, color, type) {
     zone.innerHTML = `
       <div class="pareto-bars" id="pareto-bars"></div>`;
     setTimeout(renderParetoChart, 100);
+  } else if (type === 'desirable-difficulties-demo') {
+    title.textContent = 'See the gap in retention';
+    sub.textContent = 'Pick a study method below. The right column shows what research says happens to your retention 7 days later.';
+    zone.innerHTML = `
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;" id="dd-grid">
+        <button class="dd-method" data-method="reread" onclick="pickDDMethod('reread')" style="padding: 24px; background: var(--card); border: 2px solid var(--border); border-radius: var(--radius-l); cursor: pointer; text-align: left; transition: all 0.2s; color: var(--text); font-family: var(--font);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Method A</div>
+          <div style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px;">Re-read 4 times</div>
+          <div style="font-size: 0.85rem; color: var(--muted);">Read the chapter. Read it again. Once more. Final pass. Feels productive.</div>
+        </button>
+        <button class="dd-method" data-method="recall" onclick="pickDDMethod('recall')" style="padding: 24px; background: var(--card); border: 2px solid var(--border); border-radius: var(--radius-l); cursor: pointer; text-align: left; transition: all 0.2s; color: var(--text); font-family: var(--font);">
+          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Method B</div>
+          <div style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px;">Read once + recall 3 times</div>
+          <div style="font-size: 0.85rem; color: var(--muted);">Read once. Then close the book and write what you remember. Three times. Frustrating.</div>
+        </button>
+      </div>
+      <div id="dd-result" style="display: none; padding: 24px; border-radius: var(--radius-l); animation: fadeIn 0.4s;"></div>`;
   } else if (type === 'curiosity-gap-demo') {
     title.textContent = 'Feel the gap';
     sub.textContent = 'Read the teaser below. Notice the pull before you click. That is the curiosity gap, working on you in real time.';
@@ -768,6 +785,36 @@ function renderInteractive(id, color, type) {
 function revealCuriosityGap() {
   document.getElementById('cg-reveal').style.display = 'block';
   document.getElementById('cg-btn').style.display = 'none';
+}
+
+function pickDDMethod(method) {
+  document.querySelectorAll('.dd-method').forEach(b => b.style.borderColor = 'var(--border)');
+  const sel = document.querySelector(`.dd-method[data-method="${method}"]`);
+  sel.style.borderColor = 'var(--cat-color, #7c83ff)';
+  const r = document.getElementById('dd-result');
+  if (method === 'reread') {
+    r.style.background = 'rgba(239,71,111,0.08)';
+    r.style.border = '1px solid rgba(239,71,111,0.3)';
+    r.innerHTML = `
+      <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #ef476f; margin-bottom: 12px;">7 DAYS LATER</div>
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 14px;">
+        <div style="font-size: 2.4rem; font-weight: 900; color: #ef476f;">~30%</div>
+        <div style="color: var(--muted); font-size: 0.95rem; line-height: 1.5;">retention of material. Felt productive while studying — wasn't.</div>
+      </div>
+      <p style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">Re-reading creates the <strong>fluency illusion</strong>: familiarity feels like knowing. The brain didn't actually have to retrieve anything, so it didn't strengthen memory traces. Your effort built feelings, not memory.</p>`;
+  } else {
+    r.style.background = 'rgba(124,131,255,0.08)';
+    r.style.border = '1px solid var(--cat-color, #7c83ff)';
+    r.innerHTML = `
+      <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 12px;">7 DAYS LATER</div>
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 14px;">
+        <div style="font-size: 2.4rem; font-weight: 900; color: var(--cat-color, #7c83ff);">~80%</div>
+        <div style="color: var(--muted); font-size: 0.95rem; line-height: 1.5;">retention. Felt frustrating during study — that frustration WAS the learning.</div>
+      </div>
+      <p style="color: var(--text); line-height: 1.6; font-size: 0.95rem;">Each retrieval attempt strengthened the memory trace, even when you got things wrong. The struggle to recall (and the relief of finding it) is what binds information to long-term memory. Bjork's research replicated this 100+ times.</p>
+      <p style="color: var(--cat-color, #7c83ff); font-weight: 600; margin-top: 12px; font-size: 0.9rem;">Same total time. Vastly different outcome. This is the desirable-difficulty effect.</p>`;
+  }
+  r.style.display = 'block';
 }
 
 /* ── Inversion tool ── */

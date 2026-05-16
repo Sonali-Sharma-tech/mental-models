@@ -1234,6 +1234,63 @@ The redemption: when the game is REPEATED — people interact over time — coop
 </svg>`
   },
 
+  /* ═══════════════ HOW YOU THINK (Cognitive Psychology) ═══════════════ */
+
+  "curiosity-gap": {
+    id: "curiosity-gap",
+    name: "Curiosity Gap",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Gaps create the hunger to know.",
+    summary: "Curiosity isn't a personality trait. It's the brain's response to a visible gap between what you know and what you suspect you should know.",
+    origin: "George Loewenstein, 1994 (Information Gap Theory of Curiosity).",
+    story: `In 1994, behavioural economist George Loewenstein at Carnegie Mellon proposed something simple but unusual: curiosity isn't an inborn trait. It's a state — triggered when your brain detects a GAP between what you currently know and what you sense you SHOULD know.
+
+The gap creates discomfort. The brain treats it like an open loop, an itch. Filling the gap relieves the discomfort. So you click, you read, you ask.
+
+This is why "you won't believe what happens next" headlines work. They surface a gap and dangle the resolution. Why mystery novels keep you reading. Why pop quizzes make people pay attention. Why Wikipedia rabbit holes happen — every link surfaces a new gap.
+
+The implication is profound for learning. Most education and content presents answers without first making you feel the question. The brain receives "facts" with no felt need for them — and discards them within hours. The trick isn't to TEACH information. It's to make people CRAVE it first.
+
+Once you see this, you see it everywhere. Great teachers open with a question, not a definition. Great writers withhold the answer for one paragraph longer than feels comfortable. Great products show you what you don't know before they tell you what to do.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "A great tech blog post starts with 'Here's a bug that should have been impossible…' before explaining the architecture. The bug creates a gap. The architecture answers the gap. Same content, but now you actually read it." },
+      { domain: "Everyday Life", icon: "🧠", text: "A friend says 'I'll tell you a secret about Sarah… actually, never mind.' Now you HAVE to know. They opened a gap and refused to close it. The discomfort is real and physical." },
+      { domain: "Business", icon: "📊", text: "Apple's keynote format: 'Today we're going to share three things. The first is… we'll come back to that.' They open three gaps in five seconds. You sit through the entire presentation to close them." }
+    ],
+    howTo: [
+      "Before teaching anything, ask: what's the question this answers?",
+      "Open with the question. Not the topic. Not the definition. The question.",
+      "Make the gap visible: 'Most people get this wrong. Here's why.'",
+      "Withhold the resolution slightly longer than feels comfortable.",
+      "Once delivered, the answer sticks because it filled a felt need."
+    ],
+    watchOut: [
+      { title: "Clickbait fatigue is real", text: "Surface a gap that doesn't deliver and you train people to distrust you. The gap must be real and the resolution must be worth the wait. Used cynically, this technique destroys trust faster than it builds attention." },
+      { title: "Gaps must be calibrated", text: "Too small a gap (you already know it) — boring. Too large (you can't even imagine the answer) — overwhelming. The sweet spot is 'I have a guess, but I'm not sure.' That's where curiosity lives." }
+    ],
+    related: ["self-reference", "generation-effect", "inversion"],
+    interactive: "curiosity-gap-demo",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c83ff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#c77dff" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <rect x="60" y="100" width="120" height="100" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2" rx="10"/>
+  <text x="78" y="158" font-size="14" fill="#7c83ff" font-family="system-ui" font-weight="700">what you</text>
+  <text x="78" y="176" font-size="14" fill="#7c83ff" font-family="system-ui" font-weight="700">know</text>
+  <rect x="220" y="100" width="120" height="100" fill="none" stroke="#7c83ff" stroke-width="2" stroke-dasharray="6,4" rx="10"/>
+  <text x="240" y="158" font-size="14" fill="#9090b8" font-family="system-ui">what you</text>
+  <text x="240" y="176" font-size="14" fill="#9090b8" font-family="system-ui">should know</text>
+  <text x="190" y="156" font-size="32" fill="#7c83ff" class="pulse" font-family="system-ui" font-weight="900">?</text>
+  <path d="M180,150 L220,150" stroke="#7c83ff" stroke-width="2" marker-end="url(#cgArr)" stroke-dasharray="0"/>
+  <defs><marker id="cgArr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#7c83ff"/></marker></defs>
+  <text x="100" y="240" font-size="12" fill="#9090b8" font-family="system-ui">the gap creates the pull</text>
+</svg>`
+  },
+
   "critical-mass": {
     id: "critical-mass",
     name: "Critical Mass",

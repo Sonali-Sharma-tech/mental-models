@@ -740,6 +740,22 @@ function renderInteractive(id, color, type) {
     zone.innerHTML = `
       <div class="pareto-bars" id="pareto-bars"></div>`;
     setTimeout(renderParetoChart, 100);
+  } else if (type === 'curiosity-gap-demo') {
+    title.textContent = 'Feel the gap';
+    sub.textContent = 'Read the teaser below. Notice the pull before you click. That is the curiosity gap, working on you in real time.';
+    zone.innerHTML = `
+      <div style="padding: 28px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-l); margin-bottom: 16px;">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 12px;">TEASER</div>
+        <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text);">In 1973, a single experiment showed that participants who knew NOTHING about a topic remembered facts about it dramatically better than participants who had been told some background first.</p>
+        <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text); margin-top: 14px;"><strong style="color: var(--cat-color, #7c83ff);">It contradicts everything you've been told about studying.</strong> The result is so reliable it's been replicated 50+ times.</p>
+        <button class="btn btn-primary" onclick="revealCuriosityGap()" id="cg-btn" style="margin-top: 20px;">Reveal the answer →</button>
+      </div>
+      <div id="cg-reveal" style="display:none; padding: 24px; background: rgba(124,131,255,0.08); border: 1px solid var(--cat-color, #7c83ff); border-radius: var(--radius-l); animation: fadeIn 0.5s;">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 12px;">RESOLUTION</div>
+        <p style="font-size: 1rem; line-height: 1.6;">It's the <strong>pretesting effect</strong>. Even unsuccessful retrieval attempts before learning create a "slot" the new information fits into. The brain primes itself to encode answers when it knows the questions.</p>
+        <p style="font-size: 1rem; line-height: 1.6; margin-top: 14px; color: var(--muted);">Notice what just happened: you read carefully because you needed to know. Without the teaser, this paragraph would be forgettable. With it — you'll remember.</p>
+        <p style="font-size: 0.9rem; line-height: 1.6; margin-top: 14px; color: var(--cat-color, #7c83ff); font-weight: 600;">That pull you felt? That's the moat. Now imagine every concept on this site triggering the same hunger.</p>
+      </div>`;
   } else {
     title.textContent = 'Reflect';
     sub.textContent = '';
@@ -747,6 +763,11 @@ function renderInteractive(id, color, type) {
       <p style="color: var(--muted); line-height: 1.7;">Think of a situation in your life right now where this model could apply. What would change if you used it?</p>
       <textarea class="inv-input" placeholder="Your reflection…" rows="4" style="margin-top: 16px;"></textarea>`;
   }
+}
+
+function revealCuriosityGap() {
+  document.getElementById('cg-reveal').style.display = 'block';
+  document.getElementById('cg-btn').style.display = 'none';
 }
 
 /* ── Inversion tool ── */

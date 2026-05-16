@@ -740,6 +740,21 @@ function renderInteractive(id, color, type) {
     zone.innerHTML = `
       <div class="pareto-bars" id="pareto-bars"></div>`;
     setTimeout(renderParetoChart, 100);
+  } else if (type === 'generation-effect-demo') {
+    title.textContent = 'Guess before you read';
+    sub.textContent = 'A real cognitive psychology question. Type your guess. The Reveal button stays locked until you commit. Notice how much more the answer sticks once you have to reach for it.';
+    zone.innerHTML = `
+      <div style="padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-l); margin-bottom: 16px;">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 14px;">QUESTION</div>
+        <p style="font-size: 1.05rem; line-height: 1.6;">Researchers showed that students who took a test BEFORE studying material scored higher on a final exam than students who studied without pre-testing. By how much did pre-testing improve final scores?</p>
+        <input type="text" class="inv-input" id="ge-guess" placeholder="Type your guess (e.g., '5%' or 'a little')..." style="margin-top: 18px;" oninput="enableGenerationReveal()">
+        <button class="btn btn-primary" onclick="revealGeneration()" id="ge-btn" disabled style="margin-top: 14px; opacity: 0.4; cursor: not-allowed;">Lock in guess + Reveal →</button>
+      </div>
+      <div id="ge-reveal" style="display:none; padding: 24px; background: rgba(124,131,255,0.08); border: 1px solid var(--cat-color, #7c83ff); border-radius: var(--radius-l); animation: fadeIn 0.5s;">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 12px;">ANSWER</div>
+        <p style="font-size: 1rem; line-height: 1.6;">Pretesting improved final exam scores by approximately <strong style="color: var(--cat-color, #7c83ff); font-size: 1.1em;">10-15%</strong> in most studies — and in some, up to 49% on the specific items that had been pre-tested. (Roediger & Karpicke, 2006; Kornell, Hays & Bjork, 2009.)</p>
+        <p style="font-size: 1rem; line-height: 1.6; margin-top: 14px; color: var(--muted);">Whether your guess was close or far — your brain just encoded that number much more deeply than if you'd just read it. The struggle is the learning.</p>
+      </div>`;
   } else if (type === 'desirable-difficulties-demo') {
     title.textContent = 'See the gap in retention';
     sub.textContent = 'Pick a study method below. The right column shows what research says happens to your retention 7 days later.';
@@ -785,6 +800,28 @@ function renderInteractive(id, color, type) {
 function revealCuriosityGap() {
   document.getElementById('cg-reveal').style.display = 'block';
   document.getElementById('cg-btn').style.display = 'none';
+}
+
+function enableGenerationReveal() {
+  const guess = document.getElementById('ge-guess').value.trim();
+  const btn = document.getElementById('ge-btn');
+  if (guess.length > 0) {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = '0.4';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+
+function revealGeneration() {
+  document.getElementById('ge-reveal').style.display = 'block';
+  document.getElementById('ge-btn').textContent = '✓ Locked in';
+  document.getElementById('ge-btn').disabled = true;
+  document.getElementById('ge-btn').style.opacity = '0.6';
+  document.getElementById('ge-guess').disabled = true;
 }
 
 function pickDDMethod(method) {

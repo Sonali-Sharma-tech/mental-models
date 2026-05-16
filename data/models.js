@@ -1236,6 +1236,56 @@ The redemption: when the game is REPEATED — people interact over time — coop
 
   /* ═══════════════ HOW YOU THINK (Cognitive Psychology) ═══════════════ */
 
+  "generation-effect": {
+    id: "generation-effect",
+    name: "Generation Effect",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Try first. Then learn.",
+    summary: "Information you struggle to GENERATE is remembered far better than information you simply READ — even if your guess is wrong.",
+    origin: "Slamecka & Graf, 1978. Replicated thousands of times since.",
+    story: `In 1978, psychologists Norman Slamecka and Peter Graf ran a deceptively simple experiment. Two groups studied the same word pairs. Group A simply read them: hot–cold, fast–slow, etc. Group B saw only the first word and had to GENERATE the second from a hint.
+
+Group B remembered nearly twice as much, even though both groups spent the same amount of time. The act of generating — the mental effort of REACHING for the answer — created stronger memory traces than passive reading.
+
+This is the Generation Effect. It has been replicated thousands of times across age groups, materials, and contexts. It works even when the generation attempt FAILS. Even when you guess wrong, your wrong attempt primes the brain to encode the correct answer when it arrives. The failure creates a "slot" the right answer fits into.
+
+This contradicts most teaching. Education tends to present information first and test second. The Generation Effect says: flip it. Force a guess BEFORE the answer. The struggle, even brief and unsuccessful, transforms what would have been forgettable into something that sticks.
+
+For self-directed learners, this is one of the highest-leverage techniques available. Cover the answer. Force a guess. THEN reveal. Every time. The 5 seconds of effort pay enormously.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Reading documentation: weak retention. Trying to write the code first, then checking the docs to see what you got wrong: vastly stronger retention. Your wrong attempts mark exactly where new information needs to land." },
+      { domain: "Everyday Life", icon: "🧠", text: "Learning someone's name. Hearing it: forgotten in 30 seconds. Trying to recall it 5 minutes later — even if you fail and have to ask — sticks for months. The retrieval attempt is the encoding event." },
+      { domain: "Business", icon: "📊", text: "In meetings, asking 'what do you think the answer is?' before presenting your view doesn't just collect opinions. It primes everyone in the room to encode the actual answer more deeply when you reveal it." }
+    ],
+    howTo: [
+      "Encounter a question or problem.",
+      "Cover the answer. Force yourself to guess — even a wild guess.",
+      "Commit to your guess. Speak it aloud or write it down.",
+      "Now reveal the answer. Compare. Notice the gap.",
+      "The gap between your guess and the truth is exactly where memory is forming."
+    ],
+    watchOut: [
+      { title: "Doesn't work with completely unfamiliar material", text: "If you have ZERO context, generation is impossible — there's nothing to retrieve. You need at least some background knowledge for this to fire. With foreign vocabulary on day 1, just learn first." },
+      { title: "Confidence calibration matters", text: "Generating with low confidence and being right: weak boost. Generating with high confidence and being WRONG: huge boost (this is the Hypercorrection Effect). The technique rewards committed effort, not hedged guesses." }
+    ],
+    related: ["desirable-difficulties", "curiosity-gap", "first-principles"],
+    interactive: "generation-effect-demo",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="60" y="60" width="100" height="80" fill="#7c83ff" fill-opacity="0.15" stroke="#7c83ff" stroke-width="2" rx="10"/>
+  <text x="100" y="105" font-size="20" fill="#7c83ff" font-family="system-ui" font-weight="700" text-anchor="middle">?</text>
+  <text x="80" y="130" font-size="11" fill="#7c83ff" font-family="system-ui">guess first</text>
+  <path d="M170,100 L230,100" stroke="#9090b8" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#geArr)"/>
+  <defs><marker id="geArr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#9090b8"/></marker></defs>
+  <rect x="240" y="60" width="100" height="80" fill="#06d6a0" fill-opacity="0.15" stroke="#06d6a0" stroke-width="2" rx="10"/>
+  <text x="290" y="108" font-size="28" fill="#06d6a0" font-family="system-ui" font-weight="900" text-anchor="middle">!</text>
+  <text x="252" y="130" font-size="11" fill="#06d6a0" font-family="system-ui">reveal answer</text>
+  <text x="100" y="180" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">attempt creates slot</text>
+  <text x="290" y="180" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">answer fits into it</text>
+  <text x="200" y="240" font-size="13" fill="#7c83ff" font-family="system-ui" font-weight="700" text-anchor="middle">2x retention vs reading</text>
+</svg>`
+  },
+
   "desirable-difficulties": {
     id: "desirable-difficulties",
     name: "Desirable Difficulties",

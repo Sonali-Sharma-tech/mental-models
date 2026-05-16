@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Learning Lab — The Science of How You Think</title>
+<meta name="description" content="5 cognitive psychology concepts that change how you read, learn, and remember — with interactive demos."/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+  :root { --cat-color: #7c83ff; }
+
+  .lab-hero {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 100px 24px 60px;
+    text-align: center;
+  }
+  .lab-eyebrow {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(124,131,255,0.12);
+    border: 1px solid rgba(124,131,255,0.4);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cat-color);
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .lab-hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .lab-hero h1 .gradient {
+    background: linear-gradient(120deg, #7c83ff, #c77dff);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradShift 6s ease-in-out infinite;
+  }
+  @keyframes gradShift { 0%,100%{background-position:0%} 50%{background-position:100%} }
+  .lab-sub {
+    color: var(--muted);
+    font-size: 1.15rem;
+    max-width: 620px;
+    margin: 0 auto 14px;
+    line-height: 1.65;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .lab-mission {
+    color: var(--text);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+    font-weight: 500;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .lab-mission strong { color: var(--cat-color); }
+  @keyframes fadeUp { from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:translateY(0)} }
+
+  .principle-strip {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 24px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .principle-strip h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .principle-strip p {
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.65;
+    font-size: 1.02rem;
+  }
+
+  .concepts-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .concept-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.2,.9,.3,1.4), box-shadow 0.3s, border-color 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+  .concept-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--cat-color);
+    opacity: 0.7;
+  }
+  .concept-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 30px rgba(124,131,255,0.15);
+    border-color: var(--cat-color);
+  }
+  .concept-num {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--cat-color);
+    margin-bottom: 12px;
+  }
+  .concept-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .concept-shift {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .concept-shift strong { color: var(--text); }
+  .concept-arrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cat-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .concept-card:hover .concept-arrow { gap: 12px; }
+
+  .why-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 40px;
+    border-top: 1px solid var(--border);
+  }
+  .why-section h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .why-section .prose p {
+    margin-bottom: 1em;
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="models.html">Explore All</a>
+    <a href="learning-lab.html" class="active">Learning Lab</a>
+    <a href="index.html#newsletter" class="nav-cta">Subscribe</a>
+  </div>
+</nav>
+
+<section class="lab-hero">
+  <span class="lab-eyebrow">🧬 The Learning Lab</span>
+  <h1>Most people<br/><span class="gradient">learn wrong.</span></h1>
+  <p class="lab-sub">
+    The cognitive science behind why you read things and forget them — and what actually works instead.
+  </p>
+  <p class="lab-mission">
+    Mental models tell you <em>what</em> to think about. <strong>These tell you how your brain actually works.</strong>
+    Five concepts, mostly buried in academic papers, each one rewiring something you assumed was true.
+  </p>
+</section>
+
+<div class="principle-strip">
+  <h2>The single principle behind all five</h2>
+  <p>Easy learning is fake learning. The brain encodes deeply only when it has to struggle, generate, connect, and care. Every concept below is a different way of engineering that struggle into the act of reading.</p>
+</div>
+
+<section class="concepts-section">
+  <div class="section-label" style="text-align: center; --cat-color: #7c83ff;">The Five</div>
+  <h2 class="section-title" style="text-align: center;">Concepts that change reading forever</h2>
+  <p class="section-sub" style="margin: 0 auto; text-align: center;">Each one has a custom interactive demo. You don't just read about it — you feel it work on you in real time.</p>
+
+  <div class="concepts-grid" id="concepts-grid"></div>
+</section>
+
+<section class="why-section">
+  <h2>Why this exists</h2>
+  <div class="prose">
+    <p>I read constantly. I remember almost nothing. Every concept I skim slides off within a week.</p>
+    <p>Talking to friends, the same pattern. Smart, curious people, ploughing through books and articles, retaining a fraction. The conventional advice — re-read, highlight, take notes — turns out to mostly not work.</p>
+    <p>So I went looking for what does. The findings I've collected here aren't the famous productivity techniques. They're the foundational discoveries from cognitive psychology, mostly published in academic journals, mostly invisible to mainstream readers.</p>
+    <p>Each one overturns something I previously assumed. Each one is supported by decades of replication. Each one is doable, today, by anyone.</p>
+    <p style="color: var(--cat-color); font-weight: 600;">This is a learning-in-public project. I'm building these tools to fix my own reading, sharing what I find as I go.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  Mental Models · A learning-in-public project ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+<script>
+const FIVE = [
+  { id: "curiosity-gap",            name: "Curiosity Gap",         shift: "Curiosity isn't a personality trait. It's a <strong>response to a visible gap</strong> between what you know and what you suspect you should know." },
+  { id: "desirable-difficulties",   name: "Desirable Difficulties", shift: "Easy learning is fake learning. The brain only encodes deeply when it has to <strong>struggle</strong>." },
+  { id: "generation-effect",        name: "Generation Effect",      shift: "You remember what you <strong>tried to generate</strong> 2x better than what you read — even if your guess was wrong." },
+  { id: "self-reference",           name: "Self-Reference Effect",  shift: "The brain treats 'me' as the most important node. Make it about <strong>YOU</strong> and it sticks 3x harder." },
+  { id: "implementation-intentions", name: "Implementation Intentions", shift: "Goals fail. <strong>If-then plans</strong> succeed. Linking trigger to action bypasses willpower entirely." }
+];
+
+document.getElementById('concepts-grid').innerHTML = FIVE.map((c, i) => `
+  <a href="model.html?id=${c.id}" class="concept-card">
+    <div class="concept-num">CONCEPT ${String(i + 1).padStart(2, '0')}</div>
+    <div class="concept-name">${c.name}</div>
+    <div class="concept-shift">${c.shift}</div>
+    <div class="concept-arrow">Read deep dive <span>→</span></div>
+  </a>`).join('');
+</script>
+
+</body>
+</html>

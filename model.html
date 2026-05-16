@@ -740,6 +740,30 @@ function renderInteractive(id, color, type) {
     zone.innerHTML = `
       <div class="pareto-bars" id="pareto-bars"></div>`;
     setTimeout(renderParetoChart, 100);
+  } else if (type === 'implementation-intentions-builder') {
+    title.textContent = 'Build your if-then plan';
+    sub.textContent = 'Pick a goal you keep failing. Convert it into a specific if-then sentence. Save it to your browser — it will appear when you visit the home page.';
+    const saved = JSON.parse(localStorage.getItem('iiPlans') || '[]');
+    zone.innerHTML = `
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+        <div>
+          <label style="display:block; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px;">IF (specific trigger)</label>
+          <input type="text" class="inv-input" id="ii-trigger" placeholder="e.g., 'I sit at my desk Monday 9am'"/>
+        </div>
+        <div>
+          <label style="display:block; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px;">THEN (specific action)</label>
+          <input type="text" class="inv-input" id="ii-action" placeholder="e.g., 'I will read one mental model deep-dive before email'"/>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;">
+        <button class="btn btn-primary" onclick="saveIIPlan()">Save plan</button>
+        <button class="btn btn-ghost" onclick="clearIIPlans()">Clear all</button>
+      </div>
+      <div id="ii-list" style="display: ${saved.length ? 'block' : 'none'};">
+        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 12px;">YOUR ACTIVE PLANS</div>
+        <div id="ii-list-items"></div>
+      </div>`;
+    renderIIPlans();
   } else if (type === 'self-reference-demo') {
     title.textContent = 'Make it about you';
     sub.textContent = 'Pick a concept from earlier. Type a real situation in your life. The site will reframe the concept as a question about YOU — exactly the move that triples retention.';
@@ -823,6 +847,52 @@ function renderInteractive(id, color, type) {
 function revealCuriosityGap() {
   document.getElementById('cg-reveal').style.display = 'block';
   document.getElementById('cg-btn').style.display = 'none';
+}
+
+function saveIIPlan() {
+  const trigger = document.getElementById('ii-trigger').value.trim();
+  const action = document.getElementById('ii-action').value.trim();
+  if (!trigger || !action) return;
+  const saved = JSON.parse(localStorage.getItem('iiPlans') || '[]');
+  saved.push({ trigger, action, ts: Date.now() });
+  localStorage.setItem('iiPlans', JSON.stringify(saved));
+  document.getElementById('ii-trigger').value = '';
+  document.getElementById('ii-action').value = '';
+  renderIIPlans();
+}
+
+function clearIIPlans() {
+  if (!confirm('Clear all saved plans?')) return;
+  localStorage.removeItem('iiPlans');
+  renderIIPlans();
+}
+
+function renderIIPlans() {
+  const saved = JSON.parse(localStorage.getItem('iiPlans') || '[]');
+  const list = document.getElementById('ii-list');
+  const items = document.getElementById('ii-list-items');
+  if (!list || !items) return;
+  if (saved.length === 0) {
+    list.style.display = 'none';
+    return;
+  }
+  list.style.display = 'block';
+  items.innerHTML = saved.map((p, i) => `
+    <div style="padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-m); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+      <div style="font-size: 0.95rem; line-height: 1.5;"><span style="color: var(--cat-color, #7c83ff); font-weight: 700;">If</span> ${escapeHTML(p.trigger)}, <span style="color: #06d6a0; font-weight: 700;">then</span> ${escapeHTML(p.action)}.</div>
+      <button onclick="deleteIIPlan(${i})" style="background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 1.2rem;">×</button>
+    </div>`).join('');
+}
+
+function deleteIIPlan(i) {
+  const saved = JSON.parse(localStorage.getItem('iiPlans') || '[]');
+  saved.splice(i, 1);
+  localStorage.setItem('iiPlans', JSON.stringify(saved));
+  renderIIPlans();
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
 const SR_TEMPLATES = {

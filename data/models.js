@@ -1236,6 +1236,55 @@ The redemption: when the game is REPEATED — people interact over time — coop
 
   /* ═══════════════ HOW YOU THINK (Cognitive Psychology) ═══════════════ */
 
+  "implementation-intentions": {
+    id: "implementation-intentions",
+    name: "Implementation Intentions",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "If [trigger], then [action].",
+    summary: "Goals fail. If-then plans succeed. Linking a specific trigger to a specific action bypasses willpower and decision fatigue.",
+    origin: "Peter Gollwitzer, NYU psychologist, 1999.",
+    story: `Peter Gollwitzer's 1999 paper revealed an uncomfortable truth: setting a goal almost doesn't matter. People who say "I want to exercise more" or "I'll learn this concept" mostly don't follow through. Goals are ABOUT doing something. They're not doing anything.
+
+What works dramatically better is something he called an "implementation intention" — a pre-formed, specific if-then plan: "If it's 7am Monday, then I will do 20 push-ups before checking my phone." The structure of that sentence, oddly, is what makes it work.
+
+Why? Because in the moment, the brain doesn't deliberate. It just runs the script. The trigger fires; the action follows. No willpower needed because no decision is happening.
+
+Studies have documented dramatic effects. Voter turnout: 4.1 percentage points higher with if-then plans vs reminders alone. Breast self-exams: 100% completion vs 53%. Drug recovery, weight loss, exam performance — across hundreds of studies, the same pattern: if-then plans roughly double follow-through compared to plain goals.
+
+The implication for learning: you DON'T succeed by deciding to "learn mental models." You succeed by writing a sentence like "If I close this browser tab, then I will write down one application of what I just read." That single sentence is more powerful than any motivation.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Goal: 'I want to read more papers.' Outcome: doesn't happen. Implementation intention: 'If I sit at my desk Monday morning, then I will read one paper before opening Slack.' Outcome: it happens, week after week." },
+      { domain: "Everyday Life", icon: "🧠", text: "Goal: 'I want to exercise.' Vague, drifts. Implementation intention: 'If I finish brushing my teeth in the morning, then I will do 10 squats before leaving the bathroom.' Trigger is concrete, action is specific. Habit forms." },
+      { domain: "Business", icon: "📊", text: "Goal: 'Our team will be more strategic.' Empty. Implementation intention: 'If we open Monday standup, then we will spend the first 5 minutes naming the highest-leverage task before anything else.' This actually changes behaviour." }
+    ],
+    howTo: [
+      "Pick a goal you keep failing to act on.",
+      "Identify a SPECIFIC moment in your day that already happens reliably.",
+      "Write: 'If [that moment], then I will [specific small action].'",
+      "Make the action small enough that it can't be excused away.",
+      "Re-read the if-then plan once in the morning. The brain runs the script in the moment."
+    ],
+    watchOut: [
+      { title: "Vague triggers don't work", text: "'If I have time, then I will…' isn't an implementation intention — it's still a goal in disguise. The trigger has to be a specific time, place, event, or cue. 'After my morning coffee' beats 'when I feel ready.'" },
+      { title: "Don't stack too many", text: "Two or three if-then plans active at once is fine. Ten is not. Each plan competes for cognitive bandwidth. Stack new ones only after the previous ones become automatic." }
+    ],
+    related: ["self-reference", "compounding", "second-order"],
+    interactive: "implementation-intentions-builder",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="120" width="120" height="60" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2" rx="10"/>
+  <text x="78" y="148" font-size="11" fill="#7c83ff" font-family="system-ui" font-weight="700">IF</text>
+  <text x="74" y="167" font-size="13" fill="#7c83ff" font-family="system-ui">trigger fires</text>
+  <path d="M170,150 L230,150" stroke="#7c83ff" stroke-width="2" marker-end="url(#iiArr)"/>
+  <defs><marker id="iiArr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#7c83ff"/></marker></defs>
+  <rect x="230" y="120" width="120" height="60" fill="#06d6a0" fill-opacity="0.2" stroke="#06d6a0" stroke-width="2" rx="10"/>
+  <text x="258" y="148" font-size="11" fill="#06d6a0" font-family="system-ui" font-weight="700">THEN</text>
+  <text x="252" y="167" font-size="13" fill="#06d6a0" font-family="system-ui">action runs</text>
+  <text x="100" y="240" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">no willpower needed</text>
+  <text x="290" y="240" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">automatic execution</text>
+</svg>`
+  },
+
   "self-reference": {
     id: "self-reference",
     name: "Self-Reference Effect",

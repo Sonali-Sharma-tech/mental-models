@@ -740,6 +740,29 @@ function renderInteractive(id, color, type) {
     zone.innerHTML = `
       <div class="pareto-bars" id="pareto-bars"></div>`;
     setTimeout(renderParetoChart, 100);
+  } else if (type === 'self-reference-demo') {
+    title.textContent = 'Make it about you';
+    sub.textContent = 'Pick a concept from earlier. Type a real situation in your life. The site will reframe the concept as a question about YOU — exactly the move that triples retention.';
+    zone.innerHTML = `
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+        <div>
+          <label style="display:block; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px;">Pick a concept</label>
+          <select id="sr-concept" class="inv-input" style="cursor: pointer;">
+            <option value="inversion">Inversion</option>
+            <option value="opportunity-cost">Opportunity Cost</option>
+            <option value="sunk-cost">Sunk Cost</option>
+            <option value="second-order">Second-Order Thinking</option>
+            <option value="confirmation">Confirmation Bias</option>
+            <option value="parkinson">Parkinson's Law</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px;">Your situation right now</label>
+          <input type="text" class="inv-input" id="sr-situation" placeholder="e.g., 'deciding whether to switch jobs'"/>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="applySelfRef()">Apply to my life →</button>
+      <div id="sr-result" style="display:none; margin-top: 18px; padding: 24px; background: rgba(124,131,255,0.08); border: 1px solid var(--cat-color, #7c83ff); border-radius: var(--radius-l); animation: fadeIn 0.5s;"></div>`;
   } else if (type === 'generation-effect-demo') {
     title.textContent = 'Guess before you read';
     sub.textContent = 'A real cognitive psychology question. Type your guess. The Reveal button stays locked until you commit. Notice how much more the answer sticks once you have to reach for it.';
@@ -800,6 +823,33 @@ function renderInteractive(id, color, type) {
 function revealCuriosityGap() {
   document.getElementById('cg-reveal').style.display = 'block';
   document.getElementById('cg-btn').style.display = 'none';
+}
+
+const SR_TEMPLATES = {
+  "inversion":         "Don't ask 'how do I succeed at SITUATION?' Ask: 'how would I GUARANTEE failure at SITUATION?' List those failure modes. Are you doing any of them right now?",
+  "opportunity-cost":  "By choosing SITUATION, what specifically are you saying NO to? Name the three best alternative uses of that time/money/attention. Compare honestly. Is SITUATION still the right call?",
+  "sunk-cost":         "Imagine you didn't already invest anything in SITUATION. Would you START it today, knowing what you know now? If no, the past investment isn't an argument to continue.",
+  "second-order":      "If SITUATION goes the way you want — then what? And then what after that? Trace 3 levels. Often the third-order consequence flips your decision.",
+  "confirmation":      "What evidence would prove your current thinking about SITUATION WRONG? Have you actively looked for it? Or only collected confirmations?",
+  "parkinson":         "How long have you given yourself for SITUATION? Cut that estimate in half. What gets removed is usually fluff, not substance."
+};
+const SR_NAMES = {
+  "inversion": "Inversion", "opportunity-cost": "Opportunity Cost", "sunk-cost": "Sunk Cost",
+  "second-order": "Second-Order Thinking", "confirmation": "Confirmation Bias", "parkinson": "Parkinson's Law"
+};
+
+function applySelfRef() {
+  const concept = document.getElementById('sr-concept').value;
+  const situation = document.getElementById('sr-situation').value.trim();
+  if (!situation) return;
+  const tpl = SR_TEMPLATES[concept];
+  const filled = tpl.replace(/SITUATION/g, `"${situation}"`);
+  const name = SR_NAMES[concept];
+  document.getElementById('sr-result').innerHTML = `
+    <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cat-color, #7c83ff); margin-bottom: 12px;">${name.toUpperCase()} APPLIED TO YOU</div>
+    <p style="font-size: 1.05rem; line-height: 1.7;">${filled}</p>
+    <p style="font-size: 0.85rem; line-height: 1.6; color: var(--muted); margin-top: 14px;">Now this concept is encoded against YOUR situation, not as an abstract idea. Self-reference effect just made this 2-3x more memorable than reading the original deep-dive.</p>`;
+  document.getElementById('sr-result').style.display = 'block';
 }
 
 function enableGenerationReveal() {

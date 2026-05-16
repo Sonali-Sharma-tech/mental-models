@@ -1236,6 +1236,59 @@ The redemption: when the game is REPEATED — people interact over time — coop
 
   /* ═══════════════ HOW YOU THINK (Cognitive Psychology) ═══════════════ */
 
+  "self-reference": {
+    id: "self-reference",
+    name: "Self-Reference Effect",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Make it about YOU and it sticks.",
+    summary: "The brain dramatically prefers information connected to the self. Same content, different framing — wildly different retention.",
+    origin: "Rogers, Kuiper & Kirker, 1977.",
+    story: `In 1977, three psychologists ran a clean experiment. They showed participants a list of personality words (kind, lazy, generous, etc.) and asked one of three questions about each: is it printed in capital letters? does it rhyme with a word? does it describe YOU?
+
+Later, surprise memory test. Words processed for visual features (capitals): poorly remembered. Words processed for sound (rhyme): slightly better. Words processed for self-relevance: dramatically better. Same words. Same exposure time. Just a different question — and memory tripled.
+
+The result has been replicated for nearly 50 years. The medial prefrontal cortex literally activates more for self-related information. The brain treats "me" as the most important node in the entire memory network. Anything attached to that node gets encoded with priority.
+
+This is why personalised teaching works so well, why marketers ask "imagine yourself…", and why journaling changes how you remember an event. It's also why most learning fails: information presented as abstract facts about other people, other companies, other situations slides off the brain. The same information presented as "here's what this means for YOU" sticks for years.
+
+For the brain, "self-relevant" = "important." Important things get saved. The shortcut to better memory is making everything personal.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Reading 'database indexes speed up queries' = forgettable abstract fact. Asking 'which of MY queries would benefit from an index?' and answering it = unforgettable. Same information, but now it's about YOU and YOUR code." },
+      { domain: "Everyday Life", icon: "🧠", text: "Reading about Inversion as a concept: vague memory of 'flip the problem.' Reading about Inversion AND being asked 'what's a problem in your life right now? Now invert it' — that decision still applies to you a year later." },
+      { domain: "Business", icon: "📊", text: "Generic case studies about other companies: easily forgotten. Asking 'how does this apply to OUR company specifically?' converts a forgettable case study into actionable strategy. Always ask the personal-relevance question." }
+    ],
+    howTo: [
+      "Whenever you read a concept, immediately stop.",
+      "Ask: 'Where in MY life right now does this apply?'",
+      "Force a specific, concrete answer — not 'someday at work.'",
+      "Write the personal application in 1-2 sentences.",
+      "The act of personalisation moves the concept from semantic to autobiographical memory."
+    ],
+    watchOut: [
+      { title: "Don't fake the personal connection", text: "If you can't honestly find personal relevance, the effect doesn't fire. Forced or fake connections don't help. Sometimes the answer is 'this doesn't apply to me right now' — and that's also useful information." },
+      { title: "Self-reference can over-narrow learning", text: "Always asking 'how does this help ME' can blind you to ideas valuable for OTHERS or for the future. Use this as a primary technique, but balance with abstract understanding too." }
+    ],
+    related: ["generation-effect", "implementation-intentions", "first-principles"],
+    interactive: "self-reference-demo",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="200" cy="150" r="50" fill="#7c83ff" fill-opacity="0.25" stroke="#7c83ff" stroke-width="2"/>
+  <text x="186" y="160" font-size="22" fill="#7c83ff" font-family="system-ui" font-weight="900">YOU</text>
+  <circle cx="100" cy="80" r="14" fill="#7c83ff" opacity="0.7"/>
+  <line x1="115" y1="92" x2="160" y2="125" stroke="#7c83ff" stroke-width="2"/>
+  <circle cx="300" cy="80" r="14" fill="#7c83ff" opacity="0.7"/>
+  <line x1="285" y1="92" x2="240" y2="125" stroke="#7c83ff" stroke-width="2"/>
+  <circle cx="80" cy="220" r="14" fill="#7c83ff" opacity="0.7"/>
+  <line x1="95" y1="208" x2="158" y2="170" stroke="#7c83ff" stroke-width="2"/>
+  <circle cx="320" cy="220" r="14" fill="#7c83ff" opacity="0.7"/>
+  <line x1="305" y1="208" x2="242" y2="170" stroke="#7c83ff" stroke-width="2"/>
+  <text x="80" y="55" font-size="11" fill="#9090b8" font-family="system-ui">concept</text>
+  <text x="280" y="55" font-size="11" fill="#9090b8" font-family="system-ui">concept</text>
+  <text x="60" y="255" font-size="11" fill="#9090b8" font-family="system-ui">concept</text>
+  <text x="300" y="255" font-size="11" fill="#9090b8" font-family="system-ui">concept</text>
+</svg>`
+  },
+
   "generation-effect": {
     id: "generation-effect",
     name: "Generation Effect",

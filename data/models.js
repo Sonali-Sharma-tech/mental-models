@@ -199,34 +199,36 @@ This is one of the most important rules in engineering, but it applies everywher
     cat: "Thinking Better",
     catColor: "#4cc9f0",
     tagline: "Break it down to atoms. Rebuild from truth.",
-    summary: "Strip away assumptions until you reach undeniable facts, then reason up from there.",
-    origin: "Aristotle. Applied to modern business by Elon Musk.",
-    story: `In 2002, Elon Musk wanted to send a rocket to Mars. He got quotes from aerospace manufacturers: $65 million per rocket. The numbers made his vision impossible.
+    summary: "Strip away every assumption — even the ones you don't notice — until you reach undeniable facts. Reason upward from those facts only.",
+    origin: "Aristotle, 4th century BC (Posterior Analytics). Refined by Descartes (1637). Popularised in modern science by Feynman, in modern business by Elon Musk.",
+    story: `First-principles thinking is older than science itself. Aristotle, in 4th-century BC Greece, defined a "first principle" as the foundational thing from which all else is derived — not believed because it follows from something else, but the bedrock everything else stands on. He insisted: if you don't trace your reasoning back to first principles, you're just rearranging beliefs you absorbed from someone else.
 
-Instead of accepting the price, he asked a different question: what is a rocket actually MADE of?
+Two thousand years later, René Descartes took the idea radical. In 1637 he decided to doubt EVERYTHING he could possibly doubt — every sense, every memory, every belief he'd absorbed from his teachers. He stripped his thinking down until he hit one thing he couldn't doubt: the fact that he was thinking. <em>Cogito ergo sum</em> — I think, therefore I am. From that single first principle, he tried to rebuild philosophy. Whether he succeeded is debated. The method changed everything.
 
-Aerospace-grade aluminium alloys, titanium, copper, carbon fibre — commodity materials available on the open market. He looked up the price of each raw material. The answer: about 2% of the quoted rocket price.
+Richard Feynman, the 20th-century physicist, brought the discipline back to working scientists. His famous warning: <em>"I learned very early the difference between knowing the NAME of something and knowing something."</em> Most people, he argued, hold beliefs because they've heard them repeated — not because they've verified them from the ground up. Verification is everything; familiarity is nothing.
 
-So instead of buying rockets, SpaceX built them. The Falcon 9 costs around $62 million total to manufacture. Comparable rockets from competitors cost $150–300 million.
+In 2002, Elon Musk wanted rockets to Mars. Quotes from aerospace manufacturers: $65 million per rocket. The numbers made his vision impossible. Instead of accepting the price, he asked Aristotle's question: <em>what is a rocket actually MADE OF?</em> Aerospace-grade aluminium, titanium, copper, carbon fibre — commodity materials available on the open market. He looked up the price of each raw material. The total: about 2% of the quoted rocket price. So SpaceX started building rockets instead of buying them. The Falcon 9 costs around $62M to manufacture vs $150–300M for competitors. Same insight Aristotle had. Different century.
 
-That's first-principles thinking. Not "how do I get a cheaper rocket?" but "what is a rocket, fundamentally?" Musk didn't invent anything new — he refused to accept convention as reality.
-
-Most of us accept prices, rules, processes, and constraints without asking whether they're actually load-bearing. First principles asks: is this true because it's true, or true because everyone stopped questioning it?`,
+Most thinking happens by analogy: <strong>"how do other people do this?"</strong> Then "do that, but a little better." Faster, safer, bounded by what already exists. First-principles thinking is the opposite: <strong>"what IS this thing, fundamentally?"</strong> Then "what's the simplest way to make it from scratch?" Slower, harder, sometimes embarrassing — and the only path to the truly new.`,
     examples: [
-      { domain: "Engineering", icon: "⚙️", text: "Slow database query. Convention: add an index, tune the query, increase memory. First principles: what is the query actually computing? What's the minimum information needed to answer it? The answer is often to redesign the data model, not optimise the query." },
-      { domain: "Everyday Life", icon: "💡", text: "Weddings 'cost' ₹20–50 lakhs because 'that's what weddings cost.' First principles: a wedding is two people declaring commitment in front of people they love, with food and music. The cost of the components is a fraction of the convention price." },
-      { domain: "Business", icon: "📊", text: "Airbnb: hotels cost $200/night because hotels have buildings, staff, overhead. First principles: what does a traveller actually need? A clean space to sleep. What if the space already exists and is temporarily empty? Airbnb was born." }
+      { domain: "Engineering", icon: "⚙️", text: "Slow database query, taking 8 seconds. Convention: add an index, tune the query, increase server memory — apply known optimisations. First principles: what is this query ACTUALLY computing? Often the real answer needs 200 rows out of 50 million scanned. Redesign the data model — pre-compute and store the 200 rows. Query time drops to 0.05 seconds. The optimisation tutorial would have given you 4 seconds. First principles gave you 0.05." },
+      { domain: "Everyday Life", icon: "💡", text: "Indian weddings 'cost' ₹20–50 lakhs because 'that's what weddings cost.' First principles: what IS a wedding? Two people declaring commitment, in front of people they love, with food and music. Honest cost of those components: ₹2–5 lakhs. The remaining ₹15–45 lakhs is convention — banquet halls, designer outfits, ceremonial photographers — none of which appear in the actual definition. Convention isn't bad. But it's not the same as necessity." },
+      { domain: "Business", icon: "📊", text: "Tesla applied this to batteries. Industry quote in 2010: $600/kWh — accepted as the physical lower bound. Musk's engineers broke a cell down to its raw metals: cobalt, nickel, aluminium, lithium, carbon. Material cost: $80/kWh. The remaining $520 was the cost of NOT thinking from first principles — supply-chain inefficiency, intermediaries, conventional manufacturing. Today, Tesla cells run roughly $130/kWh. The 'physics' floor was a convention floor wearing a physics costume." }
     ],
     howTo: [
-      "State the problem or assumption you're questioning.",
-      "Ask 'why is this true?' Then ask 'why?' again. Repeat 5 times.",
-      "Stop when you hit something verifiable independently — a physical law, a measurable fact.",
-      "Those are your first principles. Build back up from them.",
-      "Each layer you add: ask 'is this necessary or assumed?'"
+      "Write the belief or assumption DOWN, in your own words. You can't interrogate what you can't see — the first move is making the implicit explicit.",
+      "Ask 'is this TRUE?' — not 'is this useful?' or 'is this conventional?' Truth is the only foundation. The other two are downstream.",
+      "Apply the 5 Whys: drill into the belief by asking 'why?' five times. Each why peels off a layer of assumption. The first is easy. The fifth often hits something you've never thought through.",
+      "Distinguish PHYSICS from CONVENTION. Some constraints are reality (a kilogram of aluminium costs the metal price). Others are 'how it's done' (rockets cost $65M because aerospace is structured a certain way). Convention can be challenged. Physics can't.",
+      "Stop when you hit something verifiable independently — a physical law, a measurable fact, a basic definition. That is your first principle.",
+      "Rebuild ONLY what's needed for your specific goal. Don't reconstruct convention that already works correctly. First principles is for the parts that are stuck or expensive — not everything you touch.",
+      "Test your reconstruction against reality before scaling. First-principles thinking can produce confident-sounding errors when you're missing knowledge you don't know you're missing."
     ],
     watchOut: [
-      { title: "Don't reinvent everything", text: "First-principles thinking is expensive. Use it for high-stakes, expensive, or stuck problems. For everyday decisions, convention exists for good reasons. Don't agonise over coffee orders from first principles." },
-      { title: "You still need domain knowledge", text: "First principles isn't beginner's luck. Musk spent years studying aerospace before concluding rockets were overpriced. You need to know enough to identify which assumptions are load-bearing vs vestigial." }
+      { title: "Don't first-principles everything", text: "This is expensive thinking. Time, energy, social capital. Use it for high-stakes, expensive, or stuck problems. For everyday decisions — what coffee to order, which email to send first — convention is fine. Convention exists because most of the time, it works." },
+      { title: "You still need domain knowledge", text: "Musk spent years studying aerospace before concluding rockets were overpriced. First-principles thinking isn't beginner's luck. Without enough knowledge to identify which assumptions are load-bearing vs vestigial, you'll question the wrong things AND accept the wrong things." },
+      { title: "The 'expert in 30 minutes' trap", text: "A few hours of first-principles thinking in an unfamiliar domain feels powerful. It usually isn't. Medicine, law, climate science contain decades of accumulated knowledge experts spent careers absorbing. Your 'fresh insight' is often Dunning-Kruger dressed in better clothes." },
+      { title: "The social cost is real", text: "First-principles conclusions often contradict received wisdom. People will dismiss you — even when you're right. Musk was mocked for SpaceX in 2002. The conviction needed to push through requires either huge confidence (which can fail you) or huge evidence (which takes time to gather). Be prepared to be alone for a while." }
     ],
     related: ["inversion", "second-order", "occam"],
     interactive: "first-principles-breakdown",

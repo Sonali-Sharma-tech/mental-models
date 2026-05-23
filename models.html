@@ -914,6 +914,102 @@ const MODELS = [
       <text x="143" y="58" font-size="9" fill="#06d6a0" font-weight="700">THEN</text>
       <text x="139" y="72" font-size="9" fill="#06d6a0">action</text>
     </svg>`
+  },
+  {
+    id: 'spaced-practice', name: 'Spaced Practice', cat: 'cognition',
+    line: "Memory decays exponentially. Each review flattens the curve.",
+    kid: "Reviewing material at expanding intervals (1d, 3d, 1w, 1mo) produces dramatically more durable memory than the same total time crammed in one session.",
+    story: "Hermann Ebbinghaus (1879-1885) locked himself in a room with 2,300 nonsense syllables and proved memory decays roughly exponentially — but each retrieval at an increasing gap flattens the next decay. The principle behind Anki, Duolingo, SuperMemo.",
+    when: "Anytime you need durable memory of anything — language, exam content, technical concepts. Use a tool (Anki) to schedule the gaps.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="180" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <path d="M20,30 Q40,80 100,95 Q140,99 180,100" stroke="#ef476f" stroke-width="2" fill="none" opacity="0.4"/>
+      <path d="M20,30 Q35,60 50,70 L50,40 Q65,65 85,75 L85,50 Q100,70 130,80 L130,60 Q145,75 180,80" stroke="#7c83ff" stroke-width="2" fill="none"/>
+      <circle cx="50" cy="40" r="3" fill="#06d6a0"/>
+      <circle cx="85" cy="50" r="3" fill="#06d6a0"/>
+      <circle cx="130" cy="60" r="3" fill="#06d6a0"/>
+    </svg>`
+  },
+  {
+    id: 'retrieval-practice', name: 'Retrieval Practice', cat: 'cognition',
+    line: "Pulling memory from your brain IS the learning.",
+    kid: "Testing yourself produces dramatically more durable memory than re-reading. The act of retrieval is itself an encoding event — even when you fail.",
+    story: "Roediger & Karpicke (2006). Group A reread a passage 4 times. Group B read it once + tested themselves 3 times. One week later, B remembered 60% MORE than A. Re-reading feels productive; retrieval works.",
+    when: "After learning anything important. Close the source, write what you remember, check, repeat with gaps.",
+    svg: `<svg viewBox="0 0 200 120">
+      <ellipse cx="60" cy="60" rx="32" ry="22" fill="#7c83ff" fill-opacity="0.15" stroke="#7c83ff" stroke-width="2"/>
+      <text x="42" y="65" font-size="12" fill="#7c83ff" font-weight="700">brain</text>
+      <path d="M95,60 Q120,50 145,60" stroke="#7c83ff" stroke-width="2" fill="none" stroke-dasharray="3,3" marker-end="url(#rpA)"/>
+      <defs><marker id="rpA" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#7c83ff"/></marker></defs>
+      <rect x="148" y="42" width="42" height="36" fill="#06d6a0" fill-opacity="0.15" stroke="#06d6a0" stroke-width="2" rx="5"/>
+      <text x="151" y="65" font-size="9" fill="#06d6a0" font-weight="700">memory</text>
+    </svg>`
+  },
+  {
+    id: 'chunking', name: 'Chunking', cat: 'cognition',
+    line: "Experts see patterns where novices see chaos.",
+    kid: "Working memory holds ~4 items. Expertise expands the BIT-content of each chunk by orders of magnitude — same memory, vastly more meaning.",
+    story: "Chase & Simon (1973). Chess masters recalled 16 pieces from real positions, novices only 4. On RANDOM scatters: both got 3. The master's memory wasn't bigger — it was organized into recognized patterns. Each chunk was years of pattern-building.",
+    when: "Before memorizing anything in a structured field. Find the patterns first. Memorize the structure, not flat lists.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="30" cy="40" r="3" fill="#9090b8"/><circle cx="50" cy="55" r="3" fill="#9090b8"/>
+      <circle cx="70" cy="35" r="3" fill="#9090b8"/><circle cx="40" cy="75" r="3" fill="#9090b8"/>
+      <circle cx="65" cy="80" r="3" fill="#9090b8"/><circle cx="85" cy="65" r="3" fill="#9090b8"/>
+      <text x="20" y="105" font-size="9" fill="#9090b8">novice: 8 dots</text>
+      <ellipse cx="140" cy="50" rx="32" ry="16" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2"/>
+      <text x="120" y="54" font-size="10" fill="#7c83ff" font-weight="700">CHUNK</text>
+      <ellipse cx="140" cy="80" rx="32" ry="14" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2"/>
+      <text x="120" y="84" font-size="10" fill="#7c83ff" font-weight="700">CHUNK</text>
+      <text x="115" y="110" font-size="9" fill="#7c83ff">expert: 2 chunks</text>
+    </svg>`
+  },
+  {
+    id: 'memory-palace', name: 'Memory Palace', cat: 'cognition',
+    line: "Hijack your spatial memory for arbitrary content.",
+    kid: "Mentally place items along a familiar route. Walking the route retrieves them in order. Cicero used it 2000 years ago. Joshua Foer used it to win the US Memory Championship in 2006.",
+    story: "Method of Loci, ancient Rome. Foer trained for 1 year, won the US Memory Championship in 2006: deck of cards in 100 seconds, 100 random digits in 5 minutes. Brain scans showed champions activate spatial regions during encoding — same machinery London cabbies use.",
+    when: "When you need to recall ordered content on-demand without notes (speeches, lists, exam content).",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="40" y="50" width="120" height="60" fill="none" stroke="#7c83ff" stroke-width="2" rx="3"/>
+      <line x1="100" y1="50" x2="100" y2="110" stroke="#7c83ff" stroke-width="1"/>
+      <line x1="40" y1="80" x2="160" y2="80" stroke="#7c83ff" stroke-width="1"/>
+      <polygon points="40,50 100,20 160,50" fill="#7c83ff" fill-opacity="0.15" stroke="#7c83ff" stroke-width="2"/>
+      <text x="62" y="73" font-size="14">🔑</text>
+      <text x="122" y="73" font-size="14">📚</text>
+      <text x="62" y="103" font-size="14">🥛</text>
+      <text x="122" y="103" font-size="14">🎩</text>
+    </svg>`
+  },
+  {
+    id: 'deliberate-practice', name: 'Deliberate Practice', cat: 'cognition',
+    line: "10,000 hours doesn't matter. The KIND of hours does.",
+    kid: "Specific goals, focus, edge of ability, immediate feedback, refinement. Most practice is mindless reps; deliberate practice is the few that actually move the needle.",
+    story: "Ericsson's Berlin violinists (1993). Best had 10k hours. Gladwell collapsed this into '10,000-hour rule.' Ericsson spent the rest of his career correcting that — hours alone do nothing. The KIND of practice (specific goal + focus + edge + feedback + refinement) is everything.",
+    when: "When you want to actually improve at a skill, not just maintain. Stop counting hours; start structuring them.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="180" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <path d="M20,95 Q90,93 180,90" stroke="#9090b8" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+      <path d="M20,95 Q90,55 180,25" stroke="#7c83ff" stroke-width="2.5" fill="none"/>
+      <text x="100" y="86" font-size="8" fill="#9090b8">naive</text>
+      <text x="115" y="40" font-size="8" fill="#7c83ff" font-weight="600">deliberate</text>
+      <text x="20" y="115" font-size="8" fill="#9090b8">hours →</text>
+    </svg>`
+  },
+  {
+    id: 'sleep-consolidation', name: 'Sleep Consolidation', cat: 'cognition',
+    line: "You finish learning while you sleep.",
+    kid: "During sleep, the hippocampus replays the day's traces to the cortex, turning fragile memory into durable memory. Less than 7 hours = pouring water into a leaky bucket.",
+    story: "Walker (Berkeley) 2002. Subjects learned a finger-tapping sequence. Wake group: 0% improvement after 12 hours. Sleep group: +20% improvement after sleep. Same task, same gap, only difference was sleep. Documented across motor, declarative, and procedural memory.",
+    when: "Always. Sleep 7-9 hours. Study hard material before sleep. The most underrated study habit on this list.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="180" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <line x1="20" y1="100" x2="100" y2="100" stroke="#9090b8" stroke-width="2" stroke-dasharray="3,3"/>
+      <line x1="100" y1="100" x2="180" y2="40" stroke="#7c83ff" stroke-width="3"/>
+      <circle cx="180" cy="40" r="4" fill="#7c83ff"/>
+      <text x="40" y="115" font-size="9" fill="#9090b8">wake: 0%</text>
+      <text x="105" y="115" font-size="14">💤</text>
+      <text x="125" y="115" font-size="9" fill="#7c83ff">sleep: +20%</text>
+    </svg>`
   }
 ];
 

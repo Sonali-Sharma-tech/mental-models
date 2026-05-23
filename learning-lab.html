@@ -226,12 +226,12 @@
   </p>
   <p class="lab-mission">
     Mental models tell you <em>what</em> to think about. <strong>These tell you how your brain actually works.</strong>
-    Five concepts, mostly buried in academic papers, each one rewiring something you assumed was true.
+    Eleven concepts, mostly buried in academic papers, each one rewiring something you assumed was true.
   </p>
 </section>
 
 <div class="principle-strip">
-  <h2>The single principle behind all five</h2>
+  <h2>The single principle behind all eleven</h2>
   <p>Easy learning is fake learning. The brain encodes deeply only when it has to struggle, generate, connect, and care. Every concept below is a different way of engineering that struggle into the act of reading.</p>
 </div>
 
@@ -260,15 +260,21 @@
 </footer>
 
 <script>
-const FIVE = [
-  { id: "curiosity-gap",            name: "Curiosity Gap",         shift: "Curiosity isn't a personality trait. It's a <strong>response to a visible gap</strong> between what you know and what you suspect you should know." },
-  { id: "desirable-difficulties",   name: "Desirable Difficulties", shift: "Easy learning is fake learning. The brain only encodes deeply when it has to <strong>struggle</strong>." },
-  { id: "generation-effect",        name: "Generation Effect",      shift: "You remember what you <strong>tried to generate</strong> 2x better than what you read — even if your guess was wrong." },
-  { id: "self-reference",           name: "Self-Reference Effect",  shift: "The brain treats 'me' as the most important node. Make it about <strong>YOU</strong> and it sticks 3x harder." },
+const CONCEPTS = [
+  { id: "curiosity-gap",             name: "Curiosity Gap",            shift: "Curiosity isn't a personality trait. It's a <strong>response to a visible gap</strong> between what you know and what you suspect you should know." },
+  { id: "desirable-difficulties",    name: "Desirable Difficulties",   shift: "Easy learning is fake learning. The brain only encodes deeply when it has to <strong>struggle</strong>." },
+  { id: "spaced-practice",           name: "Spaced Practice",          shift: "Memory decays exponentially. Reviewing at <strong>expanding intervals</strong> flattens the curve. Cramming is the worst possible schedule." },
+  { id: "retrieval-practice",        name: "Retrieval Practice",       shift: "Reading feels productive. <strong>Retrieving from blank memory</strong> produces 60% more retention 1 week later. Same total time." },
+  { id: "generation-effect",         name: "Generation Effect",        shift: "You remember what you <strong>tried to generate</strong> 2x better than what you read — even if your guess was wrong." },
+  { id: "chunking",                  name: "Chunking",                 shift: "Working memory holds ~4 items. <strong>Expertise expands the bit-content of each chunk</strong> by orders of magnitude. Same memory, vastly more meaning." },
+  { id: "memory-palace",             name: "Memory Palace",            shift: "Hijack your <strong>spatial memory</strong> — built into the brain over millions of years — for arbitrary content. Cicero used it 2000 years ago. Still works." },
+  { id: "deliberate-practice",       name: "Deliberate Practice",      shift: "10,000 hours doesn't matter. <strong>The KIND of hours</strong> does. Specific goal + edge of ability + immediate feedback + refinement." },
+  { id: "sleep-consolidation",       name: "Sleep Consolidation",      shift: "You don't finish learning while studying. You finish <strong>while sleeping</strong>. Less than 7 hours = pouring water into a leaky bucket." },
+  { id: "self-reference",            name: "Self-Reference Effect",    shift: "The brain treats 'me' as the most important node. Make it about <strong>YOU</strong> and it sticks 3x harder." },
   { id: "implementation-intentions", name: "Implementation Intentions", shift: "Goals fail. <strong>If-then plans</strong> succeed. Linking trigger to action bypasses willpower entirely." }
 ];
 
-document.getElementById('concepts-grid').innerHTML = FIVE.map((c, i) => `
+document.getElementById('concepts-grid').innerHTML = CONCEPTS.map((c, i) => `
   <a href="model.html?id=${c.id}" class="concept-card">
     <div class="concept-num">CONCEPT ${String(i + 1).padStart(2, '0')}</div>
     <div class="concept-name">${c.name}</div>

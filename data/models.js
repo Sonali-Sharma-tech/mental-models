@@ -1532,6 +1532,316 @@ The implication is uncomfortable: most efforts FAIL not because they're bad idea
   <text x="155" y="30" font-size="11" fill="#c77dff" font-family="system-ui" font-weight="700">tipping point</text>
   <text x="40" y="270" font-size="11" fill="#9090b8" font-family="system-ui">flat → explosion</text>
 </svg>`
+  },
+
+  /* ═══════════════ HOW YOU THINK — Memory Science (added v2) ═══════════════ */
+
+  "spaced-practice": {
+    id: "spaced-practice",
+    name: "Spaced Practice",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Memory decays exponentially. Each review flattens the curve.",
+    summary: "Reviewing material at expanding intervals (1d, 3d, 1w, 1mo) produces dramatically more durable memory than the same total time spent in one session.",
+    origin: "Hermann Ebbinghaus, Berlin, 1879–1885 (Über das Gedächtnis).",
+    story: `In 1879, no one had measured human memory rigorously. Hermann Ebbinghaus locked himself in a room with 2,300 nonsense syllables he'd invented (BAF, ZOK, RUL) — chosen specifically because they had no meaning he could lean on. His subject: himself.
+
+For five years he memorised lists, then tested himself at intervals: 20 minutes, 1 hour, 1 day, 1 week. He charted the decline. The result became one of the most replicated findings in cognitive psychology: memory decays roughly exponentially. The steepest drop happens in the first hour. After 24 hours without review, ~70% is gone.
+
+That sounds depressing. It isn't. The curve is the lever.
+
+Each successful retrieval at an INCREASING gap produces a FLATTER decay curve afterwards. Two reviews at expanding intervals produce far more durable memory than ten reviews crammed in one session. Cepeda's 2006 meta-analysis of 317 experiments found spacing beat massing across all of them.
+
+This is the principle behind Anki, Duolingo, SuperMemo, and every serious flashcard system. Cramming feels productive because performance peaks at session-end. Memory peaks much later — and only if you spaced.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Learning a new language? Five 1-hour sessions across 5 days produce ~3x the long-term retention of one 5-hour binge — same total minutes, dramatically different outcome. Anki cards force this on you automatically." },
+      { domain: "Everyday Life", icon: "🧠", text: "Memorising a friend's new phone number? Reading it once won't stick. Looking again 1 minute later, 10 minutes later, an hour later — even briefly — encodes it for weeks. The act of retrieving across gaps does the work." },
+      { domain: "Business", icon: "📊", text: "Onboarding new hires by dumping 200-page docs on day 1: ~10% retention by week 2. Same content delivered as 3 short sessions on day 1, 3, 8: ~70% retention. Same total reading time, vastly different outcome." }
+    ],
+    howTo: [
+      "After learning something, schedule reviews at expanding intervals: 1 day, 3 days, 1 week, 1 month, 3 months.",
+      "Each review = TEST yourself, don't re-read (combine with retrieval practice).",
+      "When you nail it, push the next interval further out. When you fail, reset to a shorter gap.",
+      "Use a tool (Anki, RemNote, Mochi) — manual scheduling fails because you forget when to review.",
+      "Optimal gap ≈ 10–20% of the time you need to remember it for. 1-week test: review every day. 1-year test: every ~28 days."
+    ],
+    watchOut: [
+      { title: "Spacing without retrieval = empty calendar", text: "Reviewing by re-reading on a schedule isn't spaced practice. The benefit comes from forcing retrieval after some forgetting has happened. If review feels effortless, the gap is too short." },
+      { title: "The curve never reaches zero, but neither does retention without effort", text: "Skip the schedule for 6 months and most of the gain is gone. Spaced practice isn't 'study and forget' — it's 'maintain forever, with diminishing effort each time'." }
+    ],
+    related: ["retrieval-practice", "desirable-difficulties", "compounding"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="240" x2="370" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <path d="M40,60 Q80,180 200,225 Q280,238 370,240" stroke="#ef476f" stroke-width="2" fill="none" opacity="0.4"/>
+  <path d="M40,60 Q70,140 100,160 L100,100 Q120,150 160,170 L160,110 Q190,150 230,170 L230,120 Q260,160 370,170" stroke="#7c83ff" stroke-width="2.5" fill="none"/>
+  <circle cx="100" cy="100" r="4" fill="#06d6a0"/>
+  <circle cx="160" cy="110" r="4" fill="#06d6a0"/>
+  <circle cx="230" cy="120" r="4" fill="#06d6a0"/>
+  <text x="46" y="50" font-size="11" fill="#ef476f" font-family="system-ui">no review</text>
+  <text x="200" y="100" font-size="11" fill="#7c83ff" font-family="system-ui" font-weight="600">spaced reviews</text>
+  <text x="40" y="265" font-size="10" fill="#9090b8" font-family="system-ui">days →</text>
+</svg>`
+  },
+
+  "retrieval-practice": {
+    id: "retrieval-practice",
+    name: "Retrieval Practice",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Pulling memory from your brain IS the learning.",
+    summary: "Testing yourself produces dramatically more durable memory than re-reading. The act of retrieval is itself an encoding event — even when you fail.",
+    origin: "Henry Roediger & Jeffrey Karpicke, Washington University, 2006.",
+    story: `In 2006, Henry Roediger and Jeffrey Karpicke ran the experiment that should have ended cramming forever. They gave students a passage to study, then split them into two groups:
+
+Group A re-read the passage four times. Group B read it once, then took three free-recall tests with no rereading allowed.
+
+Five minutes after the session, Group A felt much more confident. Both groups performed about the same on an immediate test.
+
+One week later, Group B remembered roughly 60% more than Group A.
+
+The students predicted the opposite. Asked which method would work better, they said re-reading. They were wrong — and most learners still are. Re-reading FEELS productive because familiarity creates an illusion of mastery. Retrieval feels HARDER because you have to actually pull memory from your brain. That difficulty IS the learning.
+
+Karpicke's follow-up work in 2008 showed something stranger: students who tested themselves into ERRORS and got feedback outperformed students who studied perfectly without testing. The act of failing to retrieve, then learning the right answer, builds stronger memory than effortless review.
+
+Generations of students who highlight, re-read, and review notes are using methods that reliably feel better than they work.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Reading the docs for a new framework feels productive. Closing the docs and trying to write code from memory — getting stuck, looking up only what you can't recall — produces 3-4× the retention. The errors during retrieval are where the learning happens." },
+      { domain: "Everyday Life", icon: "🧠", text: "Studying for an exam by re-reading notes for 2 hours: low retention. Same 2 hours doing closed-book practice problems and reviewing only the ones you missed: dramatically higher retention." },
+      { domain: "Business", icon: "📊", text: "Training new sales reps by giving them scripts to memorise: poor performance in the field. Same training time spent doing role-plays where they have to retrieve responses under pressure: vastly better real-world performance." }
+    ],
+    howTo: [
+      "After reading anything important, close the source.",
+      "Write down — on a blank page — everything you remember.",
+      "Open the source. Compare. Mark what you missed.",
+      "Repeat in 24 hours, then 3 days, then a week (combine with spaced practice).",
+      "When testing, embrace failures — they're the most efficient form of learning, not the cost of it."
+    ],
+    watchOut: [
+      { title: "Don't test before any exposure", text: "Retrieval without prior exposure is just frustration. You need the initial encoding to retrieve from. The order is: learn once → test repeatedly with gaps. Not test before learn." },
+      { title: "Recognition ≠ recall", text: "Multiple-choice tests measure recognition, which is much easier than free recall. If you want durable memory, write answers from blank. If you only do MCQs, you're getting a fraction of the benefit." }
+    ],
+    related: ["spaced-practice", "generation-effect", "desirable-difficulties"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="120" cy="150" rx="60" ry="45" fill="#7c83ff" fill-opacity="0.15" stroke="#7c83ff" stroke-width="2"/>
+  <text x="100" y="158" font-size="22" fill="#7c83ff" font-weight="700" font-family="system-ui">brain</text>
+  <path d="M180,150 Q220,135 260,150" stroke="#7c83ff" stroke-width="2.5" fill="none" stroke-dasharray="4,4" marker-end="url(#rArr)"/>
+  <defs><marker id="rArr" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#7c83ff"/></marker></defs>
+  <rect x="265" y="125" width="90" height="50" fill="#06d6a0" fill-opacity="0.15" stroke="#06d6a0" stroke-width="2" rx="8"/>
+  <text x="282" y="158" font-size="16" fill="#06d6a0" font-weight="700" font-family="system-ui">memory</text>
+  <text x="120" y="220" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">the PULL is the learning</text>
+</svg>`
+  },
+
+  "chunking": {
+    id: "chunking",
+    name: "Chunking",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Experts see patterns where novices see chaos.",
+    summary: "Working memory holds ~4 items. Expertise expands the BIT-content of each chunk by orders of magnitude — same memory, vastly more meaning.",
+    origin: "William Chase & Herbert Simon, Carnegie Mellon, 1973.",
+    story: `If memory were just raw capacity, chess grandmasters should have superhuman recall. They don't.
+
+William Chase and Herbert Simon flashed chess positions for five seconds, then asked subjects to recreate them on an empty board. In one condition, the positions came from real games. In the other, the same pieces were scattered randomly.
+
+On real positions: masters reconstructed ~16 pieces; novices managed ~4. On random scatters: BOTH groups got ~3.
+
+The master's memory wasn't bigger. It was organised. Years of practice had built thousands of recognised patterns — knight outpost on e5, isolated queen pawn, fianchettoed bishop. Each pattern was a CHUNK. The master saw 4 chunks where the novice saw 16 random pieces. Strip the patterns away (the random board), and the advantage vanished.
+
+This is how all expertise works. Doctors see symptom configurations. Senior engineers see architectural smells. Mathematicians see proof shapes. Working memory is fixed at ~4 chunks (Cowan's revision of Miller's 7±2). But expertise raises the bit-content of each chunk by orders of magnitude.
+
+Implication: 'just memorise this list' is the wrong instinct for hard learning. Find the structure first.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Senior engineer sees: 'this is a producer-consumer with a slow consumer' → retrieves a complete solution pattern in one chunk. Junior tries to memorise each line of the queue implementation: loading 30 chunks, all blurry. Same code, completely different cognitive load." },
+      { domain: "Everyday Life", icon: "🎵", text: "Musicians don't memorise individual notes — they recognise scales, chords, progressions, and motifs. A piece that looks impossibly long to a beginner contains maybe 10 chunks to an expert: same notes, very different memory cost." },
+      { domain: "Business", icon: "📊", text: "Experienced doctors recognise diagnostic patterns in seconds — chest pain + sweating + shortness of breath = MI. Medical students see 12 individual symptoms and try to remember them. Pattern recognition IS expertise." }
+    ],
+    howTo: [
+      "Before memorising anything, look for STRUCTURE — categories, hierarchies, narratives, common patterns.",
+      "Group related items into a single named chunk (give each chunk a memorable label).",
+      "Practice variations — see the same pattern in different contexts so the chunk becomes flexible.",
+      "When stuck, ask: 'Have I seen this shape before in another domain?' Cross-domain analogies expand chunk libraries.",
+      "Never try to learn flat lists in fields where structure exists. Find structure first; memorise structure, not items."
+    ],
+    watchOut: [
+      { title: "Chunks are domain-specific", text: "Chess chunks don't transfer to medicine. Decades of pattern-building in one field doesn't speed expertise in another. Don't expect generalisation that doesn't exist." },
+      { title: "Building chunks takes time and varied exposure", text: "You can't shortcut the process. A 'speed-learning' course that promises expert-level chunks in a weekend is selling fluency illusion. Real chunks come from thousands of varied encounters." }
+    ],
+    related: ["retrieval-practice", "deliberate-practice", "first-principles"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <text x="40" y="80" font-size="11" fill="#9090b8" font-family="system-ui">novice sees:</text>
+  <circle cx="60" cy="120" r="6" fill="#9090b8"/><circle cx="100" cy="135" r="6" fill="#9090b8"/>
+  <circle cx="140" cy="115" r="6" fill="#9090b8"/><circle cx="80" cy="175" r="6" fill="#9090b8"/>
+  <circle cx="130" cy="180" r="6" fill="#9090b8"/><circle cx="170" cy="155" r="6" fill="#9090b8"/>
+  <circle cx="60" cy="210" r="6" fill="#9090b8"/><circle cx="110" cy="220" r="6" fill="#9090b8"/>
+  <circle cx="160" cy="205" r="6" fill="#9090b8"/>
+  <text x="220" y="80" font-size="11" fill="#7c83ff" font-family="system-ui">expert sees:</text>
+  <ellipse cx="265" cy="125" rx="42" ry="22" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2"/>
+  <text x="252" y="129" font-size="12" fill="#7c83ff" font-weight="700" font-family="system-ui">CHUNK</text>
+  <ellipse cx="320" cy="180" rx="42" ry="22" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2"/>
+  <text x="307" y="184" font-size="12" fill="#7c83ff" font-weight="700" font-family="system-ui">CHUNK</text>
+  <ellipse cx="265" cy="215" rx="42" ry="22" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2"/>
+  <text x="252" y="219" font-size="12" fill="#7c83ff" font-weight="700" font-family="system-ui">CHUNK</text>
+</svg>`
+  },
+
+  "memory-palace": {
+    id: "memory-palace",
+    name: "Memory Palace",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "Hijack your spatial memory for arbitrary content.",
+    summary: "Mentally place items along a familiar route. Walking the route retrieves them in order. The brain's spatial machinery is repurposed for anything.",
+    origin: "Cicero, ancient Rome (Method of Loci). Modern revival: Joshua Foer, US Memory Championship, 2006.",
+    story: `In 2005, Joshua Foer was a journalist covering the US Memory Championship for an article. The competitors weren't savants — they were ordinary people using techniques anyone could learn. Skeptical, Foer trained for a year under coach Ed Cooke. In 2006, he won.
+
+His final scores: a shuffled deck of 52 cards in 1 minute 40 seconds. 100 random digits in 5 minutes. Names and faces of 99 strangers in 15 minutes.
+
+His method was the memory palace — a technique Cicero used 2000 years ago. Walking through a familiar mental space (his childhood kitchen), he placed each item to remember as a vivid, often absurd image at a specific location. Bill Clinton riding a llama on the counter. Einstein moonwalking past the fridge.
+
+To recall: walk the route, encounter each image, decode back to the original item.
+
+The technique exploits a fact about the brain: spatial memory is robust and ancient. Eleanor Maguire scanned the brains of London taxi drivers (who memorise 25,000 streets to pass The Knowledge) and found their posterior hippocampus was significantly larger than controls. The brain's spatial regions are some of its most powerful real estate.
+
+The memory palace hijacks that machinery. When she scanned memory champions later, their brains were structurally normal — but during encoding, they activated the same spatial regions. Same hardware, different content.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Need to remember 12 system design topics for an interview? Place each one in a room of your apartment. CAP theorem on the kitchen table. Sharding in the bathroom. Walk through during the interview to retrieve in order." },
+      { domain: "Everyday Life", icon: "🛒", text: "Grocery list of 15 items? Walk through your house, place each item in a vivid scene at each landmark. By the time you reach the store, the list is intact and you don't need to check a phone." },
+      { domain: "Business", icon: "📊", text: "Presenting at a conference and want to ditch the slides? Place each section of your talk at a location in a familiar route. Walking the route as you present means natural sequencing without notes." }
+    ],
+    howTo: [
+      "Choose a familiar place (your home, commute, school) where you can navigate in detail mentally.",
+      "Identify 10-20 distinct, ORDERED locations along a fixed route (don't randomise — the order is the retrieval cue).",
+      "For each item to remember, create a vivid, weird, often funny image at the location. Boring images don't stick.",
+      "Walk the route mentally several times after encoding. The walks ARE the practice.",
+      "Reuse the SAME palace for short-term lists; build new palaces for permanent stores."
+    ],
+    watchOut: [
+      { title: "Setup time isn't free", text: "Building a fluent palace takes weeks of practice. For a one-shot list of 5 items, it's overkill. Reserve it for content you genuinely need to recall on-demand and in order." },
+      { title: "Vivid > literal", text: "Placing 'milk' at the door = forgettable. Placing 'a giant cow squirting milk through the keyhole' = unforgettable. The technique requires creative effort, not just placement." }
+    ],
+    related: ["chunking", "self-reference", "retrieval-practice"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect x="60" y="100" width="280" height="160" fill="none" stroke="#7c83ff" stroke-width="2" rx="6"/>
+  <line x1="200" y1="100" x2="200" y2="260" stroke="#7c83ff" stroke-width="1.5"/>
+  <line x1="60" y1="180" x2="340" y2="180" stroke="#7c83ff" stroke-width="1.5"/>
+  <polygon points="60,100 200,40 340,100" fill="#7c83ff" fill-opacity="0.15" stroke="#7c83ff" stroke-width="2"/>
+  <text x="115" y="150" font-size="22" font-family="system-ui">🔑</text>
+  <text x="265" y="150" font-size="22" font-family="system-ui">📚</text>
+  <text x="115" y="225" font-size="22" font-family="system-ui">🥛</text>
+  <text x="265" y="225" font-size="22" font-family="system-ui">🎩</text>
+  <path d="M125,160 Q165,170 270,160 Q310,170 270,235 Q230,245 130,235" stroke="#06d6a0" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+  <text x="100" y="285" font-size="11" fill="#9090b8" font-family="system-ui">walk the route, retrieve the items</text>
+</svg>`
+  },
+
+  "deliberate-practice": {
+    id: "deliberate-practice",
+    name: "Deliberate Practice",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "10,000 hours doesn't matter. The KIND of hours does.",
+    summary: "Specific goals, focus, edge of ability, immediate feedback, refinement. Most practice is mindless reps; deliberate practice is the few that actually move the needle.",
+    origin: "K. Anders Ericsson, Berlin Music Academy, 1993.",
+    story: `K. Anders Ericsson studied violinists at the Berlin Music Academy. He grouped them by faculty assessment: "best" (international solo careers), "good" (top orchestras), and "music teachers" (lowest tier). All had the same teachers, same classes, roughly equivalent IQs.
+
+The cumulative hours of solo practice by age 20 told the story: best ~10,000 hours, good ~7,500, teachers ~5,000.
+
+Malcolm Gladwell collapsed this into "the 10,000-hour rule." Ericsson spent the rest of his career publicly correcting that. Hours alone do NOTHING. Mindless repetition for 10,000 hours produces a mediocre 10,000-hour practitioner. The KIND of practice is what matters.
+
+Ericsson's criteria for practice that actually moves the needle:
+1. Specific, well-defined goal (not "play for an hour")
+2. Full focus, conscious effort (autopilot is not practice)
+3. Operating beyond the comfort zone (at the edge of current ability)
+4. Immediate, informative feedback (to correct before the wrong representation hardens)
+5. Reflection and refinement (each cycle improves the mental representation)
+
+Macnamara's 2014 meta-analysis of 88 studies found deliberate practice explained only ~12% of variance in performance overall. Necessary but not sufficient. Genetics, starting age, opportunity, coaching all matter. The 10,000-hour rule is "more wrong than right."
+
+The skill isn't accumulating hours. It's structuring each hour so it builds something.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Coding for 8 hours making CRUD apps you've made before: zero growth. Spending 2 hours implementing a data structure you've never used, getting feedback from a senior engineer, and rewriting it three times: massive growth. Hours of mindless coding isn't practice." },
+      { domain: "Everyday Life", icon: "🎾", text: "Tennis player hitting 1,000 forehands at the same speed and angle: builds bad habits faster. Same player hitting 100 shots with a coach calling out specific corrections, focusing on weight transfer: actually improves." },
+      { domain: "Business", icon: "📊", text: "Sales rep doing the same pitch 100 times: gets fluent at one script. Same rep doing 20 pitches with a manager critiquing each one and forcing variations: develops actual skill." }
+    ],
+    howTo: [
+      "Set a SPECIFIC sub-skill goal for the session (not 'practice', but 'work on transitioning between minor and major chords').",
+      "Operate at the edge — choose problems that are 60-80% within your current ability. Not too easy (no growth), not too hard (no completion).",
+      "Get feedback fast — from a coach, an automated test, a recording you review, anything immediate.",
+      "Reflect: what worked, what didn't, what's the next sub-skill to target.",
+      "Reps without the above four steps are NOT deliberate practice. They're maintenance at best, bad-habit reinforcement at worst."
+    ],
+    watchOut: [
+      { title: "Most 'practice' is purposeful, not deliberate", text: "Without an expert teacher giving real-time feedback, you're doing what Ericsson called purposeful practice — better than mindless reps, but not the full thing. Don't conflate the two." },
+      { title: "Deliberate practice is exhausting", text: "It's mentally costly because it requires sustained focus at the edge of your ability. You can only do 1-4 hours per day before quality degrades. Quantity is the wrong metric." }
+    ],
+    related: ["chunking", "desirable-difficulties", "compounding"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="240" x2="370" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <path d="M40,225 Q120,220 200,210 Q280,200 370,195" stroke="#9090b8" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+  <path d="M40,230 Q120,180 200,120 Q280,80 370,50" stroke="#7c83ff" stroke-width="2.5" fill="none"/>
+  <text x="200" y="200" font-size="11" fill="#9090b8" font-family="system-ui">naive practice</text>
+  <text x="220" y="100" font-size="11" fill="#7c83ff" font-family="system-ui" font-weight="600">deliberate practice</text>
+  <text x="40" y="265" font-size="10" fill="#9090b8" font-family="system-ui">hours →</text>
+  <text x="20" y="40" font-size="10" fill="#9090b8" font-family="system-ui" transform="rotate(-90, 20, 40)">skill</text>
+</svg>`
+  },
+
+  "sleep-consolidation": {
+    id: "sleep-consolidation",
+    name: "Sleep Consolidation",
+    cat: "How You Think",
+    catColor: "#7c83ff",
+    tagline: "You don't finish learning while studying. You finish while sleeping.",
+    summary: "During sleep, the hippocampus replays the day's traces to the cortex, turning fragile memory into durable memory. Less than 7 hours = pouring water into a leaky bucket.",
+    origin: "Matthew Walker (Berkeley) & Robert Stickgold (Harvard), 2000s.",
+    story: `Matt Walker's lab at Berkeley ran a deceptively simple experiment. Subjects learned a finger-tapping sequence, then split into two groups.
+
+WAKE group: practice in the morning, retest 12 hours later. SLEEP group: practice in the evening, retest 12 hours later (after a night's sleep). Same task, same total practice, same gap. Only difference: sleep.
+
+Wake group: 0% improvement. Sleep group: ~20% improvement, with NO additional practice. The brain consolidated the skill while they slept.
+
+This isn't motor-skill specific. Walker's lab and Stickgold's at Harvard documented similar effects for declarative memory, emotional memory, problem-solving insight, and creative connection-making. During slow-wave (NREM) sleep, the hippocampus replays the day's traces to the cortex; sleep spindles gate the transfer; what was labile becomes stable. REM sleep does the same for procedural and emotional content.
+
+The implication is unforgiving: if you sleep less than 7 hours, you're pouring water into a leaky bucket. One bad night undoes a day of effort. Worse — Walker's longitudinal data shows the lost memory cannot be recovered by sleeping the next night. The consolidation window passes.
+
+This is the most underrated study habit. It costs zero hours and you literally do it lying down. Most learners ignore it.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Stuck on a tricky bug at 11pm? Sleep on it. The hippocampus is rerunning the problem space overnight — solutions arrive in the shower because the brain finished work that conscious effort couldn't." },
+      { domain: "Everyday Life", icon: "🧠", text: "Studying for a hard exam? The hour right before sleep gives material first crack at consolidation. The 4-hour cram you did instead, ending at 2am, is worse than the same content studied at 9pm followed by 8 hours of sleep." },
+      { domain: "Business", icon: "📊", text: "Founders pulling all-nighters before pitch days are sabotaging their own performance. The skills and content they need most — clarity, recall, working memory — are exactly what sleep deprivation destroys." }
+    ],
+    howTo: [
+      "Sleep 7-9 hours. Non-negotiable. This is the single highest-leverage study habit on this list.",
+      "Study HARD material in the 1-2 hours before sleep — gives it priority access to consolidation.",
+      "No screens 30 minutes before sleep — blue light suppresses melatonin, delays sleep, reduces REM.",
+      "No alcohol — it suppresses REM specifically, the stage that consolidates emotional and procedural memory.",
+      "Naps work too — even 20-minute naps after learning produce measurable consolidation gains."
+    ],
+    watchOut: [
+      { title: "Lost sleep can't be repaid", text: "Walker's data shows you can't 'catch up' on sleep the next night to recover lost consolidation. The window passes. People who say 'I'll sleep when I'm dead' are losing 20-50% of what they learn during waking hours." },
+      { title: "Quantity AND quality matter", text: "Eight hours of fragmented, alcohol-disrupted sleep ≠ eight hours of clean sleep. REM stages cycle every ~90 minutes; you need multiple full cycles for full consolidation benefits." }
+    ],
+    related: ["spaced-practice", "deliberate-practice", "compounding"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="220" x2="370" y2="220" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="220" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="220" x2="220" y2="220" stroke="#9090b8" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="100" y="245" font-size="11" fill="#9090b8" font-family="system-ui">wake group: 0%</text>
+  <line x1="220" y1="220" x2="370" y2="80" stroke="#7c83ff" stroke-width="3" fill="none"/>
+  <circle cx="370" cy="80" r="6" fill="#7c83ff" class="pulse"/>
+  <text x="270" y="100" font-size="11" fill="#7c83ff" font-family="system-ui" font-weight="600">sleep group: +20%</text>
+  <text x="225" y="245" font-size="22" font-family="system-ui">💤</text>
+  <text x="40" y="20" font-size="10" fill="#9090b8" font-family="system-ui">retention</text>
+</svg>`
   }
 
 };

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://thinking-models.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://thinking-models.vercel.app/models.html</loc><priority>0.9</priority></url>
+  <url><loc>https://thinking-models.vercel.app/learning-lab.html</loc><priority>0.9</priority></url>
+
+  <!-- Cognition deep dives -->
+  <url><loc>https://thinking-models.vercel.app/model.html?id=curiosity-gap</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=desirable-difficulties</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=generation-effect</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=self-reference</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=implementation-intentions</loc></url>
+
+  <!-- Mental model deep dives -->
+  <url><loc>https://thinking-models.vercel.app/model.html?id=inversion</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=occam</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=hanlon</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=fence</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=first-principles</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=second-order</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=reversibility</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=confirmation</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=survivorship</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=sunk-cost</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=anchoring</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=availability</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=dunning-kruger</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=opportunity</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=pareto</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=parkinson</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=compounding</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=black-swan</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=antifragile</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=murphy</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=goodhart</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=streisand</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=maslow</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=network</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=tragedy</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=prisoner</loc></url>
+  <url><loc>https://thinking-models.vercel.app/model.html?id=critical-mass</loc></url>
+</urlset>

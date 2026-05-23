@@ -382,6 +382,7 @@
     <button class="filter" data-filter="time">⏰ Time &amp; Effort</button>
     <button class="filter" data-filter="chaos">💥 Chaos &amp; Risk</button>
     <button class="filter" data-filter="people">👥 People &amp; Systems</button>
+    <button class="filter" data-filter="cognition">🧬 How You Think</button>
   </div>
 </div>
 
@@ -400,19 +401,21 @@
 
 <script>
 const COLORS = {
-  thinking: '#4cc9f0',
-  traps:    '#ef476f',
-  time:     '#ffd166',
-  chaos:    '#c77dff',
-  people:   '#06d6a0'
+  thinking:  '#4cc9f0',
+  traps:     '#ef476f',
+  time:      '#ffd166',
+  chaos:     '#c77dff',
+  people:    '#06d6a0',
+  cognition: '#7c83ff'
 };
 
 const CATEGORY_LABELS = {
-  thinking: '🧠 Thinking Better',
-  traps:    '🪤 Mind Trap',
-  time:     '⏰ Time & Effort',
-  chaos:    '💥 Chaos & Risk',
-  people:   '👥 People & Systems'
+  thinking:  '🧠 Thinking Better',
+  traps:     '🪤 Mind Trap',
+  time:      '⏰ Time & Effort',
+  chaos:     '💥 Chaos & Risk',
+  people:    '👥 People & Systems',
+  cognition: '🧬 How You Think'
 };
 
 // Each model has a unique inline SVG visualization
@@ -815,6 +818,87 @@ const MODELS = [
       <circle cx="160" cy="65" r="2" fill="#0e0e1a"/>
       <text x="124" y="115" font-size="9" fill="#ef476f">→ one-way only</text>
     </svg>`
+  },
+  {
+    id: 'curiosity-gap', name: 'Curiosity Gap', cat: 'cognition',
+    line: "Gaps create the hunger to know.",
+    kid: "Curiosity isn't a personality trait. It's your brain's response to a visible gap between what you know and what you suspect you should know.",
+    story: "George Loewenstein at Carnegie Mellon (1994) showed curiosity isn't innate — it's triggered by a felt gap between current and desired knowledge. Open the gap → brain craves the close. This is why 'you won't believe what happens next' works on everyone.",
+    when: "Before teaching anything. Open with a question, not a definition. Make people feel the gap before delivering the answer.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="20" y="40" width="60" height="50" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2" rx="6"/>
+      <text x="36" y="72" font-size="10" fill="#7c83ff" font-weight="700">know</text>
+      <text x="92" y="72" font-size="22" fill="#7c83ff" class="pulse" font-weight="900">?</text>
+      <rect x="120" y="40" width="60" height="50" fill="none" stroke="#7c83ff" stroke-width="2" stroke-dasharray="4,3" rx="6"/>
+      <text x="129" y="72" font-size="10" fill="#9090b8">don't yet</text>
+    </svg>`
+  },
+  {
+    id: 'desirable-difficulties', name: 'Desirable Difficulties', cat: 'cognition',
+    line: "Easy learning is fake learning.",
+    kid: "When learning feels effortless, it usually isn't working. The brain encodes deeply only when it has to struggle.",
+    story: "Robert Bjork at UCLA (1994). Re-reading feels productive but produces little memory. Self-testing feels frustrating and produces 2-4× more retention. Smooth learning is the warning sign, not the goal.",
+    when: "Whenever learning feels too easy. Replace re-reading with self-testing. Manufacture friction.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="190" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <path d="M20,40 Q100,55 190,95" stroke="#ef476f" stroke-width="2.5" fill="none" opacity="0.7"/>
+      <path d="M20,90 Q100,70 190,30" stroke="#7c83ff" stroke-width="2.5" fill="none"/>
+      <text x="22" y="35" font-size="8" fill="#ef476f">re-read</text>
+      <text x="125" y="25" font-size="8" fill="#7c83ff">self-test</text>
+      <text x="20" y="115" font-size="8" fill="#9090b8">retention over time</text>
+    </svg>`
+  },
+  {
+    id: 'generation-effect', name: 'Generation Effect', cat: 'cognition',
+    line: "Try first. Then learn.",
+    kid: "Information you struggle to GENERATE is remembered far better than information you simply READ — even if your guess is wrong.",
+    story: "Slamecka & Graf (1978). Generating an answer — even a wrong one — produces nearly 2× the retention of reading the answer. The struggle creates a memory slot the right answer fits into.",
+    when: "Before reading any answer. Force a guess first — even a wild one. Then check.",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="20" y="35" width="50" height="50" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2" rx="6"/>
+      <text x="38" y="70" font-size="22" fill="#7c83ff" font-weight="900">?</text>
+      <path d="M75,60 L120,60" stroke="#9090b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <rect x="125" y="35" width="50" height="50" fill="#06d6a0" fill-opacity="0.2" stroke="#06d6a0" stroke-width="2" rx="6"/>
+      <text x="143" y="70" font-size="22" fill="#06d6a0" font-weight="900">!</text>
+      <text x="22" y="105" font-size="9" fill="#7c83ff">guess</text>
+      <text x="125" y="105" font-size="9" fill="#06d6a0">reveal</text>
+    </svg>`
+  },
+  {
+    id: 'self-reference', name: 'Self-Reference Effect', cat: 'cognition',
+    line: "Make it about YOU and it sticks.",
+    kid: "The brain dramatically prefers information connected to the self. Same content, different framing — wildly different retention.",
+    story: "Rogers, Kuiper & Kirker (1977). Words processed for self-relevance were remembered 2-3× better than words processed for visual or sound features. The medial prefrontal cortex literally activates more for 'me' info.",
+    when: "After learning anything. Ask: 'where in MY life does this apply right now?' Force a specific answer.",
+    svg: `<svg viewBox="0 0 200 120">
+      <circle cx="100" cy="60" r="22" fill="#7c83ff" fill-opacity="0.25" stroke="#7c83ff" stroke-width="2"/>
+      <text x="89" y="65" font-size="12" fill="#7c83ff" font-weight="900">YOU</text>
+      <circle cx="40" cy="30" r="7" fill="#7c83ff" opacity="0.7"/>
+      <line x1="48" y1="38" x2="82" y2="50" stroke="#7c83ff" stroke-width="1.5"/>
+      <circle cx="160" cy="30" r="7" fill="#7c83ff" opacity="0.7"/>
+      <line x1="152" y1="38" x2="118" y2="50" stroke="#7c83ff" stroke-width="1.5"/>
+      <circle cx="40" cy="90" r="7" fill="#7c83ff" opacity="0.7"/>
+      <line x1="48" y1="82" x2="82" y2="70" stroke="#7c83ff" stroke-width="1.5"/>
+      <circle cx="160" cy="90" r="7" fill="#7c83ff" opacity="0.7"/>
+      <line x1="152" y1="82" x2="118" y2="70" stroke="#7c83ff" stroke-width="1.5"/>
+    </svg>`
+  },
+  {
+    id: 'implementation-intentions', name: 'Implementation Intentions', cat: 'cognition',
+    line: "If [trigger], then [action].",
+    kid: "Goals fail. If-then plans succeed. Linking a specific trigger to a specific action bypasses willpower.",
+    story: "Peter Gollwitzer (1999). Goals like 'I want to exercise more' mostly fail. If-then plans like 'If it's 7am, then I'll do 20 push-ups' double follow-through across hundreds of replicated studies.",
+    when: "When you keep failing to follow through on a goal. Convert it into 'If [specific trigger], then [specific action].'",
+    svg: `<svg viewBox="0 0 200 120">
+      <rect x="20" y="40" width="60" height="40" fill="#7c83ff" fill-opacity="0.2" stroke="#7c83ff" stroke-width="2" rx="6"/>
+      <text x="38" y="58" font-size="9" fill="#7c83ff" font-weight="700">IF</text>
+      <text x="32" y="72" font-size="9" fill="#7c83ff">trigger</text>
+      <path d="M85,60 L115,60" stroke="#7c83ff" stroke-width="2"/>
+      <polygon points="115,55 122,60 115,65" fill="#7c83ff"/>
+      <rect x="125" y="40" width="60" height="40" fill="#06d6a0" fill-opacity="0.2" stroke="#06d6a0" stroke-width="2" rx="6"/>
+      <text x="143" y="58" font-size="9" fill="#06d6a0" font-weight="700">THEN</text>
+      <text x="139" y="72" font-size="9" fill="#06d6a0">action</text>
+    </svg>`
   }
 ];
 
@@ -883,6 +967,18 @@ function openModal(m) {
     <div class="section" style="--bar: ${COLORS[m.cat]}">
       <h3>⚡ When to Use It</h3>
       <p>${m.when}</p>
+    </div>
+
+    <div class="section" style="--bar: ${COLORS[m.cat]}; border-top: none; padding-top: 0">
+      <a href="model.html?id=${m.id}"
+         style="display:inline-flex; align-items:center; gap:8px; padding:12px 22px;
+                background:${COLORS[m.cat]}; color:#0e0e1a; border-radius:999px;
+                font-weight:700; font-size:0.9rem; text-decoration:none;
+                transition: opacity .2s, transform .2s;"
+         onmouseover="this.style.opacity='.8'; this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)'">
+        Read Full Deep Dive →
+      </a>
     </div>
   `;
   modalBg.classList.add('open');

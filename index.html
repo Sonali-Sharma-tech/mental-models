@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
 <title>Mental Models — Think Clearly. Decide Better.</title>
 <meta name="description" content="Visual, animated, in-depth explanations of the world's most powerful mental models. Free."/>
 <link rel="stylesheet" href="shared.css"/>
@@ -37,12 +39,21 @@
     animation: fadeUp 0.6s 0.1s ease both;
   }
   .hero h1 .gradient {
+    color: var(--accent);
+    display: inline-block;
     background: linear-gradient(120deg, var(--accent), var(--purple), var(--blue));
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradShift 6s ease-in-out infinite;
+  }
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .hero h1 .gradient {
+      color: var(--accent);
+      background: none;
+      -webkit-text-fill-color: currentColor;
+    }
   }
   @keyframes gradShift { 0%,100%{background-position:0%} 50%{background-position:100%} }
   .hero-sub {

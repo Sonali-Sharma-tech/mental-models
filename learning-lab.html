@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
 <title>Learning Lab — The Science of How You Think</title>
 <meta name="description" content="5 cognitive psychology concepts that change how you read, learn, and remember — with interactive demos."/>
 <link rel="stylesheet" href="shared.css"/>
@@ -38,12 +40,21 @@
     animation: fadeUp 0.6s 0.1s ease both;
   }
   .lab-hero h1 .gradient {
+    color: #c77dff;
+    display: inline-block;
     background: linear-gradient(120deg, #7c83ff, #c77dff);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradShift 6s ease-in-out infinite;
+  }
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .lab-hero h1 .gradient {
+      color: #c77dff;
+      background: none;
+      -webkit-text-fill-color: currentColor;
+    }
   }
   @keyframes gradShift { 0%,100%{background-position:0%} 50%{background-position:100%} }
   .lab-sub {

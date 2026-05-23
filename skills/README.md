@@ -2,42 +2,93 @@
 
 Claude Code skills built alongside this project.
 
-## `mental-model/`
+---
 
-Multi-lens problem analyzer. Apply 5-7 mental models (from the 32 in this repo) to any stuck problem — architecture, debugging, team workflow, decision, design — and get concrete solution paths back.
+## `mental-model` — Multi-Lens Problem Analyzer
 
-### Install
+Apply 5-7 mental models from a curated set of 32 to any stuck problem — architecture decision, debugging, team workflow, design tradeoff, life decision. Outputs structured analysis + 2-3 concrete solution paths.
+
+**Tested on iteration 1** (3 evals, 6 runs):
+- With skill: **100%** assertion pass rate
+- Baseline (no skill): 56.7%
+- **Delta: +43 percentage points**
+
+See `mental-model/evals/evals.json` for the test prompts and `mental-model/models-index.md` for the full model catalog.
+
+---
+
+### Install — Option 1 (easiest)
+
+Drop the prebuilt bundle straight into your Claude skills directory:
 
 ```bash
-cp -r skills/mental-model ~/.claude/skills/
+# Download mental-model.skill from this repo, then:
+unzip mental-model.skill -d ~/.claude/skills/
 ```
 
-That's it. Restart Claude Code (or reload skills) and the skill becomes available.
+Restart Claude Code. The skill is now live.
 
-### Use
+### Install — Option 2 (from source)
 
-- `/mental-model <your problem>` — explicit invocation
-- *"I'm stuck on X"* — auto-fires
-- *"apply mental models to X"* — auto-fires
-- *"what mental models help here?"* — auto-fires
+```bash
+git clone https://github.com/Sonali-Sharma-tech/mental-models.git
+cp -r mental-models/skills/mental-model ~/.claude/skills/
+```
 
-### Example
+---
+
+### Usage
+
+Triggers automatically when you say:
+- *"I'm stuck on X"*
+- *"apply mental models to X"*
+- *"what mental models help here?"*
+- *"think through this with multiple lenses"*
+
+Or invoke explicitly:
+```
+/mental-model <your problem>
+```
+
+---
+
+### Live example
 
 ```
-> /mental-model "Code reviews take 3 days. Team frustrated."
+> /mental-model "Stuck on Instagram feed system design — push doesn't 
+   scale for celebrities (600M followers), pull doesn't scale for reads 
+   (5B/day). Going in circles."
 
-🧠 Pareto: Which 20% of PRs cause 80% of the delay?
-💥 Goodhart: Are you measuring "review time" instead of "time to confident merge"?
-🧠 Inversion: What would GUARANTEE slow reviews? (You're doing it.)
-👥 Tragedy of Commons: Who OWNS review-time? If no one, it dies.
-⏰ Parkinson's Law: Have you set an SLA?
+🧠 First Principles: A feed = 3 ops (get, sort, deliver). Push and pull
+   differ ONLY in WHEN you do step 1...
+
+⏰ Pareto: You're treating Ronaldo (600M) and a normal user (200) as
+   ONE problem. They're TWO problems with the same name...
+
+🧠 Inversion: How would you GUARANTEE failure? Use ONE approach for
+   everyone. The binary IS the failure mode...
+
+🪤 Confirmation Bias: Articles invented "push vs pull" as pedagogy.
+   You absorbed the simplification AS the problem...
+
+[+ Second-Order, Antifragility, Reversibility]
 
 —— Synthesis ——
-Cap PRs at 200 lines, assign explicit reviewers, add 24h SLA.
-~40% reduction in cycle time.
+Path A: Hybrid with celebrity threshold X
+Path B: Tiered architecture by user activity
+Path C: Reframe the binary in the interview itself ⭐
+
+Highest-leverage move: Path C beats Path A. The interviewer is testing
+if you SPOT THE BINARY AS A TRAP.
 ```
 
-### Files
+---
 
-- `SKILL.md` — skill definition + instructions for Claude
-- `models-index.md` — curated index of 32 mental models with core questions and domain tags
+### What's in this skill
+
+| File | Purpose |
+|---|---|
+| `SKILL.md` | Definition + when-to-trigger + process + output template |
+| `models-index.md` | The 32 mental models indexed with core question + domain tags |
+| `evals/evals.json` | Test prompts used to validate the skill |
+| `mental-model.skill` | Prebuilt distribution bundle |

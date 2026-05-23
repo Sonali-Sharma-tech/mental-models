@@ -1,0 +1,26 @@
+{
+  "skill_name": "mental-model",
+  "evals": [
+    {
+      "id": 0,
+      "name": "architecture-realtime-updates",
+      "prompt": "I'm stuck on an architecture decision for our React app at work. We need to push updates to the UI when data changes server-side. Polling every 5s feels wasteful (we have 50k DAU). WebSockets seem complex — auth, reconnect, scaling. SSE is one-way and has connection limits. I keep going in circles. Can you help me think through this?",
+      "expected_output": "Multi-lens analysis applying 5-7 mental models (likely: First Principles, Reversibility, Antifragile, Second-Order, Pareto, Inversion). Each model applied SPECIFICALLY to this real-time problem (not generic). Should end with 2-3 concrete solution paths.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "team-workflow-code-review-delays",
+      "prompt": "Our team's code reviews are taking forever — average 3 days from open to merge. People are frustrated, ship velocity is down. We've tried Slack reminders and 'review buddy' assignments but nothing sticks. What mental models would help here?",
+      "expected_output": "Multi-lens analysis with team/workflow models (likely: Pareto, Goodhart's Law, Tragedy of the Commons, Parkinson's Law, Inversion). Should diagnose the problem from multiple angles and propose 2-3 specific interventions.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "personal-career-decision",
+      "prompt": "I have an offer from a startup paying 40% more but it's pre-Series-A so equity is risky. Current job is stable, I've been there 3 years and have responsibilities I like. I'm leaning toward taking the offer because of the money but my partner thinks I'm being impulsive. Stuck.",
+      "expected_output": "Decision-relevant lenses (likely: Inversion, Opportunity Cost, Sunk Cost — for the 3 years invested, Reversibility, Second-Order Thinking, Confirmation Bias). Should generate balanced framing without taking a side, and surface the question 'is the past investment biasing me?'",
+      "files": []
+    }
+  ]
+}

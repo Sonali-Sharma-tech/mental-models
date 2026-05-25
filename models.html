@@ -1010,6 +1010,86 @@ const MODELS = [
       <text x="105" y="115" font-size="14">💤</text>
       <text x="125" y="115" font-size="9" fill="#7c83ff">sleep: +20%</text>
     </svg>`
+  },
+  {
+    id: 'system-1-2', name: 'System 1 & System 2', cat: 'thinking',
+    line: "Two minds in one head. Knowing which one is talking is everything.",
+    kid: "System 1 = fast, automatic, emotional. System 2 = slow, deliberate, logical. Most decisions are System 1. Most cognitive biases live there too.",
+    story: "Daniel Kahneman, 2002 Nobel laureate. Showed that humans aren't rational calculators — we're two minds glued together, and System 1 is in charge most of the time. System 2 just rationalizes what System 1 already decided.",
+    when: "When stakes are high, force System 2: write things down, use checklists, slow down. Save your scarce System 2 budget for what matters.",
+    svg: `<svg viewBox="0 0 200 120">
+      <ellipse cx="55" cy="60" rx="38" ry="28" fill="#ef476f" fill-opacity="0.2" stroke="#ef476f" stroke-width="2"/>
+      <text x="32" y="58" font-size="11" fill="#ef476f" font-weight="700">System 1</text>
+      <text x="34" y="72" font-size="9" fill="#ef476f">fast · auto</text>
+      <text x="93" y="65" font-size="12" fill="#9090b8" font-weight="700">VS</text>
+      <ellipse cx="145" cy="60" rx="38" ry="28" fill="#4cc9f0" fill-opacity="0.2" stroke="#4cc9f0" stroke-width="2"/>
+      <text x="122" y="58" font-size="11" fill="#4cc9f0" font-weight="700">System 2</text>
+      <text x="120" y="72" font-size="9" fill="#4cc9f0">slow · effort</text>
+    </svg>`
+  },
+  {
+    id: 'loss-aversion', name: 'Loss Aversion', cat: 'traps',
+    line: "Losses hurt 2× more than equivalent gains feel good.",
+    kid: "The pain of losing $100 is psychologically about twice as intense as the joy of gaining $100. This single asymmetry warps almost every decision.",
+    story: "Kahneman & Tversky, 1979 (Prospect Theory). Coin flip: win $150 or lose $100. Almost nobody took the bet despite +$25 expected value. The math was favorable; the felt pain of losing $100 wasn't.",
+    when: "Whenever you're avoiding something with positive expected value because you fear the loss. Run the bet 100 times in your head.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="100" y1="20" x2="100" y2="105" stroke="#9090b8" stroke-width="1"/>
+      <line x1="20" y1="65" x2="180" y2="65" stroke="#9090b8" stroke-width="1"/>
+      <rect x="80" y="25" width="40" height="40" fill="#ef476f" fill-opacity="0.6"/>
+      <text x="84" y="50" font-size="9" fill="#ef476f" font-weight="700">PAIN</text>
+      <rect x="80" y="65" width="40" height="20" fill="#06d6a0" fill-opacity="0.6"/>
+      <text x="86" y="79" font-size="9" fill="#06d6a0" font-weight="700">JOY</text>
+      <text x="50" y="115" font-size="9" fill="#9090b8">−$100</text>
+      <text x="115" y="115" font-size="9" fill="#9090b8">+$100</text>
+    </svg>`
+  },
+  {
+    id: 'lindy-effect', name: 'Lindy Effect', cat: 'chaos',
+    line: "The longer it's lasted, the longer it'll last.",
+    kid: "For non-perishable things — books, ideas, technologies — life expectancy INCREASES with age. Aristotle's Ethics will outlast last week's bestseller.",
+    story: "Mandelbrot's math, popularized by Taleb in Antifragile. Time has filtered out what doesn't work. SQL is 50 years old; it'll likely be relevant in 2050. Crypto is 15 years old; bet smaller.",
+    when: "When picking tools, skills, or ideas to invest in. Prefer time-tested. Skeptical of 'this changes everything.'",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="180" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <line x1="20" y1="20" x2="20" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <path d="M20,80 Q80,82 140,82 Q170,82 180,82" stroke="#c77dff" stroke-width="2.5" fill="none"/>
+      <text x="30" y="95" font-size="14">📜</text>
+      <text x="155" y="78" font-size="9" fill="#c77dff" font-weight="700">+life</text>
+      <text x="60" y="115" font-size="8" fill="#9090b8">years lasted →</text>
+    </svg>`
+  },
+  {
+    id: 'optimal-stopping', name: 'Optimal Stopping (37% Rule)', cat: 'time',
+    line: "Look at first 37%. Pick the next-best thing.",
+    kid: "When you must choose 1 from N options sequentially with no second chances: observe first 37%, then take the first option better than all you've seen. Mathematically optimal.",
+    story: "1960s mathematics (Secretary Problem). 1/e ≈ 36.8%. Applies to: hiring, dating, apartment hunting. Maximizes your odds of picking the best given irrevocable sequential choice.",
+    when: "Hiring, apartment hunting, picking a partner, choosing a tool from many candidates. When choices are sequential and one-way.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="80" x2="180" y2="80" stroke="#9090b8" stroke-width="1"/>
+      <rect x="20" y="65" width="60" height="30" fill="#ffd166" fill-opacity="0.3" stroke="#ffd166" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="32" y="83" font-size="9" fill="#ffd166" font-weight="700">OBSERVE</text>
+      <text x="40" y="55" font-size="8" fill="#ffd166">37%</text>
+      <rect x="80" y="65" width="100" height="30" fill="#06d6a0" fill-opacity="0.3" stroke="#06d6a0" stroke-width="1.5"/>
+      <text x="98" y="83" font-size="9" fill="#06d6a0" font-weight="700">COMMIT</text>
+      <text x="100" y="55" font-size="8" fill="#06d6a0">63%</text>
+    </svg>`
+  },
+  {
+    id: 'margin-of-safety', name: 'Margin of Safety', cat: 'thinking',
+    line: "Build a buffer between estimate and ruin.",
+    kid: "Your estimates will be wrong. Engineer a buffer between what you think will happen and what would be catastrophic. The buffer IS the safety.",
+    story: "Benjamin Graham, 1949. Adopted by Buffett & Munger. Originally: only buy stocks at 50¢ on the dollar of estimated value. Generalizes: bridges built for 5× expected load. Code with assertions. Project timelines with buffer.",
+    when: "Designing systems, planning projects, making big bets. Bigger stakes = bigger margin.",
+    svg: `<svg viewBox="0 0 200 120">
+      <line x1="20" y1="100" x2="180" y2="100" stroke="#9090b8" stroke-width="1"/>
+      <rect x="20" y="60" width="100" height="40" fill="#06d6a0" fill-opacity="0.3" stroke="#06d6a0" stroke-width="2" rx="3"/>
+      <text x="34" y="84" font-size="10" fill="#06d6a0" font-weight="700">ESTIMATE</text>
+      <rect x="120" y="60" width="40" height="40" fill="#ffd166" fill-opacity="0.3" stroke="#ffd166" stroke-width="2" stroke-dasharray="3,3" rx="3"/>
+      <text x="125" y="84" font-size="9" fill="#ffd166" font-weight="700">MARGIN</text>
+      <line x1="160" y1="50" x2="160" y2="110" stroke="#ef476f" stroke-width="2"/>
+      <text x="163" y="65" font-size="9" fill="#ef476f" font-weight="700">RUIN</text>
+    </svg>`
   }
 ];
 

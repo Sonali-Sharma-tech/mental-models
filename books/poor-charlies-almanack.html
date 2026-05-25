@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
+<title>Poor Charlie's Almanack — Models from Charlie Munger</title>
+<meta name="description" content="The mental models from Charlie Munger's Poor Charlie's Almanack. Click any to read the deep-dive — or see what's not yet on the site."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://thinking-models.vercel.app/books/poor-charlies-almanack.html"/>
+<meta property="og:title" content="Poor Charlie's Almanack — Models from Charlie Munger"/>
+<meta property="og:description" content="Charlie Munger's latticework of mental models — the book that started it all."/>
+<meta property="og:image" content="https://thinking-models.vercel.app/og.png"/>
+<link rel="canonical" href="https://thinking-models.vercel.app/books/poor-charlies-almanack.html"/>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<link rel="stylesheet" href="../shared.css"/>
+<style>
+  .book-hero { max-width: 900px; margin: 0 auto; padding: 80px 24px 40px; text-align: center; }
+  .book-meta { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+  .book-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .book-author { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+  .book-author strong { color: var(--text); font-weight: 600; }
+  .book-summary { color: var(--text); font-size: 1.1rem; line-height: 1.65; max-width: 700px; margin: 0 auto; }
+
+  .models-section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+  .section-title-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+  .section-h { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; }
+  .section-sub-h { font-size: 1.1rem; font-weight: 700; color: var(--muted); margin: 36px 0 14px; }
+  .legend { display: flex; gap: 16px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
+
+  .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .book-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-l);
+    padding: 18px 20px; transition: transform 0.25s, border-color 0.25s; position: relative;
+  }
+  .book-card.live { cursor: pointer; }
+  .book-card.live:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .book-card.coming { opacity: 0.65; }
+  .book-card.coming:hover { opacity: 0.9; }
+  .card-status {
+    position: absolute; top: 14px; right: 14px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .card-status.live { background: rgba(6,214,160,0.15); color: var(--green); }
+  .card-status.coming { background: rgba(144,144,184,0.15); color: var(--muted); }
+  .book-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; padding-right: 80px; }
+  .book-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+  .book-card .read-link { font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-top: 10px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="../models.html">Explore All</a>
+    <a href="../learning-lab.html">🧬 Learning Lab</a>
+    <a href="../index.html#newsletter" class="nav-cta">Subscribe</a>
+  </div>
+</nav>
+
+<section class="book-hero">
+  <div class="book-meta">📒 Source Book</div>
+  <h1>Poor Charlie's Almanack</h1>
+  <p class="book-author">by <strong>Charlie Munger</strong> · 2005 · <em>Vice Chairman, Berkshire Hathaway</em></p>
+  <p class="book-summary">
+    The book that invented the modern "mental models" movement. Munger's latticework approach —
+    pulling models from physics, biology, economics, psychology — became the template for
+    Buffett, Bezos, and a generation of multidisciplinary thinkers.
+  </p>
+</section>
+
+<section class="models-section">
+  <div class="section-title-row">
+    <h2 class="section-h">Models from Munger</h2>
+    <div class="legend">
+      <span><span style="color: var(--green); font-weight: 700;">Live</span> — deep-dive on site</span>
+      <span><span style="color: var(--muted); font-weight: 700;">Coming</span> — not yet added</span>
+    </div>
+  </div>
+
+  <h3 class="section-sub-h">Core Munger Frameworks</h3>
+  <div class="book-grid" id="grid-core"></div>
+
+  <h3 class="section-sub-h">Already on the Site (used heavily by Munger)</h3>
+  <div class="book-grid" id="grid-shared"></div>
+
+  <h3 class="section-sub-h">25 Tendencies of Human Misjudgment (Munger's USC speech, 1995)</h3>
+  <div class="book-grid" id="grid-tendencies"></div>
+</section>
+
+<footer class="site-footer">
+  Mental Models · Sourced from <em>Poor Charlie's Almanack</em> by Charlie Munger ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+<script>
+const CORE = [
+  { id: "margin-of-safety",  live: true,  name: "Margin of Safety",       desc: "Build a buffer between estimate and ruin. Originally Ben Graham's; Munger generalized it from investing to engineering, life, and decision-making." },
+  { id: "circle-competence", live: false, name: "Circle of Competence",   desc: "Know what you DO know — and especially what you DON'T. Operating outside your circle is where ruin happens. Better to be smart inside a small circle than dumb across a big one." },
+  { id: "lollapalooza",      live: false, name: "Lollapalooza Effect",    desc: "When multiple psychological forces combine in the same direction, the result is exponentially larger than any single force. Cult dynamics, market bubbles, brand loyalty all driven by lollapaloozas." },
+  { id: "twenty-punches",    live: false, name: "Twenty Punches",         desc: "Imagine you only get 20 major life/career decisions in your lifetime. You'd be incredibly careful with each. The metaphor: high-quality decisions matter way more than quantity." },
+  { id: "two-track-analysis",live: false, name: "Two-Track Analysis",     desc: "Always run TWO analyses: (1) what would a rational person decide given the facts? (2) what's the psychology distorting them right now? Both at once." },
+  { id: "latticework",       live: false, name: "Latticework of Models",  desc: "The meta-concept: don't memorize one mental model. Build dozens, from different disciplines (physics, biology, psychology, economics). Cross-disciplinary insight comes from the lattice." }
+];
+
+const SHARED = [
+  { id: "inversion",         live: true, name: "Inversion",                desc: "Munger's favorite. 'Tell me where I'm going to die so I'll never go there.' Don't ask how to succeed — ask how to fail, then avoid those things." },
+  { id: "compounding",       live: true, name: "Compound Interest",        desc: "Munger and Buffett's superpower. 'The first rule of compounding: never interrupt it unnecessarily.' Time + consistency = enormous outcomes." },
+  { id: "first-principles",  live: true, name: "First Principles",         desc: "Munger constantly invokes Aristotle: trace reasoning back to fundamental truths instead of accepting received wisdom." },
+  { id: "second-order",      live: true, name: "Second-Order Thinking",    desc: "Munger: 'Most people don't think second-order. They want one easy answer.' Think 'and then what?' three times." },
+  { id: "occam",             live: true, name: "Occam's Razor",            desc: "'I never want to invent the difficult, complicated reason when the easy one is at hand.' Simplest explanation usually right." }
+];
+
+const TENDENCIES = [
+  { id: "social-proof",       live: false, name: "Social-Proof Tendency",       desc: "Looking to others for cues on what to do. Powerful default in uncertainty. Why crowds chase fads, why panicked masses panic." },
+  { id: "reciprocation",      live: false, name: "Reciprocation Tendency",      desc: "Strong urge to repay favors and concessions. Used in sales (free samples), politics, and negotiation. Asymmetric power." },
+  { id: "authority",          live: false, name: "Authority-Misinfluence",      desc: "Disproportionate weight given to people with authority — even when wrong. Milgram showed people will electrocute strangers if a doctor in a lab coat says so." },
+  { id: "availability-tendency", live: false, name: "Availability Tendency",  desc: "What's easily recalled feels common (already on site as 'Availability Heuristic'). Munger: 'An idea or a fact is not worth more merely because it's readily available to you.'" },
+  { id: "deprival-superreaction", live: false, name: "Deprival Superreaction", desc: "Adjacent to Loss Aversion. The pain of losing something you nearly had (or already had) far exceeds rational response. Why auctions get bidders into trouble." },
+  { id: "envy-jealousy",      live: false, name: "Envy / Jealousy",             desc: "'It is not greed that drives the world; it is envy.' Munger argues envy is the most underrated driver of human behavior — and the most destructive." },
+  { id: "psych-denial",       live: false, name: "Pain-Avoiding Psychological Denial", desc: "Reality is too painful to bear, so the brain distorts it. Why people deny dying loved ones' diagnoses, addicts deny addiction, leaders deny obvious problems." },
+  { id: "incentives",         live: false, name: "Incentive-Caused Bias",       desc: "'Show me the incentive, I'll show you the outcome.' People rationalize what's good for them. The most underrated force in human affairs." },
+  { id: "consistency",        live: false, name: "Commitment & Consistency",    desc: "Once you've taken a position, the brain protects it. Why public commitments work, why doubling down on bad bets is so common." },
+  { id: "contrast-misreaction", live: false, name: "Contrast-Misreaction",      desc: "We perceive things relative to their immediate context. A $1,000 watch seems cheap next to a $10,000 watch. Used by skilled salespeople constantly." },
+  { id: "stress-influence",   live: false, name: "Stress-Influence",            desc: "Heavy stress causes deeper, more permanent change in personality and decision-making. Why combat shapes character, why crises produce surprising leaders." },
+  { id: "use-it-or-lose-it",  live: false, name: "Use-It-or-Lose-It",           desc: "Skills atrophy without practice. Even professional-level skills (math, languages, judgment) decay measurably without deliberate maintenance." }
+];
+
+function render(id, list, color) {
+  document.getElementById(id).innerHTML = list.map(m => {
+    const live = m.live;
+    return `
+      <div class="book-card ${live ? 'live' : 'coming'}" ${live ? `onclick="window.location.href='../model.html?id=${m.id}'"` : ''}>
+        <span class="card-status ${live ? 'live' : 'coming'}">${live ? 'On site' : 'Coming'}</span>
+        <h3>${m.name}</h3>
+        <p>${m.desc}</p>
+        ${live ? `<a class="read-link" href="../model.html?id=${m.id}">Read deep dive →</a>` : ''}
+      </div>`;
+  }).join('');
+}
+render('grid-core', CORE);
+render('grid-shared', SHARED);
+render('grid-tendencies', TENDENCIES);
+</script>
+
+</body>
+</html>

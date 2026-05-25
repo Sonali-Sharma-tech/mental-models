@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
+<title>Source Books — Mental Models</title>
+<meta name="description" content="The books that informed every model on this site. Browse by source — pick what to deep-dive into next."/>
+<meta property="og:url" content="https://thinking-models.vercel.app/books/"/>
+<meta property="og:title" content="Source Books — Mental Models"/>
+<meta property="og:description" content="The books that informed every model on this site."/>
+<meta property="og:image" content="https://thinking-models.vercel.app/og.png"/>
+<link rel="canonical" href="https://thinking-models.vercel.app/books/"/>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<link rel="stylesheet" href="../shared.css"/>
+<style>
+  .hero { max-width: 880px; margin: 0 auto; padding: 80px 24px 40px; text-align: center; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 18px; }
+  .hero p { color: var(--muted); font-size: 1.1rem; line-height: 1.65; max-width: 660px; margin: 0 auto; }
+
+  .books-grid {
+    max-width: 1100px; margin: 40px auto 80px; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;
+  }
+  .book-tile {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl);
+    padding: 30px 28px; display: block; color: inherit; text-decoration: none;
+    transition: transform 0.3s cubic-bezier(.2,.9,.3,1.4), box-shadow 0.3s, border-color 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .book-tile::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--c, var(--blue)); opacity: 0.7;
+  }
+  .book-tile:hover {
+    transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border-color: var(--c, var(--blue));
+  }
+  .book-tile-meta { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c, var(--blue)); margin-bottom: 10px; }
+  .book-tile h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .book-tile .author { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
+  .book-tile-summary { font-size: 0.95rem; line-height: 1.55; color: var(--text); margin-bottom: 18px; }
+  .book-tile-stats { font-size: 0.8rem; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; }
+  .book-tile-stats strong { color: var(--c, var(--blue)); font-weight: 700; }
+  .book-tile-arrow { font-size: 0.85rem; font-weight: 700; color: var(--c, var(--blue)); margin-top: 16px; display: block; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="../models.html">Explore All</a>
+    <a href="../learning-lab.html">🧬 Learning Lab</a>
+    <a href="../index.html#newsletter" class="nav-cta">Subscribe</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Source Books</h1>
+  <p>
+    Every mental model on this site comes from somewhere. These are the books that informed them —
+    pick one to see all its models in one place, with links to the deep-dives.
+  </p>
+</section>
+
+<div class="books-grid">
+
+  <a href="poor-charlies-almanack.html" class="book-tile" style="--c: #ffd166;">
+    <div class="book-tile-meta">📒 Source · 2005</div>
+    <h2>Poor Charlie's Almanack</h2>
+    <p class="author">by Charlie Munger</p>
+    <p class="book-tile-summary">
+      The book that invented the modern "mental models" movement. Munger's latticework — pulling
+      models from physics, biology, psychology, economics — became the template for a generation
+      of multidisciplinary thinkers.
+    </p>
+    <div class="book-tile-stats"><strong>23 models</strong> indexed · <strong>6 live</strong> on site</div>
+    <span class="book-tile-arrow">Browse models →</span>
+  </a>
+
+  <a href="thinking-fast-slow.html" class="book-tile" style="--c: #4cc9f0;">
+    <div class="book-tile-meta">📕 Source · 2011</div>
+    <h2>Thinking, Fast and Slow</h2>
+    <p class="author">by Daniel Kahneman</p>
+    <p class="book-tile-summary">
+      The Nobel laureate's synthesis of 40 years of cognitive psychology. Introduced System 1 / System 2 —
+      the framework that explains why every cognitive bias exists.
+    </p>
+    <div class="book-tile-stats"><strong>20 models</strong> indexed · <strong>6 live</strong> on site</div>
+    <span class="book-tile-arrow">Browse models →</span>
+  </a>
+
+  <div class="book-tile" style="--c: #c77dff; opacity: 0.55; cursor: default; pointer-events: none;">
+    <div class="book-tile-meta">🧬 Coming next</div>
+    <h2>Antifragile</h2>
+    <p class="author">by Nassim Nicholas Taleb</p>
+    <p class="book-tile-summary">
+      Black Swan, Antifragility, Lindy Effect, Skin in the Game, Via Negativa, Barbell Strategy. Taleb's
+      framework for thinking about uncertainty and asymmetric risk.
+    </p>
+    <div class="book-tile-stats">Catalog page coming soon</div>
+  </div>
+
+  <div class="book-tile" style="--c: #06d6a0; opacity: 0.55; cursor: default; pointer-events: none;">
+    <div class="book-tile-meta">📗 Coming next</div>
+    <h2>The Great Mental Models</h2>
+    <p class="author">by Shane Parrish (Farnam Street)</p>
+    <p class="book-tile-summary">
+      Four-volume series. Map vs Territory, Probabilistic Thinking, Activation Energy, Feedback Loops,
+      Sampling, Regression to Mean. The most rigorous mental-models curriculum in print.
+    </p>
+    <div class="book-tile-stats">Catalog page coming soon</div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  Mental Models · A learning-in-public project ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+</body>
+</html>

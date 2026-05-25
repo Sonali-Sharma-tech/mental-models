@@ -1794,6 +1794,260 @@ The skill isn't accumulating hours. It's structuring each hour so it builds some
 </svg>`
   },
 
+  /* ═══════════════ ADDED FROM KAHNEMAN, MUNGER, TALEB, CHRISTIAN ═══════════════ */
+
+  "system-1-2": {
+    id: "system-1-2",
+    name: "System 1 & System 2",
+    cat: "Thinking Better",
+    catColor: "#4cc9f0",
+    tagline: "Two minds in one head. Knowing which one is talking is everything.",
+    summary: "Most thinking happens fast, automatic, and emotional (System 1). The slow, deliberate, logical mind (System 2) only steps in when called — and is exhausting to use.",
+    origin: "Daniel Kahneman, 'Thinking, Fast and Slow' (2011). Built on decades of research with Amos Tversky.",
+    story: `Daniel Kahneman won the 2002 Nobel Prize in Economics for showing that humans don't actually decide the way classical economics assumed. We're not rational calculators. We're two minds glued together — and one of them is in charge most of the time.
+
+System 1 is fast, automatic, intuitive, emotional. It runs constantly without effort. When you recognise a friend's face, dodge a flying ball, sense someone is angry, or have a "gut feeling" about a person — that's System 1. It's brilliant at pattern matching and incredibly cheap to run. It's also the home of nearly every cognitive bias.
+
+System 2 is slow, deliberate, effortful. It's what you use to multiply 17 × 24, follow a complex argument, or check whether your code actually does what you think it does. System 2 is metabolically expensive — your pupils literally dilate when it engages — and it has limited capacity. After a few hours of hard System 2 work, you're depleted.
+
+The dangerous truth: System 2 thinks it's in charge. It isn't. Most decisions are made by System 1, and System 2 just generates plausible-sounding rationalisations for what System 1 already decided. This is why people are confidently wrong, why arguments rarely change minds, and why every cognitive bias you've heard of exists.
+
+The skill isn't trying to use System 2 for everything (impossible, exhausting). It's NOTICING which one is currently talking — and slowing down at the moments where the cost of System 1 being wrong is high.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Code review: 'this looks right' is System 1 pattern-matching. 'Let me trace through it line by line' is System 2. The bug System 1 missed is in the line that 'looks right'. Senior engineers know which mode to be in based on stakes." },
+      { domain: "Everyday Life", icon: "🧠", text: "Argument with partner: System 1 hears criticism, fires defensive response in 200ms. System 2, if you slow down, can ask 'what are they actually saying?' Most fights are System 1 vs System 1. The first to engage System 2 ends them." },
+      { domain: "Business", icon: "📊", text: "Hiring: gut feeling in 30 seconds (System 1) is highly correlated with what later interview structure 'discovers.' But System 1 also encodes biases — that's why structured interviews + scorecards exist. Force System 2 by externalising it." }
+    ],
+    howTo: [
+      "Identify when you're on autopilot (System 1) vs deliberating (System 2).",
+      "For high-stakes decisions, deliberately slow down. Write things down — the act of writing forces System 2.",
+      "Use checklists, frameworks, and structured decision processes to OUTSOURCE System 2 to systems (less depleting than running it in your head).",
+      "Save your System 2 budget for what matters. You only get a few hours of it per day before quality drops.",
+      "When you catch yourself with a strong opinion you can't justify, that's System 1 in charge. Force a 'why' before acting."
+    ],
+    watchOut: [
+      { title: "System 1 is often RIGHT", text: "Don't dismiss intuition. System 1 encodes years of pattern recognition. Experts' gut feelings are usually correct (in their domain). The trap is using System 1 in domains where you DON'T have the patterns yet." },
+      { title: "System 2 is exhausting and rarely fully engaged", text: "You can't run System 2 all day. Most decisions WILL be made by System 1 — that's not avoidable. The skill is choosing which decisions deserve System 2's scarce attention." }
+    ],
+    related: ["confirmation", "anchoring", "availability"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="120" cy="150" rx="70" ry="55" fill="#ef476f" fill-opacity="0.15" stroke="#ef476f" stroke-width="2"/>
+  <text x="100" y="155" font-size="13" fill="#ef476f" font-weight="700" font-family="system-ui">System 1</text>
+  <text x="92" y="175" font-size="10" fill="#ef476f" font-family="system-ui">fast · auto</text>
+  <ellipse cx="280" cy="150" rx="70" ry="55" fill="#4cc9f0" fill-opacity="0.15" stroke="#4cc9f0" stroke-width="2"/>
+  <text x="260" y="155" font-size="13" fill="#4cc9f0" font-weight="700" font-family="system-ui">System 2</text>
+  <text x="252" y="175" font-size="10" fill="#4cc9f0" font-family="system-ui">slow · effort</text>
+  <text x="190" y="155" font-size="14" fill="#9090b8" font-family="system-ui">VS</text>
+  <text x="80" y="240" font-size="11" fill="#9090b8" font-family="system-ui">most thinking</text>
+  <text x="240" y="240" font-size="11" fill="#9090b8" font-family="system-ui">rarely engaged</text>
+</svg>`
+  },
+
+  "loss-aversion": {
+    id: "loss-aversion",
+    name: "Loss Aversion",
+    cat: "Mind Traps",
+    catColor: "#ef476f",
+    tagline: "Losses hurt 2× more than equivalent gains feel good.",
+    summary: "The pain of losing is psychologically about twice as powerful as the pleasure of gaining the same amount. This single asymmetry distorts most decisions.",
+    origin: "Daniel Kahneman & Amos Tversky, 1979 (Prospect Theory). Won Kahneman the 2002 Nobel Prize in Economics.",
+    story: `In 1979, Kahneman and Tversky ran a now-famous experiment. They offered subjects a coin flip: heads, win $150. Tails, lose $100. Expected value: +$25. Almost nobody took the bet.
+
+The math was clearly favourable. The decision wasn't. Why? Losing $100 felt psychologically MORE intense than winning $150. They tested the asymmetry rigorously across hundreds of variations. The ratio came out remarkably stable: roughly 2:1. A loss of X feels about as bad as a gain of 2X feels good.
+
+This single asymmetry warps almost every decision humans make.
+
+It's why investors hold losing stocks too long ("I don't want to realise the loss"). Why people stay in bad jobs ("what if the next one is worse?"). Why companies overcompensate to avoid one customer complaint while ignoring ten silent satisfied customers. Why the entire insurance industry exists — we'll pay more than the expected loss just to avoid the possibility of feeling it.
+
+The deeper insight is that loss aversion makes us systematically reject favourable bets. People who refused Kahneman's coin flip would be MUCH richer over a lifetime if they took it 100 times. But emotion overrides arithmetic, every time.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Holding onto legacy code because 'rewrite might fail' — even when the rewrite has 80% expected value gain. The fear of breaking what works (a felt loss) outweighs the expected gain of cleaner code. Same logic kills database migrations." },
+      { domain: "Everyday Life", icon: "💡", text: "Staying in a relationship/job/city that's a 5/10 because the alternative MIGHT be a 4. The brain weighs the possible loss (going to 4) twice as heavily as the possible gain (going to 9). Result: people get stuck at 5s for years." },
+      { domain: "Business", icon: "📊", text: "Insurance industry: customers pay $2,000/year to insure something with 5% chance of $20,000 loss. Expected loss: $1,000. Customers happily pay double the expected value because the felt cost of the loss is double the dollar amount." }
+    ],
+    howTo: [
+      "When facing a decision, ask: 'Am I weighing the possible loss MORE than mathematically warranted?'",
+      "Convert the framing — instead of 'I might lose X', ask 'I'd be paying X for the certainty of not feeling loss.'",
+      "Run the favorable bet 100 times in your head. Would the math win out? If yes, take it.",
+      "Notice when fear of regret is bigger than the actual stakes. That's loss aversion talking, not reason.",
+      "For repeated small bets with positive expected value, just take them. The loss aversion is a feature for survival but a bug for optimization."
+    ],
+    watchOut: [
+      { title: "Loss aversion isn't always wrong", text: "Some losses ARE catastrophic and irrecoverable. Losing your house. Losing health. The asymmetry exists because over evolutionary time, losses really were more dangerous than equivalent gains were valuable. Don't override it for high-stakes irreversible bets." },
+      { title: "Don't force yourself into reckless behavior", text: "Recognising loss aversion doesn't mean ignoring it entirely. The goal is calibration — taking the favorable bets while still respecting the catastrophic ones." }
+    ],
+    related: ["sunk-cost", "anchoring", "reversibility"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="200" y1="40" x2="200" y2="260" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="150" x2="360" y2="150" stroke="#9090b8" stroke-width="1"/>
+  <text x="50" y="155" font-size="11" fill="#9090b8" font-family="system-ui">$</text>
+  <rect x="160" y="80" width="80" height="70" fill="#ef476f" fill-opacity="0.6"/>
+  <text x="166" y="115" font-size="13" fill="#ef476f" font-weight="700" font-family="system-ui">PAIN</text>
+  <text x="166" y="135" font-size="10" fill="#ef476f" font-family="system-ui">losing $100</text>
+  <rect x="160" y="150" width="80" height="35" fill="#06d6a0" fill-opacity="0.6"/>
+  <text x="167" y="172" font-size="11" fill="#06d6a0" font-weight="700" font-family="system-ui">JOY of $100</text>
+  <text x="80" y="220" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">losses</text>
+  <text x="320" y="220" font-size="11" fill="#9090b8" font-family="system-ui" text-anchor="middle">gains</text>
+  <text x="80" y="270" font-size="11" fill="#ef476f" font-family="system-ui" font-weight="700" text-anchor="middle">2× the felt impact</text>
+</svg>`
+  },
+
+  "lindy-effect": {
+    id: "lindy-effect",
+    name: "Lindy Effect",
+    cat: "Chaos & Risk",
+    catColor: "#c77dff",
+    tagline: "The longer it's lasted, the longer it'll last.",
+    summary: "For non-perishable things — books, ideas, technologies — life expectancy INCREASES with age. New stuff is fragile. Old stuff has earned its longevity.",
+    origin: "Mandelbrot (mathematics). Popularised by Nassim Taleb in 'Antifragile' (2012).",
+    story: `Pick a book that's been in print for 100 years and another that just hit the bestseller list. Which is more likely to be read in 10 years?
+
+Counter-intuitively: the 100-year-old book.
+
+Perishable things (humans, fruit) decay with age — every day brings them closer to expiry. But NON-perishable things (books, technologies, institutions) work the opposite way. Each year a thing has survived is evidence that it'll survive more years. A book that's lasted 2,000 years (Aristotle's Ethics) will probably last 2,000 more. A book that came out last week probably won't last a decade.
+
+Taleb called this the Lindy Effect (named after Lindy's deli in NYC where comedians informally observed that veteran acts had longer expected careers than rookies).
+
+The principle: time has filtered out what doesn't work. Older ideas have already survived 1,000 fashions, 100 paradigm shifts, and millions of skeptics. They've earned their longevity. New ideas haven't been tested.
+
+Practical implication: when picking what to learn, what to use, what to invest in — bet on what's been around. Latin > buzzword frameworks. SQL > the trendy NoSQL of the year. Stoic philosophy > whatever just hit the airport bookstore.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "SQL is 50+ years old. JavaScript frameworks come and go every 18 months. The Lindy bet: SQL will be relevant in 2050. The 'next big thing' framework probably won't. Bet your career on Lindy tech for foundational skills." },
+      { domain: "Everyday Life", icon: "📚", text: "Reading: 'Meditations' by Marcus Aurelius (1,900 years) vs the latest self-help bestseller. The bestseller might be brilliant — but probability says you'll get more durable insight from the Stoic. Time has already done the curation." },
+      { domain: "Business", icon: "📊", text: "Investing: gold (~5,000 years), real estate (~10,000 years), broad-market index funds (~100 years). All Lindy. Crypto (~15 years), NFTs (~5 years) — high upside, high mortality. Most LOSE everything in time-tested ways." }
+    ],
+    howTo: [
+      "When picking tools, skills, or ideas to invest in: prefer time-tested.",
+      "Ask 'how long has this been around?' If the answer is <5 years, treat it as fragile.",
+      "When something old seems boring, that's the survivorship signal — it survived because it works.",
+      "Apply with caution to specific predictions: Lindy says SOMETHING in this category will last; not necessarily THIS specific instance.",
+      "Use as a tiebreaker between equally promising options: pick the older one when nothing else differentiates."
+    ],
+    watchOut: [
+      { title: "Lindy ≠ better. Lindy = more durable.", text: "Sometimes new technology is genuinely revolutionary (electricity, internet, transformers). Lindy isn't a rule against innovation — it's a calibration on how to weigh durability vs novelty. Don't be reactionary." },
+      { title: "Doesn't apply to perishable things", text: "Lindy is for ideas, books, technologies, institutions. NOT for biological things (humans, fruit) — those decay normally. Don't invert biological mortality." }
+    ],
+    related: ["antifragile", "compounding", "second-order"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="240" x2="360" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <path d="M40,200 Q120,210 200,210 Q280,205 360,200" stroke="#c77dff" stroke-width="2.5" fill="none"/>
+  <text x="60" y="225" font-size="22" font-family="system-ui">📜</text>
+  <text x="320" y="195" font-size="11" fill="#c77dff" font-family="system-ui" font-weight="700">expected life</text>
+  <text x="320" y="210" font-size="11" fill="#c77dff" font-family="system-ui" font-weight="700">grows with age</text>
+  <path d="M40,180 Q60,150 80,200 L120,200 L120,170 L160,170 L160,220 L200,220 L200,180 L260,180 L260,235 Q320,238 360,238" stroke="#9090b8" stroke-width="1.5" fill="none" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="40" y="265" font-size="11" fill="#9090b8" font-family="system-ui">years lasted →</text>
+</svg>`
+  },
+
+  "optimal-stopping": {
+    id: "optimal-stopping",
+    name: "Optimal Stopping (37% Rule)",
+    cat: "Time & Effort",
+    catColor: "#ffd166",
+    tagline: "Look at first 37%. Pick the next-best thing.",
+    summary: "When you must choose 1 from N options sequentially with no second chances, mathematically optimal: observe first 37%, then take the first option better than all you've seen.",
+    origin: "Mathematics, 1960s (Secretary Problem). Popularised in Brian Christian & Tom Griffiths' 'Algorithms to Live By' (2016).",
+    story: `Imagine you're hiring a secretary. You'll interview candidates one at a time. After each interview, you must decide: hire or reject. Rejections are final — that candidate is gone. Hires are final — you're done. You don't know how good future candidates will be.
+
+When should you stop and hire?
+
+Mathematicians solved this exactly in the 1960s. The answer: observe the first 37% of candidates without hiring (they're your benchmark), then hire the first candidate who's BETTER than all the benchmark ones. This strategy gives you a 37% chance of getting the best possible candidate — strictly better than any other strategy.
+
+The number 1/e ≈ 36.8% emerges from the math because as you increase candidates, the optimal "look phase" converges to that fraction. It's strange and beautiful. And it generalises.
+
+Apartment hunting? Look at 37% of available units, then commit to the next one that beats them all.
+
+Dating with the goal of marriage? If you expect to date 30 people, observe the first 11, then commit to the next person better than all of them.
+
+Hiring a designer? Interview 37% as benchmarks. Hire the next one who exceeds them.
+
+The technique doesn't guarantee the best — nothing can. It maximises your odds given the constraint of sequential, irrevocable choice.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Choosing a database for a new product: list 10 candidates. Evaluate the first 4 deeply (~37%) without committing. Pick the next one that's clearly better. Faster than evaluating all 10 with diminishing rigor." },
+      { domain: "Everyday Life", icon: "🏠", text: "Apartment hunting in NYC: you have 30 days, ~30 viewings. Use first 11 days as observation (don't sign even if you love a place). Days 12-30: commit to the first place that beats them all." },
+      { domain: "Business", icon: "📊", text: "Hiring a senior engineer: estimate you'll interview 15 candidates over a quarter. Use first 5 as benchmarks. Hire the next one who exceeds all 5. Resists 'just one more interview' paralysis." }
+    ],
+    howTo: [
+      "Estimate (or commit to) total options you'll see: N.",
+      "Calculate 0.37 × N. That's your observation phase.",
+      "During observation: rank everyone you see, but don't commit. Reject all of them at the end.",
+      "After observation: commit to the FIRST option that's better than your highest-ranked observation.",
+      "Don't second-guess. The math is the math. Backing out invalidates the strategy."
+    ],
+    watchOut: [
+      { title: "Assumes irrevocable choice", text: "Most real-world decisions allow renegotiation or coming back. If options aren't actually sequential-only, the strict 37% rule is overkill — you can use simpler heuristics. Apply the rule when commitment really is one-way." },
+      { title: "37% is a heuristic, not a law", text: "The exact optimum depends on your goal: if you want top-1, use 37%. If 'top-3 is fine', use a smaller observation phase. Calibrate to your real preferences. Don't treat 37% as sacred." }
+    ],
+    related: ["reversibility", "opportunity", "second-order"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="200" x2="360" y2="200" stroke="#9090b8" stroke-width="1"/>
+  <rect x="40" y="180" width="118" height="40" fill="#ffd166" fill-opacity="0.2" stroke="#ffd166" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="68" y="205" font-size="11" fill="#ffd166" font-family="system-ui" font-weight="700">OBSERVE (37%)</text>
+  <rect x="158" y="180" width="202" height="40" fill="#06d6a0" fill-opacity="0.2" stroke="#06d6a0" stroke-width="1.5"/>
+  <text x="200" y="205" font-size="11" fill="#06d6a0" font-family="system-ui" font-weight="700">COMMIT to next-best</text>
+  <line x1="158" y1="170" x2="158" y2="230" stroke="#7c83ff" stroke-width="2"/>
+  <text x="60" y="160" font-size="10" fill="#9090b8" font-family="system-ui">don't pick yet</text>
+  <text x="180" y="160" font-size="10" fill="#9090b8" font-family="system-ui">pick first one better than all observed</text>
+  <text x="40" y="245" font-size="10" fill="#9090b8" font-family="system-ui">candidate 1</text>
+  <text x="320" y="245" font-size="10" fill="#9090b8" font-family="system-ui">candidate N</text>
+</svg>`
+  },
+
+  "margin-of-safety": {
+    id: "margin-of-safety",
+    name: "Margin of Safety",
+    cat: "Thinking Better",
+    catColor: "#4cc9f0",
+    tagline: "Build a buffer between estimate and ruin.",
+    summary: "Your estimates will be wrong. Engineer a buffer between what you think will happen and what would be catastrophic. The buffer IS the safety.",
+    origin: "Benjamin Graham, 'The Intelligent Investor' (1949). Adopted by Warren Buffett and Charlie Munger.",
+    story: `Benjamin Graham, the father of value investing, articulated it in 1949: only buy a stock when its price is significantly below your estimate of intrinsic value. That gap between estimate and price is your MARGIN OF SAFETY.
+
+Why? Because your estimate WILL be wrong. The world is uncertain, businesses evolve, markets surprise. If you buy at intrinsic value with no buffer, even small estimation errors mean you lose money. If you buy at 50 cents on the dollar of estimated value, you can be quite wrong about the value and still be fine.
+
+Warren Buffett built a $100B fortune on this single principle. Charlie Munger generalised it from investing to engineering, life, and decision-making.
+
+The principle is universal because uncertainty is universal. Bridges aren't built to handle exactly the expected load — they're built for 5x. Code shouldn't run at exactly 100% of memory — leave 30% headroom for spikes. A startup runway shouldn't be exactly 18 months — make it 24 because reality always lags optimistic plans.
+
+The margin is the cost of admitting you might be wrong. The COST of having a margin is smaller scale, slower growth, less aggressive bets. The cost of NOT having one is occasional ruin. For most rational people, the trade favours buffer.
+
+Munger's framing is even sharper: "All I want to know is where I'm going to die, so I'll never go there." The margin of safety is the inversion applied to engineering.`,
+    examples: [
+      { domain: "Engineering", icon: "⚙️", text: "Database: don't run at 95% capacity. Run at 60-70%. The 30% margin absorbs traffic spikes, query bugs, gradual growth. Without it, the first surprise crashes the system. With it, you get warning before disaster." },
+      { domain: "Everyday Life", icon: "💰", text: "Emergency fund: 6 months of expenses isn't a wealth strategy — it's a margin of safety. If you lose income, the buffer keeps you out of forced bad decisions (panic-selling, predatory loans, accepting awful jobs)." },
+      { domain: "Business", icon: "📊", text: "Project timeline: PMs say 'finish by Q3.' Honest engineers add a 50% margin and say 'Q4 mid.' The margin absorbs the unknown unknowns that always exist. Projects without buffer reliably ship late and broken." }
+    ],
+    howTo: [
+      "Make your honest estimate of how something will play out.",
+      "Identify the failure scenario: what would 'wrong' look like?",
+      "Calculate the buffer needed: enough that being wrong by a reasonable amount still leaves you OK.",
+      "Apply the margin BEFORE committing — bigger stakes = bigger margin.",
+      "Treat the margin as cost-of-doing-business, not waste. The margin is what's saving you from your own confidence."
+    ],
+    watchOut: [
+      { title: "Too much margin = wasted capacity", text: "Building a bridge for 100x load when you only need 5x is overkill. Calibrate margin to: how wrong could you reasonably be, and how catastrophic is being wrong? Most projects have too little; some have too much." },
+      { title: "Margin doesn't substitute for skill", text: "A bad estimate with a 50% margin still fails 50% of the time. Margin protects against UNKNOWNS, not against systemic incompetence. Improve estimates AND add margin — both, not one." }
+    ],
+    related: ["antifragile", "inversion", "second-order"],
+    interactive: "reflect",
+    svgHero: `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="240" x2="360" y2="240" stroke="#9090b8" stroke-width="1"/>
+  <rect x="40" y="180" width="180" height="60" fill="#06d6a0" fill-opacity="0.3" stroke="#06d6a0" stroke-width="2" rx="4"/>
+  <text x="80" y="217" font-size="13" fill="#06d6a0" font-weight="700" font-family="system-ui">YOUR ESTIMATE</text>
+  <rect x="220" y="180" width="80" height="60" fill="#ffd166" fill-opacity="0.3" stroke="#ffd166" stroke-width="2" stroke-dasharray="4,3" rx="4"/>
+  <text x="234" y="215" font-size="11" fill="#ffd166" font-weight="700" font-family="system-ui">MARGIN</text>
+  <line x1="300" y1="170" x2="300" y2="250" stroke="#ef476f" stroke-width="2"/>
+  <text x="305" y="190" font-size="11" fill="#ef476f" font-family="system-ui" font-weight="700">RUIN</text>
+  <text x="305" y="205" font-size="9" fill="#ef476f" font-family="system-ui">line</text>
+  <text x="60" y="265" font-size="11" fill="#9090b8" font-family="system-ui">buffer between estimate and disaster</text>
+</svg>`
+  },
+
   "sleep-consolidation": {
     id: "sleep-consolidation",
     name: "Sleep Consolidation",

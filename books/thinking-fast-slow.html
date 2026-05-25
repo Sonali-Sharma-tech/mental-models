@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
+<title>Thinking, Fast and Slow — Models from the Book</title>
+<meta name="description" content="All the major mental models from Daniel Kahneman's Thinking, Fast and Slow. Click any to read the deep-dive — or see what's not yet on the site."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://thinking-models.vercel.app/books/thinking-fast-slow.html"/>
+<meta property="og:title" content="Thinking, Fast and Slow — Models from the Book"/>
+<meta property="og:description" content="All the major mental models from Daniel Kahneman's Thinking, Fast and Slow."/>
+<meta property="og:image" content="https://thinking-models.vercel.app/og.png"/>
+<link rel="canonical" href="https://thinking-models.vercel.app/books/thinking-fast-slow.html"/>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<link rel="stylesheet" href="../shared.css"/>
+<style>
+  .book-hero { max-width: 900px; margin: 0 auto; padding: 80px 24px 40px; text-align: center; }
+  .book-meta { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
+  .book-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .book-author { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+  .book-author strong { color: var(--text); font-weight: 600; }
+  .book-summary { color: var(--text); font-size: 1.1rem; line-height: 1.65; max-width: 700px; margin: 0 auto; }
+
+  .models-section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+  .section-title-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+  .section-h { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; }
+  .legend { display: flex; gap: 16px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+  .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .book-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-l);
+    padding: 18px 20px; transition: transform 0.25s, border-color 0.25s; position: relative;
+  }
+  .book-card.live { cursor: pointer; }
+  .book-card.live:hover { transform: translateY(-3px); border-color: var(--blue); }
+  .book-card.coming { opacity: 0.65; }
+  .book-card.coming:hover { opacity: 0.9; }
+  .card-status {
+    position: absolute; top: 14px; right: 14px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .card-status.live { background: rgba(6,214,160,0.15); color: var(--green); }
+  .card-status.coming { background: rgba(144,144,184,0.15); color: var(--muted); }
+  .book-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; padding-right: 80px; }
+  .book-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+  .book-card .read-link { font-size: 0.78rem; color: var(--blue); font-weight: 700; margin-top: 10px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="../models.html">Explore All</a>
+    <a href="../learning-lab.html">🧬 Learning Lab</a>
+    <a href="../index.html#newsletter" class="nav-cta">Subscribe</a>
+  </div>
+</nav>
+
+<section class="book-hero">
+  <div class="book-meta">📕 Source Book</div>
+  <h1>Thinking, Fast and Slow</h1>
+  <p class="book-author">by <strong>Daniel Kahneman</strong> · 2011 · <em>Nobel Prize in Economics, 2002</em></p>
+  <p class="book-summary">
+    Kahneman's seminal synthesis of 40 years of cognitive psychology research. Introduced the
+    System 1 / System 2 framework that explains why every cognitive bias exists. The book the
+    rest of behavioural economics builds on.
+  </p>
+</section>
+
+<section class="models-section">
+  <div class="section-title-row">
+    <h2 class="section-h">Models from this book</h2>
+    <div class="legend">
+      <span>🟢 <span style="color: var(--green); font-weight: 700;">Live</span> — deep-dive on site</span>
+      <span>⚪ <span style="color: var(--muted); font-weight: 700;">Coming</span> — not yet added</span>
+    </div>
+  </div>
+  <div class="book-grid" id="book-grid"></div>
+</section>
+
+<footer class="site-footer">
+  Mental Models · Sourced from <em>Thinking, Fast and Slow</em> by Daniel Kahneman ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+<script>
+const MODELS = [
+  { id: "system-1-2",       live: true,  name: "System 1 & System 2",       desc: "Two minds in one head — fast/automatic vs slow/deliberate. The framework that explains why every cognitive bias exists." },
+  { id: "loss-aversion",    live: true,  name: "Loss Aversion",             desc: "Losses hurt 2× more than equivalent gains feel good. Distorts most economic and life decisions." },
+  { id: "anchoring",        live: true,  name: "Anchoring",                 desc: "First number you hear glues to your brain. Even random numbers distort estimates." },
+  { id: "availability",     live: true,  name: "Availability Heuristic",    desc: "What's vivid feels common. Plane crashes feel more dangerous than driving because they're memorable." },
+  { id: "sunk-cost",        live: true,  name: "Sunk Cost Fallacy",         desc: "Don't keep going just because you've started. Past investment shouldn't drive future decisions." },
+  { id: "confirmation",     live: true,  name: "Confirmation Bias",         desc: "You find what you're already looking for. The brain collects evidence that fits, ignores what doesn't." },
+
+  { id: "prospect-theory",  live: false, name: "Prospect Theory",           desc: "The full framework: decisions depend on reference points, not absolute outcomes. Probability shifts felt differently in gain vs loss frames. Won Kahneman the Nobel." },
+  { id: "planning-fallacy", live: false, name: "Planning Fallacy",          desc: "We systematically underestimate how long things will take and how much they'll cost — even when we KNOW about this bias." },
+  { id: "wysiati",          live: false, name: "WYSIATI (What You See Is All There Is)", desc: "The mind treats available information as complete. We don't reason about what we don't know — we just act as if it doesn't exist." },
+  { id: "peak-end",         live: false, name: "Peak-End Rule",             desc: "We judge experiences by their MOST INTENSE moment + their ENDING — not by the average. Why colonoscopies with painless extra time felt better than shorter painful ones." },
+  { id: "two-selves",       live: false, name: "Two Selves",                desc: "The 'experiencing self' (moment-to-moment pleasure) and the 'remembering self' (retrospective evaluation) often disagree about whether something was good." },
+  { id: "halo-effect",      live: false, name: "Halo Effect",               desc: "One positive trait colors all judgments. If someone is attractive, we rate them as smarter and more competent — without evidence." },
+  { id: "framing-effect",   live: false, name: "Framing Effect",            desc: "Same content, different presentation, opposite decision. '90% survival rate' feels different from '10% mortality rate' — same stat." },
+  { id: "substitution",     live: false, name: "Substitution",              desc: "When asked a hard question, the brain answers an easier one. 'Should I trust this leader?' becomes 'do I LIKE this leader?' Without us noticing." },
+  { id: "affect-heuristic", live: false, name: "Affect Heuristic",          desc: "We judge risk and benefit using emotion, not analysis. If we like something, we underestimate its risks. Disliking something inflates them." },
+  { id: "conjunction",      live: false, name: "Conjunction Fallacy",       desc: "The 'Linda problem' — people rate 'Linda is a feminist bank teller' as MORE likely than 'Linda is a bank teller', though it's mathematically less probable." },
+  { id: "endowment",        live: false, name: "Endowment Effect",          desc: "We value things we own MORE than identical things we don't own. The mug you bought is worth more to you than the same mug in the store." },
+  { id: "regression",       live: false, name: "Regression to the Mean",    desc: "Extreme performance is followed by less extreme performance — naturally, without intervention. Why 'punishing bad performance works' is often illusory." },
+  { id: "optimism-bias",    live: false, name: "Optimism Bias",             desc: "We systematically overestimate good outcomes for ourselves. 95% of drivers think they're above average. 80% of entrepreneurs expect their startup to succeed." },
+  { id: "expert-intuition", live: false, name: "Expert Intuition",          desc: "When DOES gut feeling work? Kahneman + Klein agreed: only in environments that are sufficiently regular AND give fast clear feedback. Otherwise, it's overconfidence." }
+];
+
+const grid = document.getElementById('book-grid');
+grid.innerHTML = MODELS.map(m => {
+  const live = m.live;
+  return `
+    <div class="book-card ${live ? 'live' : 'coming'}" ${live ? `onclick="window.location.href='../model.html?id=${m.id}'"` : ''}>
+      <span class="card-status ${live ? 'live' : 'coming'}">${live ? 'On site' : 'Coming'}</span>
+      <h3>${m.name}</h3>
+      <p>${m.desc}</p>
+      ${live ? `<a class="read-link" href="../model.html?id=${m.id}">Read deep dive →</a>` : ''}
+    </div>`;
+}).join('');
+</script>
+
+</body>
+</html>

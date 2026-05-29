@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
+<title>Incerto — Nassim Nicholas Taleb · Black Swan, Antifragile, Skin in the Game</title>
+<meta name="description" content="The mental models from Nassim Taleb's Incerto series. Black Swan, Antifragile, Skin in the Game. Click any to read the deep-dive."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://thinking-models.vercel.app/books/taleb-incerto.html"/>
+<meta property="og:title" content="Incerto — Taleb's Models of Uncertainty"/>
+<meta property="og:description" content="Models for thinking about uncertainty, fragility, and asymmetric risk."/>
+<meta property="og:image" content="https://thinking-models.vercel.app/og.png"/>
+<link rel="canonical" href="https://thinking-models.vercel.app/books/taleb-incerto.html"/>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<link rel="stylesheet" href="../shared.css"/>
+<style>
+  .book-hero { max-width: 900px; margin: 0 auto; padding: 80px 24px 40px; text-align: center; }
+  .book-meta { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; }
+  .book-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .book-author { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+  .book-author strong { color: var(--text); font-weight: 600; }
+  .book-summary { color: var(--text); font-size: 1.1rem; line-height: 1.65; max-width: 700px; margin: 0 auto; }
+
+  .models-section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+  .section-title-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+  .section-h { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; }
+  .section-sub-h { font-size: 1.1rem; font-weight: 700; color: var(--muted); margin: 36px 0 14px; }
+  .legend { display: flex; gap: 16px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
+
+  .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .book-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-l); padding: 18px 20px; transition: transform 0.25s, border-color 0.25s; position: relative; }
+  .book-card.live { cursor: pointer; }
+  .book-card.live:hover { transform: translateY(-3px); border-color: var(--purple); }
+  .book-card.coming { opacity: 0.65; }
+  .book-card.coming:hover { opacity: 0.9; }
+  .card-status { position: absolute; top: 14px; right: 14px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+  .card-status.live { background: rgba(6,214,160,0.15); color: var(--green); }
+  .card-status.coming { background: rgba(144,144,184,0.15); color: var(--muted); }
+  .book-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; padding-right: 80px; }
+  .book-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+  .book-card .read-link { font-size: 0.78rem; color: var(--purple); font-weight: 700; margin-top: 10px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="../models.html">Explore All</a>
+    <a href="./">📚 Books</a>
+    <a href="../learning-lab.html">🧬 Learning Lab</a>
+    <a href="../index.html#newsletter" class="nav-cta">Subscribe</a>
+  </div>
+</nav>
+
+<section class="book-hero">
+  <div class="book-meta">📔 Source Series</div>
+  <h1>Incerto</h1>
+  <p class="book-author">by <strong>Nassim Nicholas Taleb</strong> · 5 books, 2001–2018 · <em>former options trader, philosopher of risk</em></p>
+  <p class="book-summary">
+    Taleb's 5-volume meditation on chance, uncertainty, fragility, and asymmetric risk. The Black Swan
+    (2007), Antifragile (2012), and Skin in the Game (2018) are the most cited. Models in here are
+    sharper than mainstream economics — and angrier.
+  </p>
+</section>
+
+<section class="models-section">
+  <div class="section-title-row">
+    <h2 class="section-h">Models from the Incerto</h2>
+    <div class="legend">
+      <span><span style="color: var(--green); font-weight: 700;">Live</span> — deep-dive on site</span>
+      <span><span style="color: var(--muted); font-weight: 700;">Coming</span> — not yet added</span>
+    </div>
+  </div>
+
+  <h3 class="section-sub-h">Already on the Site</h3>
+  <div class="book-grid" id="grid-live"></div>
+
+  <h3 class="section-sub-h">The Black Swan (2007) — Rare, High-Impact Events</h3>
+  <div class="book-grid" id="grid-black-swan"></div>
+
+  <h3 class="section-sub-h">Antifragile (2012) — Things That Gain From Disorder</h3>
+  <div class="book-grid" id="grid-antifragile"></div>
+
+  <h3 class="section-sub-h">Skin in the Game (2018) — Hidden Asymmetries</h3>
+  <div class="book-grid" id="grid-skin"></div>
+</section>
+
+<footer class="site-footer">
+  Mental Models · Sourced from the <em>Incerto</em> series by Nassim Nicholas Taleb ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+<script>
+const LIVE = [
+  { id: "black-swan",        live: true, name: "Black Swan",       desc: "Rare, unpredictable events with massive impact. After the fact, narrators invent reasons that make them seem inevitable." },
+  { id: "antifragile",       live: true, name: "Antifragility",    desc: "Beyond robust. Some systems get STRONGER from chaos, stress, and disorder. Muscles, immune systems, antifragile portfolios." },
+  { id: "lindy-effect",      live: true, name: "Lindy Effect",     desc: "For non-perishable things — books, technologies, ideas — life expectancy INCREASES with age." }
+];
+
+const BLACK_SWAN = [
+  { id: "narrative-fallacy", live: false, name: "Narrative Fallacy",    desc: "We invent stories to explain randomness after the fact. The story makes us feel we understand — but we couldn't have predicted." },
+  { id: "ludic-fallacy",     live: false, name: "Ludic Fallacy",        desc: "Treating real-world uncertainty like a casino game with known probabilities. Real life isn't dice — it has unknown unknowns." },
+  { id: "mediocristan",      live: false, name: "Mediocristan vs Extremistan", desc: "Some domains have bounded distributions (height, weight). Others have power laws (wealth, book sales, viral content). Confusing them is fatal." },
+  { id: "round-trip-fallacy",live: false, name: "Round-Trip Fallacy",   desc: "Mistaking 'no evidence of X' for 'evidence of no X'. Most catastrophes happen because people couldn't see them coming — that's the definition of a Black Swan." },
+  { id: "platonicity",       live: false, name: "Platonicity",          desc: "The tendency to mistake the map (clean, abstract model) for the territory (messy reality). Models are simplifications; treating them as truth is dangerous." }
+];
+
+const ANTIFRAGILE = [
+  { id: "via-negativa",      live: false, name: "Via Negativa",         desc: "Improvement by REMOVING, not adding. Drop bad habits before chasing good ones. Subtract noise, not add signal. Most things 'improve' more by elimination than addition." },
+  { id: "barbell-strategy",  live: false, name: "Barbell Strategy",     desc: "Extreme safety on one end (cash, low risk) + extreme risk on the other (asymmetric upside bets). Avoid the middle (medium risk, medium reward — the worst of both worlds)." },
+  { id: "optionality",       live: false, name: "Optionality",          desc: "Exposure to upside without symmetric downside. Cap your loss at X, leave your gain unbounded. Why startups, options, and side projects can be antifragile." },
+  { id: "convexity",         live: false, name: "Convexity",            desc: "Non-linear payoff. Good outcomes scale exponentially; bad outcomes are bounded. The math of why 'small bets, infinite upside' works." },
+  { id: "iatrogenics",       live: false, name: "Iatrogenics",          desc: "Harm caused by the healer. Most interventions in complex systems (medicine, policy, parenting) cause more damage than the original problem. The cure is sometimes worse." },
+  { id: "fragility-test",    live: false, name: "Fragility Detection",  desc: "Want to know if a system is fragile? Look at its variance under stress. Linear-loss-from-stress = fragile. Convex-gain-from-stress = antifragile. The math is empirical." },
+  { id: "touristification",  live: false, name: "Touristification",     desc: "When everything in life is scheduled, predicted, optimised — you've removed all chance for serendipity, error correction, and antifragile growth. Modern life over-tourist­ifies." }
+];
+
+const SKIN_IN_THE_GAME = [
+  { id: "skin-in-the-game",  live: false, name: "Skin in the Game",     desc: "Never trust advice from someone who isn't exposed to the consequences of being wrong. Doctors who pay for their own bad calls give better advice than ones who don't." },
+  { id: "minority-rule",     live: false, name: "Minority Rule",        desc: "An intolerant minority can dictate to a tolerant majority. Why kosher rules drive food packaging, why English became dominant, why one veto-wielding voice reshapes systems." },
+  { id: "intellectual-yet-idiot", live: false, name: "IYI (Intellectual Yet Idiot)", desc: "The class of credentialed experts who advocate policies they don't have to live under. Theory disconnected from skin in the game." },
+  { id: "ergodicity",        live: false, name: "Ergodicity",           desc: "An average over time ≠ an average over many copies of you. Russian roulette has a positive expected value across 100 different players. For YOU playing 100 times, you die." },
+  { id: "via-negativa-ethics", live: false, name: "Via Negativa Ethics",desc: "It's far easier to identify what's harmful than what's beneficial. Build ethics around 'don't' rules — they survive more contexts than 'do' rules." }
+];
+
+function render(id, list) {
+  document.getElementById(id).innerHTML = list.map(m => {
+    const live = m.live;
+    return `
+      <div class="book-card ${live ? 'live' : 'coming'}" ${live ? `onclick="window.location.href='../model.html?id=${m.id}'"` : ''}>
+        <span class="card-status ${live ? 'live' : 'coming'}">${live ? 'On site' : 'Coming'}</span>
+        <h3>${m.name}</h3>
+        <p>${m.desc}</p>
+        ${live ? `<a class="read-link" href="../model.html?id=${m.id}">Read deep dive →</a>` : ''}
+      </div>`;
+  }).join('');
+}
+render('grid-live', LIVE);
+render('grid-black-swan', BLACK_SWAN);
+render('grid-antifragile', ANTIFRAGILE);
+render('grid-skin', SKIN_IN_THE_GAME);
+</script>
+
+</body>
+</html>

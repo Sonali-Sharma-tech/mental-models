@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0e0e1a"/>
+<title>The Great Mental Models — Shane Parrish (Farnam Street)</title>
+<meta name="description" content="All the major models from Shane Parrish's 4-volume Great Mental Models series. Click any to read the deep-dive."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://thinking-models.vercel.app/books/great-mental-models.html"/>
+<meta property="og:title" content="The Great Mental Models — Shane Parrish"/>
+<meta property="og:description" content="The most rigorous mental-models curriculum in print, indexed."/>
+<meta property="og:image" content="https://thinking-models.vercel.app/og.png"/>
+<link rel="canonical" href="https://thinking-models.vercel.app/books/great-mental-models.html"/>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<link rel="stylesheet" href="../shared.css"/>
+<style>
+  .book-hero { max-width: 900px; margin: 0 auto; padding: 80px 24px 40px; text-align: center; }
+  .book-meta { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; }
+  .book-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .book-author { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+  .book-author strong { color: var(--text); font-weight: 600; }
+  .book-summary { color: var(--text); font-size: 1.1rem; line-height: 1.65; max-width: 700px; margin: 0 auto; }
+
+  .models-section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+  .section-title-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+  .section-h { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; }
+  .section-sub-h { font-size: 1.1rem; font-weight: 700; color: var(--muted); margin: 36px 0 14px; }
+  .legend { display: flex; gap: 16px; font-size: 0.85rem; color: var(--muted); flex-wrap: wrap; }
+
+  .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .book-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-l); padding: 18px 20px; transition: transform 0.25s, border-color 0.25s; position: relative; }
+  .book-card.live { cursor: pointer; }
+  .book-card.live:hover { transform: translateY(-3px); border-color: var(--green); }
+  .book-card.coming { opacity: 0.65; }
+  .book-card.coming:hover { opacity: 0.9; }
+  .card-status { position: absolute; top: 14px; right: 14px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+  .card-status.live { background: rgba(6,214,160,0.15); color: var(--green); }
+  .card-status.coming { background: rgba(144,144,184,0.15); color: var(--muted); }
+  .book-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; padding-right: 80px; }
+  .book-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+  .book-card .read-link { font-size: 0.78rem; color: var(--green); font-weight: 700; margin-top: 10px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">Mental Models</a>
+  <div class="nav-links">
+    <a href="../models.html">Explore All</a>
+    <a href="./">📚 Books</a>
+    <a href="../learning-lab.html">🧬 Learning Lab</a>
+    <a href="../index.html#newsletter" class="nav-cta">Subscribe</a>
+  </div>
+</nav>
+
+<section class="book-hero">
+  <div class="book-meta">📗 Source Series</div>
+  <h1>The Great Mental Models</h1>
+  <p class="book-author">by <strong>Shane Parrish</strong> (Farnam Street) · 4 volumes, 2019–2024</p>
+  <p class="book-summary">
+    The most rigorous mental-models curriculum in print. Four volumes, each pulling models from a
+    different domain — General Thinking, Physics &amp; Chemistry &amp; Biology, Systems &amp; Mathematics,
+    Economics &amp; Art. If Super Thinking was the gateway, this is the doctoral programme.
+  </p>
+</section>
+
+<section class="models-section">
+  <div class="section-title-row">
+    <h2 class="section-h">Models from the series</h2>
+    <div class="legend">
+      <span><span style="color: var(--green); font-weight: 700;">Live</span> — deep-dive on site</span>
+      <span><span style="color: var(--muted); font-weight: 700;">Coming</span> — not yet added</span>
+    </div>
+  </div>
+
+  <h3 class="section-sub-h">Volume 1 — General Thinking Concepts</h3>
+  <div class="book-grid" id="grid-v1"></div>
+
+  <h3 class="section-sub-h">Volume 2 — Physics, Chemistry &amp; Biology</h3>
+  <div class="book-grid" id="grid-v2"></div>
+
+  <h3 class="section-sub-h">Volume 3 — Systems &amp; Mathematics</h3>
+  <div class="book-grid" id="grid-v3"></div>
+
+  <h3 class="section-sub-h">Volume 4 — Economics &amp; Art</h3>
+  <div class="book-grid" id="grid-v4"></div>
+</section>
+
+<footer class="site-footer">
+  Mental Models · Sourced from <em>The Great Mental Models</em> series by Shane Parrish ·
+  <a href="https://github.com/Sonali-Sharma-tech/mental-models">GitHub</a>
+</footer>
+
+<script>
+const V1 = [
+  { id: "first-principles",  live: true,  name: "First Principles",         desc: "Strip every assumption. Reason up from undeniable truths only. Aristotle to Musk." },
+  { id: "inversion",         live: true,  name: "Inversion",                desc: "Flip the problem. Don't ask how to win — ask how to lose, then avoid those things." },
+  { id: "occam",             live: true,  name: "Occam's Razor",            desc: "Simplest explanation usually wins. Each extra assumption is another place to be wrong." },
+  { id: "hanlon",            live: true,  name: "Hanlon's Razor",           desc: "Don't blame malice when stupidity explains it." },
+  { id: "second-order",      live: true,  name: "Second-Order Thinking",    desc: "Then what? And then what after that? Most people stop at order 1." },
+  { id: "map-territory",     live: false, name: "The Map Is Not The Territory", desc: "Models simplify reality — that's their value AND their failure mode. Treating maps as truth gets you killed (literally for hikers, financially for traders)." },
+  { id: "circle-competence", live: false, name: "Circle of Competence",     desc: "Know what you know — and especially what you don't. Operating outside your circle is where ruin lives." },
+  { id: "thought-experiment",live: false, name: "Thought Experiment",       desc: "Run controlled experiments in your head when reality is too expensive. How Einstein discovered relativity." },
+  { id: "probabilistic",     live: false, name: "Probabilistic Thinking",   desc: "The world isn't binary. Reason in distributions, base rates, conditional probabilities — not 'will it / won't it'." },
+  { id: "occam-2",           live: false, name: "Hanlon's Razor (extended)",desc: "Every system fails. Most failures are bureaucracy, fatigue, or honest error — not conspiracy." }
+];
+
+const V2 = [
+  { id: "activation-energy", live: false, name: "Activation Energy",        desc: "Some reactions need a push to start. Same in life — habits, projects, conversations. The barrier-to-start is often the WHOLE problem." },
+  { id: "catalyst",          live: false, name: "Catalysts",                desc: "Speed up reactions without being consumed. People, tools, environments that lower activation energy without depleting." },
+  { id: "natural-selection", live: false, name: "Natural Selection",        desc: "Variation + heredity + differential survival. The mechanism behind biology, business, ideas, technologies." },
+  { id: "ecosystem",         live: false, name: "Ecosystem & Niche",        desc: "Organisms find narrow specialised roles. Companies, jobs, products too. Generalists die in tight ecosystems; specialists die when ecosystems shift." },
+  { id: "thermodynamics",    live: false, name: "Thermodynamics & Entropy", desc: "Closed systems trend to disorder unless energy is added. Why teams, codebases, relationships rot without active maintenance." },
+  { id: "alloy",             live: false, name: "Alloying",                 desc: "Combining materials yields properties neither has alone. Steel = iron + carbon. Same logic in teams, products, cultures." },
+  { id: "leverage-physics",  live: false, name: "Leverage (Physics)",       desc: "Small input → large output via mechanical advantage. The financial leverage metaphor traces directly to this physical principle." }
+];
+
+const V3 = [
+  { id: "feedback-loops",    live: false, name: "Feedback Loops",           desc: "Reinforcing (positive) loops accelerate. Balancing (negative) loops stabilise. Most systems run on a mix; understanding which is which IS systems thinking." },
+  { id: "stocks-flows",      live: false, name: "Stocks & Flows",           desc: "Stock = level (water in tub). Flow = rate (water in/out). Confusing these is the most common system-thinking error. Your bathtub is a tutorial in macroeconomics." },
+  { id: "leverage-points",   live: false, name: "Leverage Points",          desc: "Donella Meadows' 12 places to intervene in a system. Spoiler: parameters and rates matter least; goals, paradigms, and the right to question paradigms matter most." },
+  { id: "regression-mean",   live: false, name: "Regression to the Mean",   desc: "Extreme performance is usually followed by less extreme — naturally. Why 'punishing failure works' and 'rewarding success works' are both illusory in noisy environments." },
+  { id: "law-large-numbers", live: false, name: "Law of Large Numbers",     desc: "Average of many independent samples converges on the true mean. The reason casinos always win — and the reason you should focus on consistent process over single outcomes." },
+  { id: "sampling-bias",     live: false, name: "Sampling Bias",            desc: "Your data is filtered before you see it. The 'survivors' you study are not the population. The patients in your clinic aren't the patients in the world." },
+  { id: "global-local-min",  live: false, name: "Global vs Local Optima",   desc: "Hill-climbing finds the nearest peak — not the highest. Often you have to go DOWN before you can go UP. Why iterative improvement plateaus." },
+  { id: "emergence",         live: false, name: "Emergence",                desc: "Wholes have properties their parts don't. Wetness from H2O. Consciousness from neurons. Markets from traders. Reductionism alone fails." }
+];
+
+const V4 = [
+  { id: "scarcity",          live: false, name: "Scarcity",                 desc: "Things less available become more desired — beyond their actual value. Why luxury brands restrict supply, why rare wines age in price more than they age in quality." },
+  { id: "supply-demand",     live: false, name: "Supply & Demand",          desc: "Prices emerge from the intersection. The most-quoted model in economics, the most-misunderstood by people who've never run a business." },
+  { id: "comparative-adv",   live: false, name: "Comparative Advantage",    desc: "Trade benefits BOTH sides — even when one side is better at everything. Ricardo's 1817 insight, still misunderstood by most policy debates." },
+  { id: "creative-destruction", live: false, name: "Creative Destruction", desc: "Schumpeter's insight: economies grow by killing what doesn't work. The Kodak / Blockbuster / video-store death spiral is a feature, not a bug." },
+  { id: "trade-offs",        live: false, name: "Trade-offs",               desc: "You can't have everything. Picking gains means accepting losses. The economist's bedrock, often denied in product roadmaps." },
+  { id: "art-perspective",   live: false, name: "Perspective (Art)",        desc: "Same scene, different viewpoint, different image. Same data, different framing, different story. Renaissance painters discovered what cognitive scientists later named." },
+  { id: "art-contrast",      live: false, name: "Contrast (Art)",           desc: "Meaning emerges from difference. White on white is invisible. Same applies to product positioning, presentations, careers." }
+];
+
+function render(id, list) {
+  document.getElementById(id).innerHTML = list.map(m => {
+    const live = m.live;
+    return `
+      <div class="book-card ${live ? 'live' : 'coming'}" ${live ? `onclick="window.location.href='../model.html?id=${m.id}'"` : ''}>
+        <span class="card-status ${live ? 'live' : 'coming'}">${live ? 'On site' : 'Coming'}</span>
+        <h3>${m.name}</h3>
+        <p>${m.desc}</p>
+        ${live ? `<a class="read-link" href="../model.html?id=${m.id}">Read deep dive →</a>` : ''}
+      </div>`;
+  }).join('');
+}
+render('grid-v1', V1);
+render('grid-v2', V2);
+render('grid-v3', V3);
+render('grid-v4', V4);
+</script>
+
+</body>
+</html>
